@@ -1,0 +1,262 @@
+.home {
+  display: grid;
+  gap: clamp(3.5rem, 8vw, 6.5rem);
+  margin: 0 auto;
+  max-width: 96rem;
+  padding: 0 var(--gutter) 5rem;
+  width: 100%;
+}
+
+/* Title and intro texts are sized against the viewport height so both fit above the fold. */
+.hero {
+  display: grid;
+  gap: clamp(1rem, 3dvh, 2rem) clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: clamp(1rem, 3dvh, 2.5rem);
+}
+
+.heroText {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroText h1 {
+  margin: 0 0 clamp(1rem, 3dvh, 2rem);
+}
+
+.css {
+  background-color: var(--brick);
+  background-image: linear-gradient(var(--brick-light) 2px, transparent 2px), linear-gradient(var(--brick-dark) 3px, transparent 3px);
+  background-position: 0 0, 14px 14px;
+  background-size: 28px 28px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: block;
+  opacity: 0.3;
+  font-size: clamp(6rem, min(16.5vw, 34dvh), 20rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+}
+
+.lab {
+  color: var(--sand);
+  display: block;
+  font-size: clamp(2.75rem, min(7.5vw, 15dvh), 9rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-top: 0.5rem;
+}
+
+/* The ants are black, so a faint warm glow keeps them readable on the dark page. */
+.heroPlate {
+  align-items: center;
+  background: radial-gradient(ellipse closest-side, rgb(180 83 9 / 18%), rgb(180 83 9 / 7%) 60%, transparent);
+  display: flex;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+.heroPlate img {
+  display: block;
+  height: auto;
+  max-height: 44dvh;
+  max-width: 100%;
+  width: auto;
+}
+
+.introLead {
+  color: var(--sand);
+  font-size: clamp(1.125rem, 1.45vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.introLead strong {
+  font-weight: 700;
+}
+
+.introBody {
+  border-left: 4px solid var(--moss-hot);
+  color: var(--text-muted);
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.map h2,
+.brick h2 {
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+  max-width: 22ch;
+}
+
+.map ul {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.map a {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--sand);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 21rem;
+  padding: 1.25rem;
+  position: relative;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.map a:hover {
+  border-color: var(--brick-hot);
+  transform: translateY(-4px);
+}
+
+.map h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: auto 0 0.5rem;
+}
+
+.map p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin: 0 0 1rem;
+}
+
+.mapIndex,
+.mapCount {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.mapDiagram {
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  height: 6.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.mapDiagram i {
+  background: var(--brick);
+  box-shadow: inset 0 2px 0 var(--brick-light), inset 0 -2px 0 var(--brick-dark);
+}
+
+[data-group='fundamentals'] .mapDiagram {
+  grid-template-columns: 1fr;
+}
+
+[data-group='fundamentals'] .mapDiagram i:nth-child(n + 4) {
+  display: none;
+}
+
+[data-group='fundamentals'] .mapDiagram i:nth-child(2) {
+  background: var(--moss);
+  box-shadow: none;
+  width: 60%;
+}
+
+[data-group='flex'] .mapDiagram {
+  display: flex;
+}
+
+[data-group='flex'] .mapDiagram i {
+  flex: 1;
+}
+
+[data-group='flex'] .mapDiagram i:nth-child(2n) {
+  flex: 2;
+}
+
+[data-group='flex'] .mapDiagram i:nth-child(n + 5) {
+  display: none;
+}
+
+[data-group='grid'] .mapDiagram i:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+[data-group='grid'] .mapDiagram i:last-child {
+  display: none;
+}
+
+[data-group='beyond'] .mapDiagram i {
+  background: transparent;
+  border: 1px solid var(--blue-hot);
+  box-shadow: none;
+}
+
+[data-group='beyond'] .mapDiagram i:nth-child(3n + 1) {
+  background: var(--blue);
+}
+
+.brick {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.brick > div > p {
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  margin: 0;
+  max-width: 54rem;
+}
+
+.brick > section {
+  margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+  .map ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .map a {
+    min-height: 18rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .css {
+    font-size: clamp(6rem, 36vw, 14rem);
+  }
+
+  .lab {
+    font-size: clamp(2.75rem, 14vw, 6rem);
+  }
+
+  .heroPlate {
+    order: 1;
+  }
+
+  .heroPlate img {
+    max-height: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .map ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

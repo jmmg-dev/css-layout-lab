@@ -1,0 +1,59 @@
+.box {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.box span {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.margin,
+.border,
+.padding {
+  padding: 0.5rem 1.75rem 1.75rem;
+}
+
+.margin {
+  background: var(--brick-hot);
+}
+
+.border {
+  background: var(--text-muted);
+}
+
+.padding {
+  background: var(--moss-hot);
+}
+
+.content {
+  background: var(--sand);
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.content span {
+  margin: 0;
+}
+
+.container {
+  border: 1px solid var(--blue-hot);
+  color: var(--blue-hot);
+  font-family: var(--font-mono);
+  padding: 1rem;
+  text-align: center;
+}
+
+.containerBody {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-evenly;
+  margin-top: 0.75rem;
+}
+
+.containerBody > div {
+  flex: 1;
+  padding: 1.5rem 0.25rem;
+}

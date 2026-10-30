@@ -1,0 +1,592 @@
+{
+  "container": "Container",
+  "child": "Child",
+  "example": "Example",
+  "examples": "Examples",
+  "result": "Result",
+  "home": {
+    "getStarted": "Introduction to CSS Layouts",
+    "introduction": "<brick>CSS Layout Lab</brick> is an interactive space to learn and experiment with the different ways of <b>building layouts</b> in <b>CSS</b>: from classic models like <brick>block</brick> and <brick>inline</brick>, to modern tools like <brick>flexbox</brick> and <brick>grid</brick>.",
+    "description": "<brick>CSS Layout Lab</brick> provides <moss>clear documentation</moss> and <moss>dynamic examples</moss>, with which you can modify values and see in <moss>real time</moss> how the arrangement of <moss>elements</moss> <moss>adjusts</moss>, gaining a better understanding of the possibilities of each approach and how to apply them in your projects.",
+    "example": {
+      "title": "Learn visually with practical and dynamic examples",
+      "description": "To <blue>make it easier</blue> to understand the content and provide a <blue>visual aid</blue> to users while learning different techniques to build <blue>layouts</blue>, we decided to use the metaphor of <brick>bricks</brick> in each <blue>example</blue>. To avoid verbosity in the code, in the examples we only show the relevant information, but here I’ll show you how you can create a <brick>brick</brick> with <blue>CSS</blue>. I hope you enjoy the content!"
+    },
+    "aboutMe": {
+      "title": "About Me",
+      "description": "<p>After many years working in web development, <b>CSS continues to amaze me with its possibilities and constant innovations</b>. One of its most important and frequent uses is <b>layout management</b>, which allows you to organize and distribute the elements of a page in a flexible and precise way.</p><p>That's why I created this documentation, where I try to explain in a simple way <b>how to create layouts with CSS</b> and how to apply different techniques depending on the needs of each project.</p><p>This tutorial is designed for all kinds of developers, from <b>juniors</b> to <b>experts</b>. Some may discover basic concepts for the first time, while others can see in practice how certain properties behave, which are often handled by libraries like <b>Bootstrap</b>, exploring <b>grid</b> and <b>flexbox</b> directly.</p><p>I hope you enjoy it!</p>"
+    },
+    "map": {
+      "title": "Choose where to start building",
+      "fundamentals": "Box model, display, units and positioning: the foundations of any layout.",
+      "flex": "Distribute elements along one axis and let them adapt to the available space.",
+      "grid": "Control rows and columns at once to define complete structures.",
+      "beyond": "Container queries, logical properties and recipes ready for your projects."
+    }
+  },
+  "basicConcepts": {
+    "title": "Introduction to CSS Layouts",
+    "title2": "introduction",
+    "description": "<p>In <b>CSS</b>, a <brick>layout</brick> is the way <b>elements</b> are <b>organized</b> and <b>distributed</b> within a page or section. It determines where elements are placed, how they are <b>aligned</b> with each other, and how they <b>adapt</b> to the screen size.</p><p>Our goal is to show, through <b>simple</b> and comparative examples, how to <b>align</b> elements both <b>horizontally</b> and <b>vertically</b>, how to <b>organize</b> different sections of a page, and in which situations each technique is best applied.</p><p>We want to help you <b>visualize</b>, <b>practice</b>, and <b>understand</b> the essentials to <b>improve</b> your <b>designs</b> and write <b>CSS</b> with greater <b>confidence</b> and <b>clarity</b>.</p><p>Before diving into <brick>block</brick>, <brick>inline-block</brick>, <brick>flex</brick>, or <brick>grid</brick>, it is essential to understand some <b>key concepts</b> that determine how elements are <b>positioned</b> and <b>behave</b> within a <b>web page</b>.</p>",
+    "boxModel": {
+      "title": "Box Model",
+      "description": "Every element in <b>HTML</b> is a <b>box</b>. This model defines how the space occupied by an element is calculated:",
+      "item1": "<b>margin</b>: The outer space, between this box and others.",
+      "item2": "<b>border</b>: The border surrounding the content and padding of an element, customizable in thickness, style, and color.",
+      "item3": "<b>padding</b>: The inner space between the content and the border.",
+      "item4": "<b>content</b>: The element’s content (text, image, etc.)."
+    },
+    "display": {
+      "title": "Display",
+      "description": "The <b>display</b> property determines how the <b>box behaves</b>. It can be:",
+      "item1": "<b>block</b>: Occupies the full available width and starts on a new line.",
+      "item2": "<b>inline</b>: Does not start on a new line and only takes the necessary space.",
+      "item3": "<b>inline-block</b>: Like inline, but allows defining width, height, etc.",
+      "item4": "<b>flex and grid</b>: Modern layout systems (we’ll see them in detail later)."
+    },
+    "axis": {
+      "title": "Rows and Columns",
+      "description": "When we talk about <b>flex</b> or <b>grid</b>, we must think in terms of <b>rows</b> and <b>columns</b>.",
+      "item1": "In <b>flex</b>, elements are arranged in a single row or column, depending on <b>flex-direction</b>.",
+      "item2": "In <b>grid</b>, they can be arranged in <b>rows</b> and <b>columns</b> simultaneously.",
+      "item3": "Understanding this structure helps control how <b>child</b> elements are <b>aligned</b> and <b>distributed</b>."
+    },
+    "containers": {
+      "title": "Container and child",
+      "description": "A layout always has a hierarchy:",
+      "item1": "The <b>container</b> is the parent element that defines the <b>context</b> (display: flex, grid, etc).",
+      "item2": "The <b>child</b> elements behave according to the rules of that context."
+    },
+    "gap": {
+      "title": "Spacing",
+      "description": "The <b>gap</b>, <b>row-gap</b>, and <b>column-gap</b> properties allow control of the <b>spacing between elements</b> in a <b>flex</b> or <b>grid</b> container:",
+      "item1": "<b>gap</b>: Defines uniform spacing between rows and columns.",
+      "item2": "<b>row-gap</b>: Defines only the spacing between rows.",
+      "item3": "<b>column-gap</b>: Defines only the spacing between columns.",
+      "item4": "These properties replace the use of <code>margin</code> on children, making the layout cleaner and more predictable."
+    },
+    "responsive": {
+      "title": "Responsiveness",
+      "description": "Nowadays, websites must be <b>adaptable</b>, able to adjust to <b>different screen sizes</b>, from mobile devices to large monitors. Modern properties like <b>flex</b> and <b>grid</b> allow creating layouts that <b>automatically reorganize</b>. This makes it easier to build <b>fluid</b>, <b>consistent</b>, and more <b>maintainable</b> designs."
+    },
+    "units": {
+      "title": "Units in CSS",
+      "description": "In <b>CSS</b> there are several <b>basic units</b> used to define measures such as sizes, margins, paddings, fonts, etc. They are divided into <b>absolute</b> and <b>relative</b> units.",
+      "absolutes": {
+        "title": "Absolute Units",
+        "description": "These <b>do not change</b> depending on context; they always measure the same.",
+        "item1": "<b>px (pixels)</b>: Fixed unit, ideal for precise details.",
+        "item2": "<b>cm, mm, in (centimeters, millimeters, inches)</b>: More common in print.",
+        "item3": "<b>pt (points)</b>: Used in typography, 1pt = 1/72 of an inch.",
+        "item4": "<b>pc (picas)</b>: 1pc = 12pt, also in typography.",
+        "item5": "<b>q (quarter millimeters)</b>: 1q = 0.25mm, used in print."
+      },
+      "relatives": {
+        "title": "Relative Units",
+        "description": "These <b>change</b> depending on context, such as screen size or font size.",
+        "item1": "<b>% (percentage)</b>: Relative to the parent element. Very useful for fluid layouts.",
+        "item2": "<b>em</b>: Relative to the parent’s font size. 2em = 2 times the parent’s font size.",
+        "item3": "<b>rem</b>: Relative to the root font size (usually html). More predictable than em.",
+        "item4": "<b>vw (viewport width)</b>: 1vw = 1% of the viewport width. Useful for responsive designs.",
+        "item5": "<b>vh (viewport height)</b>: 1vh = 1% of the viewport height.",
+        "item6": "<b>vmin</b>: The smaller value between vw and vh.",
+        "item7": "<b>vmax</b>: The larger value between vw and vh.",
+        "item8": "<b>svw / svh</b>: small viewport (useful on mobile with dynamic bars).",
+        "item9": "<b>lvw / lvh</b>: Represents the maximum possible viewport size, as if navigation bars (browser top or bottom) were hidden.",
+        "item10": "<b>dvw / dvh</b>: Represents the current viewport size, which changes when browser bars appear or disappear."
+      }
+    }
+  },
+  "blockInline": {
+    "title": "block & inline",
+    "description": "<p><brick>block</brick>, <brick>inline</brick> and <brick>inline-block</brick> are <b>display models</b> that define how <b>HTML elements</b> are <b>arranged</b> and <b>occupy space</b> on the page, controlling their <b>flow</b>, <b>alignment</b>, and <b>dimensions</b>.</p>",
+    "block": {
+      "title": "block",
+      "description": "<b>block</b> elements behave as <b>full blocks</b>:",
+      "item1": "They start on a <b>new line</b>.",
+      "item2": "By default, they occupy <b>all available width</b>.",
+      "item3": "They allow defining <b>width</b>, <b>height</b>, <b>margin</b>, <b>padding</b> without issues.",
+      "item4": "They are <b>ideal</b> when you need elements to <b>stack vertically</b> and want to control <b>size</b> and <b>spacing</b>.",
+      "defaultElements": "HTML elements that are <brick>block</brick> by <moss>default</moss>:",
+      "example": "<p>In this example we have a container that contains three children with the class <b>child</b> set as display <brick>block</brick>, where each child occupies the <b>full possible width</b> of the <b>container</b> because they <b>do not</b> have a fixed <b>width</b>.</p><p>The class <b>child</b> would not need to be explicitly set as display <brick>block</brick> since by default, <b>div</b> elements are <brick>block</brick> (this is done for teaching purposes).</p>"
+    },
+    "inline": {
+      "title": "inline",
+      "description": "<b>inline</b> elements flow <b>in the same line as text</b>:",
+      "item1": "They <b>do not</b> start on a <b>new line</b> and only occupy the <b>necessary width</b>.",
+      "item2": "They can be <b>nested</b> inside <b>block</b> or <b>inline</b> elements.",
+      "item3": "They <b>do not</b> allow box properties like <b>width, height, margin-top, margin-bottom</b>. Generally, you <b>cannot</b> set <b>width</b> or <b>height</b>, nor vertical margins. <b>You can</b> apply <b>padding</b> and <b>horizontal margin</b>.",
+      "item4": "They can contain <b>only</b> text or <b>other</b> <b>inline</b> elements.",
+      "item5": "They are <b>ideal</b> when you want content to <b>flow</b> inside a <b>paragraph</b>.",
+      "defaultElements": "HTML elements that are <brick>inline</brick> by <moss>default</moss>:",
+      "example": "<p>In this example we have a container that contains three children with the class <b>child</b> set as display <brick>inline</brick>, where each child only occupies the <b>necessary width</b> of the <b>container</b>. We can see how the container’s <b>padding</b> <b>does not adjust</b> to the height of its children when they are <brick>inline</brick> elements.</p><p>The class <b>child</b> would not need to be explicitly set as display <brick>inline</brick> since by default, <b>span</b> elements are <brick>inline</brick> (this is done for teaching purposes).</p>"
+    },
+    "inlineBlock": {
+      "title": "inline-block",
+      "description": "<b>inline-block</b> elements combine characteristics of both <b>inline</b> and <b>block</b> elements:",
+      "item1": "They flow <b>inline</b> like <b>inline</b> elements but allow <b>box dimensions</b> like <b>block</b> elements.",
+      "item2": "They <b>align horizontally</b> with other inline or inline-block elements.",
+      "item3": "They <b>do</b> accept properties like <b>width</b>, <b>height</b>, <b>padding</b>, and <b>margin</b> (both vertical and horizontal).",
+      "item4": "They <b>do not</b> start on a new line but <b>respect their own size</b> within the inline flow.",
+      "item5": "They are <b>ideal</b> for <b>small components</b> like buttons, cards, or boxes that need to <b>align horizontally</b> but at the same time behave like a <b>block</b>.",
+      "defaultElements": "HTML elements that are <brick>inline-block</brick> by <moss>default</moss>:",
+      "example": "<p>In this example we have a container that contains three children with the class <b>child</b> set as display <brick>inline-block</brick>, where each child occupies the width and height set in its <b>configuration</b>. We can see how the container <b>adjusts</b> to the height of its children, unlike elements set as <brick>inline</brick>.</p>"
+    }
+  },
+  "flex": {
+    "title": "flex",
+    "description": "<p><brick>flex</brick> (<b>flexbox</b>) is a <b>one-dimensional</b> layout model that distributes elements in a <b>row</b> or <b>column</b>, with control over spacing and adaptive alignment (main axis) and (cross axis), achieving <b>flexible</b> and <b>responsive</b> designs. <brick>flex</brick> is <b>ideal</b> when you need to <b>align</b> elements on a single axis (horizontal or vertical) in a <b>flexible</b> way, <b>adapting</b> their size and position according to the <b>available space</b>.</p>",
+    "direction": {
+      "title": "flex-direction",
+      "description": "Controls how the <b>child</b> elements are <b>arranged</b> along the <b>main axis</b>:",
+      "item1": "<b>row</b> (default): Places elements from left to right.",
+      "item2": "<b>row-reverse</b>: Places elements from right to left.",
+      "item3": "<b>column</b>: Places elements from top to bottom.",
+      "item4": "<b>column-reverse</b>: Places elements from bottom to top.",
+      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>flex-direction</b> property in the <b>selector</b>.</p>",
+      "select": "Select <b>flex-direction</b>:"
+    },
+    "wrap": {
+      "title": "flex-wrap",
+      "description": "Determines whether items should stay on a single line or wrap.",
+      "item1": "<b>nowrap</b> (default): Everything on one line, even if it overflows.",
+      "item2": "<b>wrap</b>: Items move to a new line if they don’t fit.",
+      "item3": "<b>wrap-reverse</b>: Same as <b>wrap</b>, but wrapping occurs in reverse order.",
+      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>flex-wrap</b> property in the <b>selector</b>.</p>",
+      "select": "Select <b>flex-wrap</b>:",
+      "tip": "Combine <code>flex-wrap: wrap</code> with <code>gap</code> so the spacing also applies between wrapped lines."
+    },
+    "justifyAlignRow": {
+      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>justify-content</b> and <b>align-items</b> properties in the <b>selectors</b>.</p>",
+      "justify": {
+        "title": "justify-content <moss>(row)</moss>",
+        "description": "<b>justify-content</b> in a container with <b>flex-direction: row</b>, <b>aligns</b> the child elements <b>horizontally</b> inside the <b>flex</b> container.",
+        "item1": "<b>flex-start</b> (default): Aligns elements at the start (left).",
+        "item2": "<b>center</b>: Centers elements horizontally.",
+        "item3": "<b>flex-end</b>: Aligns elements at the end (right).",
+        "item4": "<b>space-between</b>: Places the maximum possible space between elements.",
+        "item5": "<b>space-around</b>: Places equal space around the elements.",
+        "item6": "<b>space-evenly</b>: Places equal space between elements and around them.",
+        "select": "Select <b>justify-content</b>:"
+      },
+      "align": {
+        "title": "align-items <moss>(row)</moss>",
+        "description": "<b>align-items</b> in a container with <b>flex-direction: row</b>, <b>aligns</b> the child elements <b>vertically</b>. <b>align-content</b> does the same as align-items but only when there are multiple rows (flex-wrap: wrap) and they have wrapped.",
+        "item1": "<b>stretch</b> (default): Stretches elements to fill the container height.",
+        "item2": "<b>flex-start</b>: Aligns all elements at the top.",
+        "item3": "<b>center</b>: Centers elements vertically.",
+        "item4": "<b>flex-end</b>: Aligns all elements at the bottom.",
+        "item5": "<b>baseline</b>: Aligns elements along the text baseline.",
+        "select": "Select <b>align-items</b>:"
+      },
+      "title": "justify-content & align-items (row)"
+    },
+    "justifyAlignColumn": {
+      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>justify-content</b> and <b>align-items</b> properties in the <b>selectors</b>.</p>",
+      "justify": {
+        "title": "justify-content <moss>(column)</moss>",
+        "description": "<b>justify-content</b> in a container with <b>flex-direction: column</b>, <b>aligns</b> the child elements <b>vertically</b> inside the <b>flex</b> container.",
+        "item1": "<b>flex-start</b> (default): Aligns all elements at the top of the container.",
+        "item2": "<b>center</b>: Centers elements vertically.",
+        "item3": "<b>flex-end</b>: Aligns all elements at the bottom of the container.",
+        "item4": "<b>space-between</b>: First element at the top, last at the bottom, others spaced in between.",
+        "item5": "<b>space-around</b>: Equal space between elements.",
+        "item6": "<b>space-evenly</b>: Equal space between elements and around them.",
+        "select": "Select <b>justify-content</b>:"
+      },
+      "align": {
+        "title": "align-items <moss>(column)</moss>",
+        "description": "<b>align-items</b> in a container with <b>flex-direction: column</b>, <b>aligns</b> the child elements <b>horizontally</b>.",
+        "item1": "<b>stretch</b> (default): Elements <b>stretch horizontally</b> to the container’s width (if no fixed width is set).",
+        "item2": "<b>flex-start</b>: Aligns all elements to the left.",
+        "item3": "<b>center</b>: Centers elements horizontally.",
+        "item4": "<b>flex-end</b>: Aligns all elements to the right.",
+        "select": "Select <b>align-items</b>:"
+      },
+      "title": "justify-content & align-items (column)"
+    },
+    "grow": {
+      "title": "flex-grow",
+      "description": "Defines how a flex <b>item</b> <b>grows</b> to fill the available extra space in the <b>container</b>.",
+      "item1": "Default value: 0 (<b>does not</b> grow).",
+      "item2": "If you set a number <b>greater</b> than 0, the item will <b>grow proportionally</b> according to that <b>value</b>.",
+      "example": "<p>In this example, we can see how the <b>item</b> with the class <b>child-1</b> has the <b>default</b> size since its <b>flex-grow</b> is set to <b>0</b>. On the other hand, the rest of the <b>items</b> <b>grow</b> in <b>proportion</b> to the <b>flex-grow</b> value in their respective class, with the <b>child-3</b> item growing <b>twice</b> as much as the <b>child-2</b> item.</p>"
+    },
+    "shrink": {
+      "title": "flex-shrink",
+      "description": "Defines how a flex <b>item</b> <b>shrinks</b> when the <b>container</b> has less space than the <b>sum</b> of its <b>items</b>.",
+      "item1": "Default value: 1 (<b>does</b> shrink).",
+      "item2": "If you set <b>0</b>, that item will <b>not</b> <b>shrink</b> even if space is lacking.",
+      "example": "<p>In this example, we can see how the <b>item</b> with the class <b>child-1</b> does <b>not</b> <b>shrink</b> because its <b>flex-shrink</b> is set to <b>0</b>. In contrast, the other <b>items</b> <b>shrink</b> since their <b>flex-shrink</b> is <b>1</b>.</p>",
+      "tip": "A flex item does not shrink below its content size because its <code>min-width</code> is <code>auto</code>. If long text overflows the container, add <code>min-width: 0</code> to the item."
+    },
+    "basis": {
+      "title": "flex-basis",
+      "description": "This is the <b>base</b> size of the item <b>before</b> growth or shrink is applied.",
+      "item1": "By default it is <b>auto</b>, which takes the natural size of the content or the defined width/height.",
+      "item2": "It can be a value in px, %, auto, rem, em, etc.",
+      "example": "<p>In this example, we can see how each <b>item</b> takes its <b>width</b> according to the value assigned through the <b>flex-basis</b> property.</p>",
+      "tip": "In a row container, <b>flex-basis</b> takes priority over <b>width</b>. In a column it acts on the height, because it always follows the main axis."
+    },
+    "order": {
+      "title": "order",
+      "description": "Controls the <b>order</b> of the flex <b>items</b>. By default, all have <b>order: 0</b>. Items with a <b>smaller</b> value will appear <b>first</b>.",
+      "item1": "An item with <b>order: -1</b> will appear before one with <b>order: 0</b>.",
+      "item2": "An item with <b>order: 1</b> will appear after those with <b>order: 0</b>.",
+      "example": "<p>In this example, we can see how the <b>items</b> are ordered from <b>lowest to highest</b> according to their <b>order</b> value.</p>",
+      "tip": "<b>order</b> only changes the visual order. Keyboards and screen readers still follow the HTML order, so do not use it to reorder meaningful content."
+    },
+    "flexShorthand": {
+      "title": "flex & flex-flow",
+      "description": "<b>flex</b> is the shorthand for <b>flex-grow</b>, <b>flex-shrink</b> and <b>flex-basis</b>, in that order. <b>flex-flow</b> does the same for <b>flex-direction</b> and <b>flex-wrap</b> on the container.",
+      "item1": "<b>flex: initial</b>: same as 0 1 auto. It does not grow, but it can shrink.",
+      "item2": "<b>flex: auto</b>: same as 1 1 auto. It starts from its content and shares the free space.",
+      "item3": "<b>flex: 1</b>: same as 1 1 0%. It ignores the content so items end up the same size.",
+      "item4": "<b>flex: none</b>: same as 0 0 auto. It keeps its size and neither grows nor shrinks.",
+      "item5": "<b>flex-flow: row wrap</b>: sets direction and wrapping on a single line.",
+      "example": "<p>Change the value of <b>flex</b> on the <b>item</b> class and watch how it shares space with its siblings. The last value sets a base size of 12rem.</p>",
+      "select": "Select <b>flex</b>:",
+      "tip": "Use the <code>flex</code> shorthand instead of the three separate properties: it is shorter and avoids unexpected leftover values."
+    },
+    "alignSelf": {
+      "title": "align-self",
+      "description": "Overrides the <b>align-items</b> value for a <b>single</b> item, aligning it on the <b>cross</b> axis without affecting its siblings.",
+      "item1": "<b>auto</b> (default): inherits the container’s align-items value.",
+      "item2": "<b>flex-start</b>: places the item at the start of the cross axis.",
+      "item3": "<b>center</b>: centers the item on the cross axis.",
+      "item4": "<b>flex-end</b>: places the item at the end of the cross axis.",
+      "item5": "<b>stretch</b>: stretches the item along the cross axis if it has no fixed size.",
+      "item6": "<b>baseline</b>: aligns the item along its text baseline.",
+      "example": "<p>The container aligns its children to the start, but the child with the <b>item</b> class can escape that rule with <b>align-self</b>.</p>",
+      "select": "Select <b>align-self</b>:",
+      "tip": "There is no justify-self in flexbox. To separate an item on the main axis use <code>margin-left: auto</code>, a handy pattern to push a button to the end of a bar."
+    },
+    "alignContent": {
+      "title": "align-content",
+      "description": "Distributes the space <b>between the lines</b> of a flex container on the cross axis. It only has an effect when there are <b>multiple lines</b>, that is, with <b>flex-wrap: wrap</b>.",
+      "item1": "<b>stretch</b> (default): lines stretch to take up the available space.",
+      "item2": "<b>flex-start</b>: packs the lines at the start.",
+      "item3": "<b>center</b>: packs the lines in the center.",
+      "item4": "<b>flex-end</b>: packs the lines at the end.",
+      "item5": "<b>space-between</b>: the first and last lines touch the edges and the rest are spread between them.",
+      "item6": "<b>space-around</b>: leaves the same space around each line.",
+      "item7": "<b>space-evenly</b>: leaves identical spaces between lines and at the edges.",
+      "example": "<p>This container has a fixed height and several lines. Change <b>align-content</b> to distribute the rows. If you remove <b>flex-wrap</b> in the editor, you will see it no longer has any effect.</p>",
+      "select": "Select <b>align-content</b>:"
+    }
+  },
+  "grid": {
+    "title": "grid",
+    "description": "<p><b>CSS</b> <brick>grid</brick> is a <b>two-dimensional</b> layout system that allows arranging elements into <b>rows</b> and <b>columns</b> precisely, with control over spacing for both rows and columns. <b>Unlike</b> <brick>flexbox</brick>, which focuses on distributing items in <b>one</b> <b>direction</b> (row or column), <brick>grid</brick> enables full control of layout along <b>both axes</b>. Its big <b>advantage</b> is that you can define <b>complex structures</b> in a <b>simple</b> and <b>adaptable</b> way, with control over the <b>number</b> and <b>size</b> of rows and columns, <b>spacing</b> and <b>alignment</b> of elements, and <b>reorganization</b> of the <b>design</b> depending on screen size or device (<b>responsive</b>).</p>",
+    "basics": {
+      "title": "grid & inline-grid",
+      "description": "The <b>container</b> is defined with <b>display: grid</b> or <b>display: inline-grid</b>, and its direct <b>children</b> become <b>grid items</b> that are distributed within the grid.",
+      "select": "Select <b>display</b>:",
+      "item1": "<b>grid</b>: The container behaves as a block that takes up <b>all</b> the available width.",
+      "item2": "<b>inline-grid</b>: The container behaves as an inline element, occupying only the <b>necessary</b> space.",
+      "example": "<p>In this dynamic example, we can see how the child elements adjust depending on the value of <b>display</b>.</p>"
+    },
+    "explicit": {
+      "title": "Explicit grid",
+      "description": "This is a layout system where the grid is <b>explicitly defined</b> using <b>grid-template-rows</b> and <b>grid-template-columns</b>.",
+      "item1": "<b>Rows</b> and <b>columns</b> are <b>declared</b> directly in the grid.",
+      "item2": "No additional rows or columns are created unless <b>items</b> force them (in which case the implicit grid comes into play).",
+      "item3": "Ideal for <b>predictable layouts</b>, where the exact number of rows and columns is known in advance.",
+      "select": "Select <b>example</b>:",
+      "example": "<p>In this dynamic example, since we <b>do not</b> handle the sizes of <b>rows</b> and <b>columns</b> that are created <b>implicitly</b>, these will <b>take</b> the <b>height</b> and <b>width</b> of the child.</p>"
+    },
+    "implicit": {
+      "title": "Implicit grid",
+      "description": "This is a layout system where the grid <b>automatically expands</b> to accommodate elements that don’t fit into the explicitly defined grid.",
+      "item1": "<b>Rows</b> or <b>columns</b> not declared in the explicit grid are <b>generated automatically</b>.",
+      "item2": "We can use <b>grid-auto-rows</b> or <b>grid-auto-columns</b> to define the size of the implicit rows/columns being created.",
+      "item3": "Ideal when the number of <b>elements</b> is <b>dynamic</b> or unknown beforehand.",
+      "select": "Select <b>grid-auto</b>:",
+      "example": "<p>In this dynamic example, we can see how an <b>implicit row</b> is created, which takes the height from <b>grid-auto-rows</b>, and how an <b>implicit column</b> is created with its width defined by <b>grid-auto-columns</b>.</p>"
+    },
+    "autoFlow": {
+      "title": "grid-auto-flow",
+      "description": "This is the property that controls how <b>items</b> are automatically placed in the grid when their positions are not specified.",
+      "item1": "<b>row</b>: (Default value) elements are placed in <b>rows</b>.",
+      "item2": "<b>column</b>: Elements are positioned in <b>columns</b>.",
+      "item3": "<b>dense</b>: tries to <b>fill gaps</b> by reordering later items.",
+      "select": "Select <b>grid-auto-flow</b>:",
+      "example": "<p>In this dynamic example, we can see how items are arranged according to the value of <b>grid-auto-flow</b>.</p>"
+    },
+    "positioning": {
+      "title": "Item positioning",
+      "description": "<b>grid items</b> can occupy specific cells or span multiple rows / columns using dedicated properties.",
+      "item1": "<b>grid-column</b> and <b>grid-row</b>: define where an item starts and ends in terms of row / column.",
+      "item2": "<b>grid-area</b>: combines start / end row and column in one property.",
+      "select": "Select <b>positioning</b>:",
+      "example": "<p>In this dynamic example, using <b>grid-column / grid-row</b> we tell the element with the class <b>positioning</b> to occupy <b>columns</b> 1 and 2, and <b>rows</b> 1 and 2. With <b>grid-area</b>, we tell the element with the class <b>positioning</b> to take <b>rows</b> 1 and 2 and <b>column</b> 3.</p>"
+    },
+    "areas": {
+      "title": "grid-template-areas",
+      "description": "Allows defining layouts using <b>semantic names</b> for different grid zones.",
+      "item1": "The container uses <b>grid-template-areas</b>.",
+      "item2": "Each item is assigned with <b>grid-area: name</b>.",
+      "example": "In this example, with <b>grid-template-areas</b> we define a layout with 3 rows and 3 columns, where each <b>cell</b> has a <b>semantic name</b>. Then, each item is positioned in the grid by assigning the corresponding <b>name</b> via <b>grid-area</b>.",
+      "tip": "Write a dot instead of a name to leave a cell empty. Each area must form a rectangle: it cannot be L-shaped."
+    },
+    "functions": {
+      "title": "Useful functions",
+      "description": "Functions that simplify creating dynamic and responsive grids.",
+      "item1": "<b>repeat</b> (n, value): avoids writing the same <b>value</b> <b>n</b> times manually.",
+      "item2": "<b>minmax</b> (min, max): <b>defines</b> minimum and maximum values.",
+      "item3": "<b>auto-fit</b>: tries to <b>fit</b> columns to the container’s <b>width</b>; if there’s extra space, it collapses gaps.",
+      "item4": "<b>auto-fill</b>: similar to <b>auto-fit</b>, but leaves <b>empty slots</b> if there aren’t enough items.",
+      "example": "In this example, with <b>grid-template-columns: repeat(auto-fit, minmax(70px, 1fr))</b> we create as many columns as fit (auto-fit), each column will be at least 70px, and extra space is distributed proportionally (1fr). With <b>grid-auto-rows: minmax(50px, auto)</b>, each row has a minimum height of 50px.",
+      "tip": "The difference between auto-fit and auto-fill only shows when there is spare space. Replace auto-fit with auto-fill in the editor using few items and compare the result."
+    },
+    "alignment-container": {
+      "title": "Container alignment",
+      "description": "Properties that control how items are aligned inside each grid cell.",
+      "item1": "<b>justify-items</b>: aligns items <b>horizontally</b> within each cell.",
+      "item2": "<b>align-items</b>: aligns items <b>vertically</b> within each cell.",
+      "item3": "<b>place-items</b>: shorthand to combine <b>justify-items</b> and <b>align-items</b>.",
+      "item4": "<h>Possible values:</h>",
+      "item5": "<b>stretch</b>: <b>Stretches</b> the item to fill the entire cell (default).",
+      "item6": "<b>start</b>: Aligns to the <b>start</b> of the cell (left for horizontal, top for vertical).",
+      "item7": "<b>center</b>: <b>Centers</b> the item within the cell.",
+      "item8": "<b>end</b>: Aligns to the <b>end</b> of the cell (right for horizontal, bottom for vertical).",
+      "selectJustify": "Select <b>justify-items</b>:",
+      "selectAlign": "Select <b>align-items</b>:",
+      "example": "<p>In this dynamic example, we can see the different alignments of cells using <b>justify-items</b> and <b>align-items</b>.</p>"
+    },
+    "alignment-content": {
+      "title": "Content alignment",
+      "description": "Properties that control how rows and columns are distributed inside the grid container.",
+      "item1": "<b>justify-content</b>: distributes columns <b>horizontally</b> inside the grid.",
+      "item2": "<b>align-content</b>: distributes rows <b>vertically</b> inside the grid.",
+      "item3": "<b>place-content</b>: shorthand to combine <b>justify-content</b> and <b>align-content</b>.",
+      "item4": "<h>Possible values:</h>",
+      "item5": "<b>stretch</b>: <b>Stretches</b> rows/columns to fill all available space (default).",
+      "item6": "<b>start</b>: Aligns the whole grid to the <b>start</b> of the axis (top or left).",
+      "item7": "<b>center</b>: <b>Centers</b> the grid along the axis.",
+      "item8": "<b>end</b>: Places all rows/columns at the <b>end</b> of the axis (bottom or right).",
+      "item9": "<b>space-around</b>: Distributes space leaving <b>equal margins around each row or column group</b> (edges have half the space of the interior).",
+      "item10": "<b>space-between</b>: Distributes rows/columns so the <b>first and last</b> are flush with the edges, and space is distributed only between them.",
+      "item11": "<b>space-evenly</b>: Places <b>perfectly equal spaces</b> between all rows/columns and also at the edges.",
+      "selectJustify": "Select <b>justify-content</b>:",
+      "selectAlign": "Select <b>align-content</b>:",
+      "example": "<p>In this dynamic example, we can see the different row and column alignments using <b>justify-content</b> and <b>align-content</b>.</p>"
+    },
+    "alignment-item": {
+      "title": "Item alignment",
+      "description": "Properties to align an <b>individual</b> item inside its own cell.",
+      "item1": "<b>justify-self</b>: aligns an item <b>horizontally</b> in its cell.",
+      "item2": "<b>align-self</b>: aligns an item <b>vertically</b> in its cell.",
+      "item3": "<b>place-self</b>: shorthand to combine <b>justify-self</b> and <b>align-self</b>.",
+      "item4": "<h>Possible values:</h>",
+      "item5": "<b>stretch</b>: The item <b>stretches</b> to fill the whole cell along that axis (default).",
+      "item6": "<b>start</b>: Aligns to the <b>start</b> of the axis (left in horizontal, top in vertical).",
+      "item7": "<b>center</b>: <b>Centers</b> along the axis.",
+      "item8": "<b>end</b>: Aligns to the <b>end</b> of the axis (right in horizontal, bottom in vertical).",
+      "selectJustify": "Select <b>justify-self</b>:",
+      "selectAlign": "Select <b>align-self</b>:",
+      "example": "<p>In this dynamic example, we can see the different alignments of an item within its own cell using <b>justify-self</b> and <b>align-self</b>.</p>"
+    },
+    "fixed": {
+      "title": "Fixed grid",
+      "description": "This is a layout system where the page or interface is organized using a grid with <b>predefined</b> column widths that do not adapt to screen size.",
+      "item1": "<b>Rows</b> and <b>columns</b> with <b>fixed sizes</b> (em, px, rem ...).",
+      "item2": "Ideal for <b>highly controlled layouts</b> where content and size are <b>predictable</b>.",
+      "example": "<p>In this example we have <b>2 rows</b> and a maximum of <b>3 columns</b>. When a <b>fourth element</b> is added, it automatically goes to the next row. With <b>grid-template-rows</b> we define the <b>number</b> of rows and their <b>height</b>, while with <b>grid-template-columns</b> we define the <b>number</b> of columns and their <b>width</b>.</p><p>Additionally, with <b>row-gap</b> we control the spacing between rows, and with <b>column-gap</b> the spacing between columns.</p>"
+    },
+    "fluid": {
+      "title": "Fluid grid",
+      "description": "This is a layout system where the page or interface is organized using a grid with <b>flexible</b> column widths that <b>adapt</b> dynamically to screen size.",
+      "item1": "<b>Rows</b> and <b>columns</b> with <b>relative sizes</b> (%, fr, auto ...).",
+      "item2": "Ideal for <b>layouts</b> that require <b>adaptability</b> across different <b>devices</b> and resolutions.",
+      "example": "<p>In this example, we use <b>grid-template-columns</b> to define the <b>number</b> of columns and their respective <b>widths</b>, but this time they are <b>proportional widths</b> relative to the container’s <b>width</b>. For example, the first column takes <b>50%</b> of the container and the other two <b>share the remaining width</b> based on their <b>fr</b> values.</p><p>With <b>gap</b>, we set the <b>spacing</b> of rows and columns at the same time.</p>"
+    },
+    "subgrid": {
+      "title": "Subgrid",
+      "description": "It is a feature of <b>CSS grid level 2</b> that allows a child grid to inherit the row or column definition from the parent grid.",
+      "item1": "Used in <b>grid-template-rows</b> or <b>grid-template-columns</b> with the value <b>subgrid</b>.",
+      "item2": "The subgrid must span a range of columns or rows from the parent.",
+      "example": "<p>In this example, we can see how the <b>content</b> class inherits the column definition from the parent container. To achieve this, we use <b>grid-column: 1 / -1</b>, which makes it occupy all available columns, from the first to the last.</p>",
+      "tip": "Subgrid is ideal for aligning the titles, text and buttons of several cards, even when each one has content of a different length."
+    },
+    "units": {
+      "title": "Units in grid",
+      "description": "Apart from the basic CSS units (px, em, rem, vh, vw...), these are the most commonly used units in CSS <b>grid</b>:",
+      "item1": "<b>fr</b>: fraction of the available space.",
+      "item2": "<b>%</b>: relative to the container.",
+      "item3": "<b>auto</b>: size based on content.",
+      "item4": "<b>min-content</b> / <b>max-content</b>: adjusts to the minimum or maximum content size.",
+      "item5": "<b>span</b>: allows an element to span multiple <b>rows</b> or <b>columns</b> based on the specified number.",
+      "example": "<p>In this example, we show a series of columns with each of these units, where we can visualize the behavior of each one.</p>",
+      "tip": "Prefer <code>fr</code> over percentages when using <code>gap</code>: fr shares the space left after subtracting the gaps, while percentages can overflow the container."
+    },
+    "responsive": {
+      "title": "Responsive with grid",
+      "description": "Strategies to achieve layouts that automatically adapt to different screen sizes.",
+      "item1": "<b>Media queries</b>: allow applying conditional CSS styles depending on the screen width.",
+      "item2": "<b>@media (max-width: ...)</b>: applies when the screen width is <b>less than or equal</b> to the specified value. Commonly used to adjust layouts on small screens (e.g., mobile).",
+      "item3": "<b>@media (min-width: ...)</b>: applies when the screen width is <b>greater than or equal</b> to the specified value. Typically used in <b>mobile-first</b> approaches, where the design is first defined for mobile and then extended for larger screens.",
+      "item4": "Use of <b>auto-fit</b> and <b>minmax()</b> to create fluid grids that adapt without media queries, generating as many columns as can fit in the container.",
+      "item5": "Use of <b>auto-fill</b>: similar to <b>auto-fit</b>, but keeps empty spaces reserved for columns that do not get filled.",
+      "item6": "Combination with <b>grid-template-areas</b>: allows easy reorganization of the layout based on breakpoints by rearranging entire blocks.",
+      "item7": "Relative units (<b>fr</b>, <b>%</b>, <b>auto</b>, <b>min-content</b>, <b>max-content</b>) promote flexible behavior on small screens.",
+      "item8": "Modern properties like <b>clamp()</b> help set a minimum, ideal, and maximum width without the need for multiple media queries.",
+      "example": "<p>Move the preview width control and switch techniques with the selector. <b>auto-fit</b> needs no media queries, while the other two options change the structure at a breakpoint.</p>",
+      "select": "Select <b>technique</b>:",
+      "tip": "The media queries in this example respond to the preview width because the result is displayed inside its own document."
+    },
+    "namedLines": {
+      "title": "Named lines",
+      "description": "Grid lines can be <b>named</b> so positioning is easier to read than with numbers and does not depend on the number of columns.",
+      "item1": "Names are written in square brackets inside <b>grid-template-columns</b> or <b>grid-template-rows</b>.",
+      "item2": "A single line can have <b>several names</b>, separated by spaces.",
+      "item3": "If you use the <b>-start</b> and <b>-end</b> suffixes, the browser creates an <b>implicit area</b> with that name, usable in grid-area.",
+      "example": "<p>The grid defines the <b>sidebar</b>, <b>main</b> and <b>full</b> lines. Select a <b>grid-column</b> value to place the element with the <b>item</b> class using those names.</p>",
+      "select": "Select <b>grid-column</b>:"
+    },
+    "overlap": {
+      "title": "Overlapping items",
+      "description": "Unlike flexbox, in <b>grid</b> several items can <b>occupy the same cells</b>. This lets you create overlaps without using position: absolute.",
+      "item1": "Assign items the <b>same row and column lines</b>, fully or partially.",
+      "item2": "By default, the last item in the <b>HTML</b> is painted on top.",
+      "item3": "With <b>z-index</b> you control the stacking order without needing position.",
+      "item4": "Assigning <b>grid-area: 1 / 1</b> to several children is a simple pattern for stacking image and text.",
+      "example": "<p>The two items share grid cells. Change the <b>z-index</b> value on the <b>item</b> class to decide which one stays in front.</p>",
+      "select": "Select <b>z-index</b>:"
+    }
+  },
+  "ui": {
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "breadcrumb": "Breadcrumb",
+    "pagination": "Pagination",
+    "home": "Home",
+    "previous": "Previous",
+    "next": "Next",
+    "start": "Start",
+    "topics": "{count} topics",
+    "tip": "Tip",
+    "live": "Live",
+    "reset": "Reset",
+    "copy": "Copy",
+    "copied": "Copied",
+    "custom": "custom",
+    "previewWidth": "Preview width",
+    "editHint": "Edit the code or use the selectors: the result updates instantly.",
+    "editorLabel": "{language} code editor. Press Escape and then Tab to leave the editor.",
+    "previewTitle": "Example result",
+    "footerCaption": "Built with block, inline, flex and grid.",
+    "linkedin": "LinkedIn profile of Juan Manuel Muñoz González",
+    "resume": "Résumé of Juan Manuel Muñoz González",
+    "notFoundTitle": "This brick does not fit",
+    "notFoundText": "The page you are looking for does not exist or has moved.",
+    "backHome": "Back to home"
+  },
+  "nav": {
+    "fundamentals": "Fundamentals",
+    "flex": "Flexbox",
+    "grid": "Grid",
+    "beyond": "Beyond"
+  },
+  "meta": {
+    "title": "CSS Layout Lab: learn flexbox, grid and CSS layouts",
+    "description": "Master CSS layout techniques including block, inline, inline-block, flexbox, and grid. Complete guide with interactive examples and best practices for modern web design.",
+    "pageTitle": "{title} in CSS: guide and examples",
+    "keywords": "CSS layout, web design with CSS, CSS block, CSS inline, CSS inline-block, CSS flexbox, CSS grid, layout creation, CSS tutorial, CSS positioning"
+  },
+  "fundamentals": {
+    "boxSizing": {
+      "title": "box-sizing",
+      "description": "Defines what the <b>width</b> and <b>height</b> of an element include. This property decides whether <b>padding</b> and <b>border</b> are added to the size you declared or are part of it.",
+      "item1": "<b>content-box</b> (default): width and height only measure the content; padding and border are added outside.",
+      "item2": "<b>border-box</b>: width and height include content, padding and border, so the final size is exactly the declared one.",
+      "example": "<p>Both children have the same <b>width</b>, <b>padding</b> and <b>border</b>. Change <b>box-sizing</b> on the <b>item</b> class and compare its final size with the reference child.</p>",
+      "select": "Select <b>box-sizing</b>:",
+      "tip": "Most projects apply <code>box-sizing: border-box</code> to every element with the universal selector. That way percentage widths do not overflow when you add padding."
+    },
+    "position": {
+      "title": "position",
+      "description": "Controls how an element is placed relative to the page’s <b>normal flow</b>. Together with <b>top</b>, <b>right</b>, <b>bottom</b>, <b>left</b> and <b>z-index</b>, it lets you overlap elements or pin them on screen.",
+      "item1": "<b>static</b> (default): the element follows the normal flow and ignores top, right, bottom, left and z-index.",
+      "item2": "<b>relative</b>: keeps its space in the flow and is offset from its original position.",
+      "item3": "<b>absolute</b>: leaves the flow and is placed relative to its nearest positioned ancestor.",
+      "item4": "<b>fixed</b>: leaves the flow and is placed relative to the viewport; it does not move on scroll.",
+      "item5": "<b>sticky</b>: behaves as relative until it reaches the given threshold, then sticks inside its container.",
+      "item6": "<b>inset</b>: shorthand to write top, right, bottom and left in a single property.",
+      "example": "<p>Child 2 has the <b>item</b> class. Change <b>position</b> and scroll inside the container to see how each value reacts. Notice how the other children take its space when it leaves the flow.</p>",
+      "select": "Select <b>position</b>:",
+      "tip": "An element with <code>position: absolute</code> needs a positioned ancestor as a reference. The usual approach is to set <code>position: relative</code> on the container. If sticky does not work, check whether an ancestor has an overflow other than visible."
+    }
+  },
+  "beyond": {
+    "containerQueries": {
+      "title": "Container queries",
+      "description": "<b>Container queries</b> apply styles based on the size of the <b>container</b> rather than the screen. A component adapts the same way in a narrow sidebar as in a wide column.",
+      "item1": "<b>container-type: inline-size</b>: makes an ancestor queryable by its width.",
+      "item2": "<b>container-name</b>: assigns a name to query a specific container.",
+      "item3": "<b>@container (min-width: ...)</b>: applies rules when the container reaches that size.",
+      "item4": "<b>cqw / cqh</b>: units relative to the container’s width and height, equivalent to vw and vh.",
+      "example": "<p>Reduce the preview width. The card switches from one column to two when its <b>container</b> exceeds 28rem, without any media query.</p>",
+      "tip": "An element cannot query its own size: set <code>container-type</code> on an ancestor and apply the changes to its descendants."
+    },
+    "logical": {
+      "title": "Logical properties",
+      "description": "<b>Logical properties</b> describe layout according to the <b>writing direction</b> rather than left or right. Your design adapts on its own to languages such as Arabic or Japanese.",
+      "item1": "<b>inline</b>: the axis text flows along. In English it is horizontal.",
+      "item2": "<b>block</b>: the axis blocks stack along. In English it is vertical.",
+      "item3": "<b>margin-inline, padding-block</b>: replace the physical margins and paddings of each axis.",
+      "item4": "<b>inline-size, block-size</b>: equivalent to width and height in horizontal writing.",
+      "item5": "<b>inset-inline-start</b>: the logical equivalent of left in left-to-right languages.",
+      "example": "<p>Change <b>direction</b> and <b>writing-mode</b>. Because the <b>item</b> class uses logical properties, its spacing follows the writing direction in every case.</p>",
+      "selectDirection": "Select <b>direction</b>:",
+      "selectWriting": "Select <b>writing-mode</b>:",
+      "tip": "Flexbox and grid are already logical: flex-start and start follow the writing direction. That is why a row flips automatically with direction: rtl."
+    },
+    "flexVsGrid": {
+      "title": "Flexbox vs grid",
+      "description": "<b>Flexbox</b> and <b>grid</b> do not compete: they complement each other. The useful question is not which is better, but what leads in each case, the <b>content</b> or the <b>structure</b>.",
+      "feature": "Feature",
+      "row1": {
+        "label": "Dimensions",
+        "flex": "One: row or column",
+        "grid": "Two: rows and columns at once"
+      },
+      "row2": {
+        "label": "Approach",
+        "flex": "Content defines the size",
+        "grid": "Structure defines the size"
+      },
+      "row3": {
+        "label": "Alignment across lines",
+        "flex": "Each line is independent",
+        "grid": "Columns line up across rows"
+      },
+      "row4": {
+        "label": "Overlapping",
+        "flex": "Needs position or negative margins",
+        "grid": "Native, by sharing cells"
+      },
+      "row5": {
+        "label": "Typical use",
+        "flex": "Bars, menus and button groups",
+        "grid": "Pages, galleries and dashboards"
+      },
+      "example": "<p>With the same HTML, compare both systems. In <b>flex</b>, items on the last line grow to fill it; in <b>grid</b>, they respect the columns of the previous rows.</p>",
+      "select": "Select <b>system</b>:",
+      "tip": "Combining them is the norm: grid for the page structure and flex for the components inside each area."
+    },
+    "recipes": {
+      "title": "Layout recipes",
+      "description": "Patterns that solve the <b>most frequent</b> everyday problems. Pick a recipe, copy it and adapt it to your project.",
+      "item1": "<b>center</b>: centers any element on both axes with two lines of code.",
+      "item2": "<b>holy grail</b>: header, navigation, content, sidebar and footer in a single grid.",
+      "item3": "<b>sidebar</b>: fixed-width sidebar and content that takes the rest.",
+      "item4": "<b>sticky footer</b>: the footer stays at the bottom even with little content.",
+      "item5": "<b>card grid</b>: responsive cards without media queries.",
+      "example": "<p>Select a recipe. HTML and CSS update together, and you can keep editing them to adapt it.</p>",
+      "select": "Select <b>recipe</b>:"
+    }
+  }
+}
