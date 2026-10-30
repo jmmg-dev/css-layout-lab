@@ -32,7 +32,7 @@
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.8;
-  opacity: 0.3;
+  opacity: 0.55;
   position: absolute;
   right: 0;
   top: 2rem;
@@ -90,7 +90,7 @@
 
 .pagination a:hover {
   background: var(--surface);
-  border-color: var(--brick-hot);
+  border-color: var(--blue-hot);
 }
 
 .pagination span {

@@ -1,6 +1,6 @@
 .about {
-  background: var(--sand);
-  color: var(--ink);
+  background: var(--ink-deep);
+  color: var(--sand);
   display: grid;
   gap: clamp(2rem, 5vw, 4rem);
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -19,7 +19,7 @@
 }
 
 .description strong {
-  color: var(--brick-dark);
+  color: var(--brick-hot);
   font-weight: 700;
 }
 
@@ -53,8 +53,46 @@
   display: flex;
 }
 
+/* Bricks are laid bottom row first, hold as a wall, then tumble out so the cycle can restart. */
 .wall span {
-  border: solid 1.5px var(--sand);
+  animation: lay-brick 10s calc(var(--order) * 0.07s) infinite both;
+  border: solid 1.5px var(--ink-deep);
+}
+
+@keyframes lay-brick {
+  0% {
+    opacity: 0;
+    transform: translateY(-22rem);
+  }
+
+  12% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  15% {
+    animation-timing-function: ease-in;
+    transform: translateY(-0.375rem);
+  }
+
+  18%,
+  72% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+
+  90%,
+  100% {
+    opacity: 0;
+    transform: translateY(22rem) rotate(18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall span {
+    animation: none;
+  }
 }
 
 .wall [data-size='1'] {
@@ -102,7 +140,7 @@
 }
 
 .role a {
-  color: var(--brick-dark);
+  color: var(--brick-hot);
   display: inline-flex;
   padding: 0.5rem;
 }

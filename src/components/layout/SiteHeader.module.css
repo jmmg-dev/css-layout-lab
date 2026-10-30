@@ -1,8 +1,8 @@
 .header {
   align-items: center;
-  backdrop-filter: blur(12px);
-  background: #37302a;
-  border-bottom: 1px solid var(--line);
+  background: var(--page-gradient) fixed;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, var(--brick-hot), var(--blue-hot)) 1;
   display: flex;
   gap: 1.5rem;
   height: var(--header-height);
@@ -29,8 +29,8 @@
 .logo img {
   background: radial-gradient(
     ellipse closest-side,
-    rgb(180 83 9 / 32%),
-    rgb(180 83 9 / 12%) 60%,
+    rgb(238 132 52 / 34%),
+    rgb(92 192 238 / 12%) 60%,
     transparent
   );
   box-sizing: content-box;
@@ -52,7 +52,7 @@
 }
 
 .links a:hover {
-  color: var(--brick-hot);
+  color: var(--blue-hot);
 }
 
 .locales {
@@ -80,7 +80,8 @@
 }
 
 .footer {
-  border-top: 1px solid var(--line);
+  border-image: linear-gradient(90deg, var(--brick-hot), var(--blue-hot)) 1;
+  border-top: 2px solid;
   color: var(--text-faint);
   display: flex;
   flex-wrap: wrap;

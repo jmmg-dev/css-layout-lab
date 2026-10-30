@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
+import type { CSSProperties } from 'react';
 import { richTags } from '@/lib/rich';
 import { AUTHOR } from '@/lib/seo';
 import { LinkedInIcon, ProfileIcon } from '../icons';
@@ -32,7 +33,12 @@ export async function AboutMe({ locale }: { locale: string }) {
             {WALL.map((row, index) => (
               <div key={index} style={{ justifyContent: row.align }}>
                 {row.bricks.map((size, brick) => (
-                  <span key={brick} className="brick-surface" data-size={size} />
+                  <span
+                    key={brick}
+                    className="brick-surface"
+                    data-size={size}
+                    style={{ '--order': (WALL.length - 1 - index) * 5 + brick } as CSSProperties}
+                  />
                 ))}
               </div>
             ))}

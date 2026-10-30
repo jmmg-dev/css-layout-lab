@@ -91,7 +91,7 @@
 
 .tip {
   background: var(--surface);
-  border-left: 4px solid var(--moss-hot);
+  border-left: 4px solid var(--gold);
   color: var(--text-muted);
   display: grid;
   gap: 0.25rem;
@@ -100,7 +100,7 @@
 }
 
 .tip > strong {
-  color: var(--moss-hot);
+  color: var(--gold);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;

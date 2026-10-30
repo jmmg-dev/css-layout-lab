@@ -12,7 +12,7 @@
   display: grid;
   gap: clamp(1rem, 3dvh, 2rem) clamp(1.5rem, 4vw, 4rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding-top: clamp(1rem, 3dvh, 2.5rem);
+  padding-top: clamp(2.5rem, 8dvh, 5rem);
 }
 
 .heroText {
@@ -43,7 +43,7 @@
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.8;
-  opacity: 0.8;
+  opacity: 0.55;
 }
 
 .lab {
@@ -61,8 +61,8 @@
   align-items: center;
   background: radial-gradient(
     ellipse closest-side,
-    rgb(180 83 9 / 18%),
-    rgb(180 83 9 / 7%) 60%,
+    rgb(238 132 52 / 34%),
+    rgb(92 192 238 / 12%) 60%,
     transparent
   );
   display: flex;
@@ -92,7 +92,7 @@
 }
 
 .introBody {
-  border-left: 4px solid var(--moss-hot);
+  border-left: 4px solid var(--blue-hot);
   color: var(--text-muted);
   margin: 0;
   padding-left: 1.25rem;
@@ -133,7 +133,7 @@
 }
 
 .map a:hover {
-  border-color: var(--brick-hot);
+  border-color: var(--blue-hot);
   transform: translateY(-4px);
 }
 
@@ -154,6 +154,10 @@
   color: var(--text-faint);
   font-family: var(--font-mono);
   font-size: 0.75rem;
+}
+
+.mapIndex {
+  color: var(--brick-hot);
 }
 
 .mapDiagram {
@@ -180,7 +184,7 @@
 }
 
 [data-group="fundamentals"] .mapDiagram i:nth-child(2) {
-  background: var(--moss);
+  background: var(--blue);
   box-shadow: none;
   width: 60%;
 }
@@ -194,6 +198,8 @@
 }
 
 [data-group="flex"] .mapDiagram i:nth-child(2n) {
+  background: var(--blue);
+  box-shadow: none;
   flex: 2;
 }
 
@@ -208,6 +214,11 @@
 
 [data-group="grid"] .mapDiagram i:last-child {
   display: none;
+}
+
+[data-group="grid"] .mapDiagram i:nth-child(3) {
+  background: var(--blue);
+  box-shadow: none;
 }
 
 [data-group="beyond"] .mapDiagram i {

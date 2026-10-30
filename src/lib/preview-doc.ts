@@ -8,6 +8,11 @@ body {
   margin: 0;
   padding: 12px;
 }
+::-webkit-scrollbar { height: 0.25rem; width: 0.25rem; }
+::-webkit-scrollbar-thumb { background: #5cc0ee; }
+@supports not selector(::-webkit-scrollbar) {
+  * { scrollbar-color: #5cc0ee transparent; scrollbar-width: thin; }
+}
 :where(.container > :not(.content), .content > *, .brick) {
   background-color: #b45309;
   background-image: linear-gradient(#bb6c30 1px, transparent 1px), linear-gradient(#a74d08 2px, transparent 2px);

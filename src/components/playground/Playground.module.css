@@ -19,7 +19,7 @@
 }
 
 .control legend b {
-  color: var(--moss-hot);
+  color: var(--gold);
   font-family: var(--font-mono);
   font-weight: 500;
 }
@@ -73,9 +73,9 @@
 }
 
 .customValue {
-  border: 1px dashed var(--moss-hot);
+  border: 1px dashed var(--gold);
   border-radius: var(--radius);
-  color: var(--moss-hot);
+  color: var(--gold);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   max-width: 100%;
@@ -110,14 +110,14 @@
 
 .liveDot {
   animation: pulse 2s ease-in-out infinite;
-  background: var(--moss-hot);
+  background: var(--gold);
   border-radius: 50%;
   height: 0.5rem;
   width: 0.5rem;
 }
 
 .liveLabel {
-  color: var(--moss-hot);
+  color: var(--gold);
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;

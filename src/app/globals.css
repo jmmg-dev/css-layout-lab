@@ -4,20 +4,20 @@
   --brick-dark: #a74d08;
   --brick-light: #bb6c30;
   --blue: #0077aa;
-  --moss: #6f8f72;
   --sand: #f5f2eb;
 
   /* Lifted for contrast on dark surfaces. */
   --brick-hot: #ee8434;
   --blue-hot: #5cc0ee;
-  --moss-hot: #a9d0ac;
+  --gold: #f0c98b;
 
   --ink: #37302a;
   --ink-deep: #0d0c0b;
+  --page-gradient: linear-gradient(155deg, #6b3410 0%, var(--ink) 22%, #0b3a50 100%);
   --surface: #1c1a18;
   --line: #36322d;
   --text-muted: #bdb7ac;
-  --text-faint: #8d877d;
+  --text-faint: #a8a297;
 
   --font-sans: var(--font-body), system-ui, sans-serif;
   --font-heading: var(--font-sans);
@@ -42,8 +42,7 @@ html {
 }
 
 body {
-  background: linear-gradient(155deg, #2a1608 0%, var(--ink) 38%, #0f1a1f 100%)
-    fixed;
+  background: var(--page-gradient) fixed;
   color: var(--sand);
   display: flex;
   flex-direction: column;
@@ -71,7 +70,7 @@ a {
 code {
   background: var(--surface);
   border: 1px solid var(--line);
-  color: var(--moss-hot);
+  color: var(--gold);
   font-family: var(--font-mono);
   font-size: 0.875em;
   padding: 0.0625rem 0.3125rem;
@@ -88,7 +87,7 @@ code {
 }
 
 .moss {
-  color: var(--moss-hot);
+  color: var(--gold);
   font-weight: 700;
 }
 
@@ -120,9 +119,9 @@ code {
 .button {
   align-items: center;
   background: transparent;
-  border: 3px solid var(--moss-hot);
+  border: 3px solid var(--blue-hot);
   border-radius: var(--radius);
-  color: var(--moss-hot);
+  color: var(--blue-hot);
   display: inline-flex;
   font-size: 1.125rem;
   font-weight: 600;
@@ -135,7 +134,7 @@ code {
 }
 
 .button:hover {
-  background: var(--moss-hot);
+  background: var(--blue-hot);
   color: var(--ink);
 }
 
@@ -202,11 +201,11 @@ code {
 
 .tok-string,
 .tok-value {
-  color: var(--moss-hot);
+  color: var(--gold);
 }
 
 .tok-number {
-  color: #f0c98b;
+  color: #b9b4f0;
 }
 
 .tok-keyword {
@@ -214,12 +213,19 @@ code {
 }
 
 ::-webkit-scrollbar {
-  height: 0.5rem;
-  width: 0.5rem;
+  height: 0.25rem;
+  width: 0.25rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--line);
+  background: var(--blue-hot);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--blue-hot) transparent;
+    scrollbar-width: thin;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
