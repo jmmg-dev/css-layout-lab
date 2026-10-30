@@ -1,6 +1,6 @@
 import type { Example } from './types';
 
-const BORDER = 'border: 1px solid #0077aa;';
+const BORDER = 'border: 1px solid #2b7de0;';
 
 const children = (count: number, tag = 'div', className = 'child') =>
   Array.from({ length: count }, (_, i) => `  <${tag} class="${className}">${i + 1}</${tag}>`).join('\n');
@@ -47,18 +47,18 @@ export const examples: Record<string, Example> = {
     height: 210,
     html: `<div class="brick">\n  Hello world!\n</div>`,
     css: `.brick {
-  background-color: #b45309;
+  background-color: #ffc9ae;
   background-image: linear-gradient(
-      #bb6c30 1px,
+      #ffe3d6 1px,
       transparent 1px
     ),
-    linear-gradient(#a74d08 2px, transparent 2px);
+    linear-gradient(#f5b294 2px, transparent 2px);
   background-position:
     0 0,
     10px 10px;
   background-size: 20px 20px;
   border-radius: 2px;
-  color: #f5f2eb;
+  color: #1b1e26;
   font-weight: 600;
   padding: 3rem;
   text-align: center;
@@ -90,7 +90,7 @@ export const examples: Record<string, Example> = {
 }
 
 .child {
-  border: 6px solid #f5f2eb;
+  border: 6px solid #1b1e26;
   margin-bottom: 0.75rem;
   padding: 1.5rem;
   width: 14rem;
@@ -132,7 +132,7 @@ export const examples: Record<string, Example> = {
 }
 
 .item {
-  background: #6f8f72;
+  background: #a9cdf6;
   left: 2rem;
   position: relative;
   top: 1rem;
@@ -445,7 +445,7 @@ export const examples: Record<string, Example> = {
         '  [sidebar-end main-start] 1fr',
         '  [main-end full-end];',
       ],
-      `.item {\n  background: #6f8f72;\n  grid-column: main-start / main-end;\n}\n\n${childRule}`,
+      `.item {\n  background: #a9cdf6;\n  grid-column: main-start / main-end;\n}\n\n${childRule}`,
     ),
     controls: [
       {
@@ -503,7 +503,7 @@ export const examples: Record<string, Example> = {
     html: container(`  <div class="child item">item</div>\n  <div class="child other">other</div>`),
     css: gridCss(
       ['display: grid;', 'grid-template-columns: repeat(3, 1fr);', 'grid-template-rows: repeat(3, 4rem);'],
-      `.child {\n  padding: 1rem;\n}\n\n.item {\n  background: #6f8f72;\n  grid-area: 1 / 1 / 3 / 3;\n  z-index: 0;\n}\n\n.other {\n  grid-area: 2 / 2 / 4 / 4;\n  z-index: 1;\n}`,
+      `.child {\n  padding: 1rem;\n}\n\n.item {\n  background: #a9cdf6;\n  grid-area: 1 / 1 / 3 / 3;\n  z-index: 0;\n}\n\n.other {\n  grid-area: 2 / 2 / 4 / 4;\n  z-index: 1;\n}`,
     ),
     controls: [
       {

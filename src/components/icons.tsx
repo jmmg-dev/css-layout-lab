@@ -18,6 +18,32 @@ function Icon({ children }: { children: ReactNode }) {
   );
 }
 
+/** Inline so the text can use the site's heading font, which an <img> SVG cannot reach. */
+export const LogoMark = () => (
+  <svg
+    aria-hidden="true"
+    width="44"
+    height="44"
+    viewBox="0 0 64 64"
+    style={{ flex: 'none', fontFamily: 'var(--font-heading)' }}
+  >
+    <defs>
+      <linearGradient id="logo-gradient" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#f08f63" />
+        <stop offset="0.55" stopColor="#d274b4" />
+        <stop offset="1" stopColor="#4f94e8" />
+      </linearGradient>
+    </defs>
+    <rect x="1" y="1" width="62" height="62" rx="14" fill="var(--card)" stroke="var(--rule)" strokeWidth="2" />
+    <text x="31" y="35" textAnchor="middle" fontSize="34" fontWeight="700" letterSpacing="-2" fill="url(#logo-gradient)">
+      CL
+    </text>
+    <text x="32" y="54" textAnchor="middle" fontSize="18" fontWeight="600" letterSpacing="-0.5" fill="var(--ink)">
+      Lab
+    </text>
+  </svg>
+);
+
 export const CopyIcon = () => (
   <Icon>
     <rect x="9" y="9" width="12" height="12" />

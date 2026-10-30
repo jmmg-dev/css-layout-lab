@@ -1,5 +1,5 @@
 .prose {
-  color: var(--text-muted);
+  color: var(--muted);
   font-size: 1.0625rem;
   max-width: 46rem;
 }
@@ -9,30 +9,30 @@
 }
 
 .prose strong {
-  color: var(--sand);
+  color: var(--fg);
   font-weight: 600;
 }
 
 .items {
-  border-top: 1px solid var(--line);
-  color: var(--text-muted);
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
   list-style: none;
   margin: 1.25rem 0 0;
   padding: 0;
 }
 
 .items li {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--rule);
   padding: 0.625rem 0;
 }
 
 .items strong {
-  color: var(--sand);
+  color: var(--fg);
   font-weight: 600;
 }
 
 .items li > strong:first-child {
-  color: var(--brick-hot);
+  color: var(--blue);
   font-family: var(--font-mono);
   font-size: 0.9375em;
 }
@@ -60,7 +60,7 @@
 }
 
 .fullSection {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--rule);
   margin-top: 3rem;
   padding-top: 2.5rem;
 }
@@ -82,17 +82,18 @@
 }
 
 .example h2::before {
-  background: var(--brick);
-  box-shadow: inset 0 2px 0 var(--brick-light), inset 0 -2px 0 var(--brick-dark);
+  background: var(--brand-gradient);
+  border-radius: 4px;
   content: '';
-  height: 0.75rem;
-  width: 1.5rem;
+  flex: none;
+  height: 0.875rem;
+  width: 0.875rem;
 }
 
 .tip {
-  background: var(--surface);
-  border-left: 4px solid var(--gold);
-  color: var(--text-muted);
+  background: var(--mist);
+  border-radius: var(--radius);
+  color: var(--fg);
   display: grid;
   gap: 0.25rem;
   margin-top: 2rem;
@@ -100,12 +101,9 @@
 }
 
 .tip > strong {
-  color: var(--gold);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--blue);
+  font-size: 0.8125rem;
+  font-weight: 600;
 }
 
 .tip p {
@@ -113,7 +111,7 @@
 }
 
 .count {
-  color: var(--text-faint);
+  color: var(--faint);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   margin: 2.5rem 0 0.75rem;
@@ -130,29 +128,30 @@
 
 .topics a {
   align-items: baseline;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  color: var(--sand);
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--fg);
   display: flex;
   font-family: var(--font-heading);
   font-size: 1.0625rem;
-  font-weight: 700;
+  font-weight: 600;
   gap: 0.75rem;
   height: 100%;
   line-height: 1.25;
   overflow-wrap: anywhere;
   padding: 0.875rem 1rem;
   text-decoration: none;
-  transition: border-color 0.15s, transform 0.15s;
+  transition: box-shadow 0.15s, transform 0.15s;
 }
 
 .topics a:hover {
-  border-color: var(--brick-hot);
+  box-shadow: var(--shadow-lifted);
   transform: translateY(-2px);
 }
 
 .topics span {
-  color: var(--brick-hot);
+  color: var(--red-text);
   flex: none;
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -181,14 +180,14 @@
 
 .table th,
 .table td {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--rule);
   padding: 0.75rem;
   text-align: left;
   vertical-align: top;
 }
 
 .table thead th {
-  color: var(--brick-hot);
+  color: var(--red-text);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -199,7 +198,7 @@
 }
 
 .table td {
-  color: var(--text-muted);
+  color: var(--muted);
 }
 
 @media (max-width: 720px) {

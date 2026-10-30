@@ -1,178 +1,317 @@
 .home {
   display: grid;
-  gap: clamp(3.5rem, 8vw, 6.5rem);
+  gap: clamp(4rem, 9vw, 7.5rem);
   margin: 0 auto;
-  max-width: 96rem;
-  padding: 0 var(--gutter) 5rem;
+  max-width: 84rem;
+  padding: 0 var(--gutter) 6rem;
   width: 100%;
 }
 
-/* Title and intro texts are sized against the viewport height so both fit above the fold. */
+/* Sized against the viewport height so the whole hero fits above the fold. */
 .hero {
+  align-content: center;
   display: grid;
-  gap: clamp(1rem, 3dvh, 2rem) clamp(1.5rem, 4vw, 4rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding-top: clamp(2.5rem, 8dvh, 5rem);
+  gap: clamp(2rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  min-height: calc(100dvh - var(--header-height));
+  padding-block: clamp(1.5rem, 4dvh, 3rem);
 }
 
 .heroText {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .heroText h1 {
-  margin: 0 0 clamp(1rem, 3dvh, 2rem);
+  align-items: center;
+  column-gap: 0.25em;
+  display: grid;
+  font-size: clamp(2.75rem, min(5.7vw, 13dvh), 5.5rem);
+  font-weight: 600;
+  grid-template-columns: auto minmax(0, 1fr);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 0 0 1.5rem;
+}
+
+/* Spans both title lines, which together are about 2em tall. */
+.heroText h1 svg {
+  grid-row: 1 / span 2;
+  height: 2em;
+  width: 2em;
 }
 
 .css {
   -webkit-background-clip: text;
   background-clip: text;
-  background-color: var(--brick);
-  background-image:
-    linear-gradient(var(--brick-light) 2px, transparent 2px),
-    linear-gradient(var(--brick-dark) 3px, transparent 3px);
-  background-position:
-    0 0,
-    14px 14px;
-  background-size: 28px 28px;
+  background-image: var(--brand-gradient);
   color: transparent;
   display: block;
-  font-size: clamp(6rem, min(16.5vw, 34dvh), 20rem);
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  line-height: 0.8;
-  opacity: 0.55;
+  /* The gradient only paints inside the box, and negative tracking leaves the last glyph outside it. */
+  margin: -0.1em -0.1em 0 -0.05em;
+  padding: 0.1em 0.1em 0.08em 0.05em;
+  width: fit-content;
 }
 
 .lab {
-  color: var(--sand);
   display: block;
-  font-size: clamp(2.75rem, min(7.5vw, 15dvh), 9rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1;
-  margin-top: 0.5rem;
 }
 
-/* The ants are black, so a faint warm glow keeps them readable on the dark page. */
-.heroPlate {
-  align-items: center;
-  background: radial-gradient(
-    ellipse closest-side,
-    rgb(238 132 52 / 34%),
-    rgb(92 192 238 / 12%) 60%,
-    transparent
-  );
+/* Hyphenation keeps justified lines from opening wide gaps between words. */
+.lead,
+.note {
+  hyphens: auto;
+  text-align: justify;
+}
+
+.lead {
+  color: var(--fg);
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.5;
+  margin: 0 0 0.75rem;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin: 0 0 1.75rem;
+}
+
+.morphCard {
+  background: var(--card);
+  border-radius: 28px;
+  box-shadow: var(--shadow-lifted);
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.morphLabel {
+  color: var(--muted);
   display: flex;
-  justify-content: center;
-  padding: clamp(1rem, 3vw, 2.5rem);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  gap: 0.5ch;
 }
 
-.heroPlate img {
-  display: block;
-  height: auto;
-  max-height: 44dvh;
-  max-width: 100%;
-  width: auto;
+.morphValues {
+  display: inline-grid;
 }
 
-.introLead {
-  color: var(--sand);
-  font-size: clamp(1.125rem, 1.45vw, 1.5rem);
+.morphValues b {
+  animation: morph-label 12s infinite both;
+  color: var(--red-text);
   font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-  margin: 0;
+  grid-area: 1 / 1;
 }
 
-.introLead strong {
-  font-weight: 700;
+/* Negative delays start each label mid-cycle, so only one is ever visible. */
+.morphValues b:nth-child(2) {
+  animation-delay: -8s;
 }
 
-.introBody {
-  border-left: 4px solid var(--blue-hot);
-  color: var(--text-muted);
-  margin: 0;
-  padding-left: 1.25rem;
+.morphValues b:nth-child(3) {
+  animation-delay: -4s;
+}
+
+@keyframes morph-label {
+  0%,
+  31% {
+    opacity: 1;
+  }
+
+  33%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.morph {
+  position: relative;
+}
+
+.morph i {
+  border-radius: 12px;
+  position: absolute;
+}
+
+.morph i:nth-child(1) {
+  animation: morph-a 12s ease-in-out infinite both;
+  background: var(--peach);
+}
+
+.morph i:nth-child(2) {
+  animation: morph-b 12s ease-in-out infinite both;
+  background: var(--sky);
+}
+
+.morph i:nth-child(3) {
+  animation: morph-c 12s ease-in-out infinite both;
+  background: var(--lilac);
+}
+
+.morph i:nth-child(4) {
+  animation: morph-d 12s ease-in-out infinite both;
+  background: var(--peach-soft);
+}
+
+/* Three holds: stacked blocks, a flex row, then a grid. */
+@keyframes morph-a {
+  0%,
+  25%,
+  100% {
+    inset: 0 0 78% 0;
+  }
+
+  33%,
+  58% {
+    inset: 0 78% 0 0;
+  }
+
+  66%,
+  92% {
+    inset: 0 52% 0 0;
+  }
+}
+
+@keyframes morph-b {
+  0%,
+  25%,
+  100% {
+    inset: 26% 0 52% 0;
+  }
+
+  33%,
+  58% {
+    inset: 0 52% 0 26%;
+  }
+
+  66%,
+  92% {
+    inset: 0 0 52% 52%;
+  }
+}
+
+@keyframes morph-c {
+  0%,
+  25%,
+  100% {
+    inset: 52% 0 26% 0;
+  }
+
+  33%,
+  58% {
+    inset: 0 26% 0 52%;
+  }
+
+  66%,
+  92% {
+    inset: 52% 26% 0 52%;
+  }
+}
+
+@keyframes morph-d {
+  0%,
+  25%,
+  100% {
+    inset: 78% 0 0 0;
+  }
+
+  33%,
+  58% {
+    inset: 0 0 0 78%;
+  }
+
+  66%,
+  92% {
+    inset: 52% 0 0 78%;
+  }
 }
 
 .map h2,
 .brick h2 {
-  font-size: clamp(2rem, 4.6vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 0 0 1.5rem;
-  max-width: 22ch;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  letter-spacing: -0.035em;
+  margin: 0 0 2rem;
+  max-width: 24ch;
 }
 
 .map ul {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.map li {
+  --tone: var(--peach);
+  --tone-soft: var(--peach-soft);
+}
+
+.map li[data-group="flex"],
+.map li[data-group="beyond"] {
+  --tone: var(--sky);
+  --tone-soft: var(--sky-soft);
+}
+
 .map a {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  color: var(--sand);
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  color: var(--fg);
   display: flex;
   flex-direction: column;
   height: 100%;
   min-height: 21rem;
-  padding: 1.25rem;
-  position: relative;
+  padding: 1.5rem;
   text-decoration: none;
   transition:
-    border-color 0.2s,
+    box-shadow 0.2s,
     transform 0.2s;
 }
 
 .map a:hover {
-  border-color: var(--blue-hot);
+  box-shadow: var(--shadow-lifted);
   transform: translateY(-4px);
 }
 
 .map h3 {
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin: auto 0 0.5rem;
 }
 
 .map p {
-  color: var(--text-muted);
+  color: var(--muted);
   font-size: 0.9375rem;
   margin: 0 0 1rem;
 }
 
 .mapIndex,
 .mapCount {
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-}
-
-.mapIndex {
-  color: var(--brick-hot);
+  color: var(--faint);
+  font-size: 0.8125rem;
 }
 
 .mapDiagram {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.375rem;
   grid-template-columns: repeat(3, 1fr);
   height: 6.5rem;
-  margin: 1rem 0 1.5rem;
+  margin: 0.75rem 0 1.5rem;
 }
 
 .mapDiagram i {
-  background: var(--brick);
-  box-shadow:
-    inset 0 2px 0 var(--brick-light),
-    inset 0 -2px 0 var(--brick-dark);
+  background: var(--tone);
+  border-radius: 6px;
+}
+
+.mapDiagram i:nth-child(2n) {
+  background: var(--tone-soft);
 }
 
 [data-group="fundamentals"] .mapDiagram {
@@ -184,8 +323,6 @@
 }
 
 [data-group="fundamentals"] .mapDiagram i:nth-child(2) {
-  background: var(--blue);
-  box-shadow: none;
   width: 60%;
 }
 
@@ -198,8 +335,6 @@
 }
 
 [data-group="flex"] .mapDiagram i:nth-child(2n) {
-  background: var(--blue);
-  box-shadow: none;
   flex: 2;
 }
 
@@ -216,19 +351,12 @@
   display: none;
 }
 
-[data-group="grid"] .mapDiagram i:nth-child(3) {
-  background: var(--blue);
-  box-shadow: none;
-}
-
 [data-group="beyond"] .mapDiagram i {
-  background: transparent;
-  border: 1px solid var(--blue-hot);
-  box-shadow: none;
+  background: var(--tone-soft);
 }
 
 [data-group="beyond"] .mapDiagram i:nth-child(3n + 1) {
-  background: var(--blue);
+  background: var(--tone);
 }
 
 .brick {
@@ -236,8 +364,12 @@
   gap: 1.5rem;
 }
 
+.brick h2 {
+  margin-bottom: 1rem;
+}
+
 .brick > div > p {
-  color: var(--text-muted);
+  color: var(--muted);
   font-size: 1.0625rem;
   margin: 0;
   max-width: 54rem;
@@ -260,27 +392,27 @@
 @media (max-width: 800px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
   }
 
-  .css {
-    font-size: clamp(6rem, 36vw, 14rem);
+  .heroText h1 {
+    font-size: clamp(2.5rem, 13.5vw, 5rem);
   }
 
-  .lab {
-    font-size: clamp(2.75rem, 14vw, 6rem);
-  }
-
-  .heroPlate {
-    order: 1;
-  }
-
-  .heroPlate img {
-    max-height: none;
+  .morphCard {
+    height: 18rem;
   }
 }
 
 @media (max-width: 520px) {
   .map ul {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .morph i,
+  .morphValues b {
+    animation-play-state: paused;
   }
 }

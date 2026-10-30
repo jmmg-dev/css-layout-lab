@@ -1,11 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ExampleBlock } from '@/components/docs/blocks';
 import { groups, pages } from '@/content/pages';
 import { richTags } from '@/lib/rich';
 import { absoluteUrl, AUTHOR, localePath, serializeJsonLd, SITE_NAME } from '@/lib/seo';
-import { ArrowRightIcon } from '../icons';
+import { ArrowRightIcon, LogoMark } from '../icons';
 import { AboutMe } from './AboutMe';
 import styles from './HomePage.module.css';
 
@@ -29,26 +28,33 @@ export async function HomePage({ locale }: { locale: string }) {
       <section className={styles.hero}>
         <div className={styles.heroText}>
           <h1>
+            <LogoMark />
             <span className={styles.css}>CSS</span>
             <span className={styles.lab}>Layout Lab</span>
           </h1>
+          <p className={styles.lead}>{t.rich('home.introduction', richTags)}</p>
+          <p className={styles.note}>{t.rich('home.description', richTags)}</p>
           <Link className="button" href={localePath(locale, 'introduction')}>
             {t('home.getStarted')}
             <ArrowRightIcon />
           </Link>
         </div>
-        <div className={styles.heroPlate}>
-          <Image
-            src="/images/cssLayoutLabReal.webp"
-            alt="CSS Layout Lab"
-            width={786}
-            height={422}
-            priority
-            sizes="(max-width: 800px) 100vw, 45vw"
-          />
+        <div className={styles.morphCard} aria-hidden="true">
+          <span className={styles.morphLabel}>
+            display:
+            <span className={styles.morphValues}>
+              <b>block</b>
+              <b>flex</b>
+              <b>grid</b>
+            </span>
+          </span>
+          <div className={styles.morph}>
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
         </div>
-        <p className={styles.introLead}>{t.rich('home.introduction', richTags)}</p>
-        <p className={styles.introBody}>{t.rich('home.description', richTags)}</p>
       </section>
 
       <section className={styles.map}>
