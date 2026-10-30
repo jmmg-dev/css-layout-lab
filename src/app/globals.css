@@ -12,7 +12,7 @@
   --blue-hot: #5cc0ee;
   --moss-hot: #a9d0ac;
 
-  --ink: #131211;
+  --ink: #37302a;
   --ink-deep: #0d0c0b;
   --surface: #1c1a18;
   --line: #36322d;
@@ -42,7 +42,8 @@ html {
 }
 
 body {
-  background: linear-gradient(155deg, #2a1608 0%, var(--ink) 38%, #0f1a1f 100%) fixed;
+  background: linear-gradient(155deg, #2a1608 0%, var(--ink) 38%, #0f1a1f 100%)
+    fixed;
   color: var(--sand);
   display: flex;
   flex-direction: column;
@@ -105,8 +106,12 @@ code {
 
 .brick-surface {
   background-color: var(--brick);
-  background-image: linear-gradient(var(--brick-light) 1px, transparent 1px), linear-gradient(var(--brick-dark) 2px, transparent 2px);
-  background-position: 0 0, 10px 10px;
+  background-image:
+    linear-gradient(var(--brick-light) 1px, transparent 1px),
+    linear-gradient(var(--brick-dark) 2px, transparent 2px);
+  background-position:
+    0 0,
+    10px 10px;
   background-size: 20px 20px;
   color: var(--sand);
   font-weight: 600;
@@ -124,7 +129,9 @@ code {
   gap: 0.75rem;
   padding: 0.625rem 1.25rem;
   text-decoration: none;
-  transition: background-color 0.15s, color 0.15s;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
 }
 
 .button:hover {

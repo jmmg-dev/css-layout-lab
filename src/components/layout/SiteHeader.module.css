@@ -1,7 +1,7 @@
 .header {
   align-items: center;
   backdrop-filter: blur(12px);
-  background: rgb(19 18 17 / 82%);
+  background: #37302a;
   border-bottom: 1px solid var(--line);
   display: flex;
   gap: 1.5rem;
@@ -27,7 +27,12 @@
 }
 
 .logo img {
-  background: radial-gradient(ellipse closest-side, rgb(180 83 9 / 32%), rgb(180 83 9 / 12%) 60%, transparent);
+  background: radial-gradient(
+    ellipse closest-side,
+    rgb(180 83 9 / 32%),
+    rgb(180 83 9 / 12%) 60%,
+    transparent
+  );
   box-sizing: content-box;
   margin: -0.375rem -0.625rem;
   padding: 0.375rem 0.625rem;
@@ -68,7 +73,7 @@
   text-decoration: none;
 }
 
-.locales a[aria-current='true'] {
+.locales a[aria-current="true"] {
   background: var(--sand);
   color: var(--ink);
   font-weight: 600;
