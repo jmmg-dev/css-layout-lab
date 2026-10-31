@@ -45,19 +45,10 @@ const flexVsGridHtml = container(children(5));
 export const examples: Record<string, Example> = {
   brick: {
     height: 210,
-    html: `<div class="brick">\n  Hello world!\n</div>`,
-    css: `.brick {
+    html: `<div class="box">\n  Hello world!\n</div>`,
+    css: `.box {
   background-color: #ffc9ae;
-  background-image: linear-gradient(
-      #ffe3d6 1px,
-      transparent 1px
-    ),
-    linear-gradient(#f5b294 2px, transparent 2px);
-  background-position:
-    0 0,
-    10px 10px;
-  background-size: 20px 20px;
-  border-radius: 2px;
+  border-radius: 6px;
   color: #1b1e26;
   font-weight: 600;
   padding: 3rem;
@@ -134,7 +125,7 @@ export const examples: Record<string, Example> = {
 .item {
   background: #a9cdf6;
   left: 2rem;
-  position: relative;
+  position: static;
   top: 1rem;
   width: 60%;
   z-index: 1;

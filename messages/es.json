@@ -10,7 +10,7 @@
     "description": "<brick>CSS Layout Lab</brick> aporta una <moss>documentación clara</moss> y <moss>ejemplos dinámicos</moss>, con los cuales, podrás modificar valores y ver en <moss>tiempo real</moss> cómo se <moss>ajusta</moss> la disposición de los <moss>elementos</moss>, entendiendo mejor las posibilidades de cada enfoque y cómo aplicarlos en tus proyectos.",
     "example": {
       "title": "Aprende de forma visual con ejemplos prácticos y dinámicos",
-      "description": "Para <blue>facilitar</blue> la comprensión del contenido y ofrecer una <blue>ayuda visual</blue> al usuario en el aprendizaje de las distintas técnicas para construir <blue>layouts</blue>, hemos decidido utilizar la metáfora de los <brick>ladrillos</brick> en cada <blue>ejemplo</blue>. Para evitar verbosidad en el código, en los ejemplos, solo mostramos la información relevante, pero aquí os muestro, cómo se puede crear un <brick>ladrillo</brick> con <blue>CSS</blue>. ¡Espero que disfruten del contenido!"
+      "description": "Todos los ejemplos son <blue>interactivos</blue>: puedes <blue>modificar el código</blue> HTML y CSS directamente en los editores y ver los cambios en <blue>tiempo real</blue>. Prueba a cambiar cualquier valor de este ejemplo y comprueba el resultado. ¡Espero que disfrutes del contenido!"
     },
     "aboutMe": {
       "title": "Sobre mí",
@@ -108,7 +108,7 @@
       "item3": "Permiten definir <b>width</b>, <b>height</b>, <b>margin</b>, <b>padding</b> sin problema.",
       "item4": "Son <b>ideales</b> cuando necesitas que los elementos se <b>apilen verticalmente</b> y quieres controlar <b>tamaño</b> y <b>espaciado</b>.",
       "defaultElements": "Elementos HTML que son <brick>block</brick> por <moss>defecto</moss>:",
-      "example": "<p>En este ejemplo tenemos un contenedor que contiene tres hijos con la clase <b>child</b> configurados como display <brick>block</brick>, donde cada hijo ocupa todo el ancho <b>posible</b> del <b>contenedor</b> al <b>no</b> tener un <b>ancho</b> establecido.</p><p>La clase <b>child</b>, no sería necesario, configurarla como display <brick>block</brick> ya que por defecto, los <b>div</b> son <brick>block</brick> (se hace con fines didácticos).</p>"
+      "example": "<p>En este ejemplo tenemos un contenedor que contiene tres hijos con la clase <b>child</b> configurados como display <brick>block</brick>, donde cada hijo ocupa todo el ancho <b>posible</b> del <b>contenedor</b> al <b>no</b> tener un <b>ancho</b> establecido.</p><p>No sería necesario configurar la clase <b>child</b> como display <brick>block</brick> ya que por defecto, los <b>div</b> son <brick>block</brick> (se hace con fines didácticos).</p>"
     },
     "inline": {
       "title": "inline",
@@ -119,7 +119,7 @@
       "item4": "<b>Pueden</b> contener <b>solo</b> texto u <b>otros</b> elementos <b>inline</b>.",
       "item5": "Son <b>ideales</b> cuando quieres que el contenido <b>fluya</b> dentro de un <b>párrafo</b>.",
       "defaultElements": "Elementos HTML que son <brick>inline</brick> por <moss>defecto</moss>:",
-      "example": "<p>En este ejemplo tenemos un contenedor que contiene tres hijos con la clase <b>child</b> configurados como display <brick>inline</brick>, donde cada hijo solo ocupa el ancho <b>necesario</b> del <b>contenedor</b>. Podemos comprobar como el <b>padding</b> del contenedor, <b>no se ajusta</b> a la altura de sus hijos, si estos elementos son <brick>inline</brick>.</p><p>La clase <b>child</b>, no sería necesario, configurarla como display <brick>inline</brick> ya que por defecto, los <b>span</b> son <brick>inline</brick> (se hace con fines didácticos).</p>"
+      "example": "<p>En este ejemplo tenemos un contenedor que contiene tres hijos con la clase <b>child</b> configurados como display <brick>inline</brick>, donde cada hijo solo ocupa el ancho <b>necesario</b> del <b>contenedor</b>. Podemos comprobar como el <b>padding</b> del contenedor, <b>no se ajusta</b> a la altura de sus hijos, si estos elementos son <brick>inline</brick>.</p><p>No sería necesario configurar la clase <b>child</b> como display <brick>inline</brick> ya que por defecto, los <b>span</b> son <brick>inline</brick> (se hace con fines didácticos).</p>"
     },
     "inlineBlock": {
       "title": "inline-block",

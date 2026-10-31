@@ -69,6 +69,15 @@
   margin-top: 0;
 }
 
+/* Columns that follow an intro are subsections of it, so they sit further away with smaller titles. */
+.fullSection > * + .columns {
+  margin-top: 2.5rem;
+}
+
+.fullSection > * + .columns h2 {
+  font-size: 1.25rem;
+}
+
 .example {
   margin-top: 3rem;
 }

@@ -10,7 +10,7 @@
     "description": "<brick>CSS Layout Lab</brick> provides <moss>clear documentation</moss> and <moss>dynamic examples</moss>, with which you can modify values and see in <moss>real time</moss> how the arrangement of <moss>elements</moss> <moss>adjusts</moss>, gaining a better understanding of the possibilities of each approach and how to apply them in your projects.",
     "example": {
       "title": "Learn visually with practical and dynamic examples",
-      "description": "To <blue>make it easier</blue> to understand the content and provide a <blue>visual aid</blue> to users while learning different techniques to build <blue>layouts</blue>, we decided to use the metaphor of <brick>bricks</brick> in each <blue>example</blue>. To avoid verbosity in the code, in the examples we only show the relevant information, but here I’ll show you how you can create a <brick>brick</brick> with <blue>CSS</blue>. I hope you enjoy the content!"
+      "description": "Every example is <blue>interactive</blue>: you can <blue>edit the HTML and CSS code</blue> right in the editors and see the changes in <blue>real time</blue>. Try changing any value in this example and check the result. I hope you enjoy the content!"
     },
     "aboutMe": {
       "title": "About Me",

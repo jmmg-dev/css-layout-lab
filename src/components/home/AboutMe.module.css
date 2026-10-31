@@ -63,6 +63,21 @@
   border: solid 1.5px var(--card);
 }
 
+/* Even rows shift the colour cycle, so no colour stacks into a column. */
+.wall span:nth-child(3n + 2),
+.wall > div:nth-child(2n) span:nth-child(3n + 1) {
+  background-color: var(--sky);
+}
+
+.wall span:nth-child(3n),
+.wall > div:nth-child(2n) span:nth-child(3n + 2) {
+  background-color: var(--lilac);
+}
+
+.wall > div:nth-child(2n) span:nth-child(3n) {
+  background-color: var(--peach);
+}
+
 @keyframes lay-brick {
   0% {
     opacity: 0;
