@@ -64,6 +64,13 @@ export const ResetIcon = () => (
   </Icon>
 );
 
+export const SearchIcon = () => (
+  <Icon>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-4-4" />
+  </Icon>
+);
+
 export const MenuIcon = () => (
   <Icon>
     <path d="M3 6h18M3 12h18M3 18h18" />

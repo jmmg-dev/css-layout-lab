@@ -78,7 +78,65 @@
   margin: 0 0 1.75rem;
 }
 
+/* Entrance: each piece rises in turn. Backwards fill only, so the button keeps its hover transform. */
+.heroText h1 svg,
+.css,
+.lab,
+.lead,
+.note,
+.heroText > a {
+  animation: hero-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--step) * 90ms) backwards;
+}
+
+.heroText h1 svg {
+  --step: 0;
+
+  animation-name: hero-pop;
+}
+
+.css {
+  --step: 1;
+}
+
+.lab {
+  --step: 2;
+}
+
+.lead {
+  --step: 3;
+}
+
+.note {
+  --step: 4;
+}
+
+.heroText > a {
+  --step: 5;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-6deg);
+  }
+}
+
+@keyframes hero-slide {
+  from {
+    opacity: 0;
+    transform: translateX(2.5rem) scale(0.97);
+  }
+}
+
 .morphCard {
+  animation: hero-slide 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s backwards;
   background: var(--card);
   border-radius: 28px;
   box-shadow: var(--shadow-lifted);
@@ -416,5 +474,15 @@
   .morph i,
   .morphValues b {
     animation-play-state: paused;
+  }
+
+  .heroText h1 svg,
+  .css,
+  .lab,
+  .lead,
+  .note,
+  .heroText > a,
+  .morphCard {
+    animation: none;
   }
 }

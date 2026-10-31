@@ -1,14 +1,22 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { groups } from '@/content/pages';
+import { groups, pages } from '@/content/pages';
 import type { Locale } from '@/i18n/routing';
+import { stripTags } from '@/lib/rich';
 import { localePath } from '@/lib/seo';
 import { LogoMark } from '../icons';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { SearchCommand, type SearchItem } from './SearchCommand';
 import styles from './SiteHeader.module.css';
 
 export async function SiteHeader({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale });
+
+  const searchItems: SearchItem[] = pages.map((page) => ({
+    href: localePath(locale, page.path),
+    label: stripTags(t.raw(`${page.ns}.title`) as string),
+    group: t(`nav.${page.group}`),
+  }));
 
   return (
     <header className={styles.header}>
@@ -25,6 +33,12 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
           </Link>
         ))}
       </nav>
+      <SearchCommand
+        items={searchItems}
+        label={t('ui.search')}
+        placeholder={t('ui.searchPlaceholder')}
+        empty={t('ui.searchEmpty')}
+      />
       <LocaleSwitcher locale={locale} />
     </header>
   );
