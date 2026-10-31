@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { AxisTitle } from '../AxisTitle';
 import { CloseIcon, MenuIcon } from '../icons';
 import styles from './SideNav.module.css';
 
@@ -50,7 +51,9 @@ export function SideNav({ groups, label, openLabel, closeLabel }: Props) {
                       onClick={() => setOpen(false)}
                     >
                       <span aria-hidden="true">{link.number}</span>
-                      {link.label}
+                      <span>
+                        <AxisTitle title={link.label} />
+                      </span>
                     </Link>
                   </li>
                 );

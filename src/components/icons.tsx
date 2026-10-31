@@ -64,6 +64,18 @@ export const ResetIcon = () => (
   </Icon>
 );
 
+export const AxisRowIcon = () => (
+  <Icon>
+    <path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4" />
+  </Icon>
+);
+
+export const AxisColumnIcon = () => (
+  <Icon>
+    <path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4" />
+  </Icon>
+);
+
 export const SearchIcon = () => (
   <Icon>
     <circle cx="11" cy="11" r="7" />

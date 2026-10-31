@@ -146,6 +146,26 @@ code {
   transform: translateY(-2px);
 }
 
+.visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.axis-icon {
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.axis-icon svg {
+  height: 1em;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+
 .skip-link {
   background: var(--ink);
   border-radius: 8px;

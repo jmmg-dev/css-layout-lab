@@ -51,7 +51,7 @@
     color 0.15s;
 }
 
-.group a span {
+.group a > span:first-child {
   color: var(--faint);
   flex: none;
   font-size: 0.75rem;
@@ -68,7 +68,7 @@
   font-weight: 600;
 }
 
-.group a[aria-current="page"] span {
+.group a[aria-current="page"] > span:first-child {
   color: var(--blue);
 }
 

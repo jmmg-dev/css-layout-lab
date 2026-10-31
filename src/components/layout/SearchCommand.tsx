@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
+import { AxisTitle } from '../AxisTitle';
 import { ArrowRightIcon, SearchIcon } from '../icons';
 import styles from './SearchCommand.module.css';
 
@@ -112,7 +113,9 @@ export function SearchCommand({ items, label, placeholder, empty }: Props) {
               {results.map((item, index) => (
                 <li key={item.href} id={optionId(index)} role="option" aria-selected={index === active}>
                   <Link href={item.href} onClick={close} onMouseMove={() => setActive(index)}>
-                    <span>{item.label}</span>
+                    <span>
+                      <AxisTitle title={item.label} />
+                    </span>
                     <small>{item.group}</small>
                     <ArrowRightIcon />
                   </Link>

@@ -4,6 +4,7 @@ import { getGroupPages } from '@/content/pages';
 import type { DocPage } from '@/content/types';
 import { stripTags } from '@/lib/rich';
 import { localePath } from '@/lib/seo';
+import { AxisTitle } from '../AxisTitle';
 import { Prose } from './blocks';
 import styles from './blocks.module.css';
 
@@ -22,7 +23,9 @@ export async function OverviewView({ page, locale }: Props) {
           <li key={topic.path}>
             <Link href={localePath(locale, topic.path)}>
               <span aria-hidden="true">{String(index + 2).padStart(2, '0')}</span>
-              {stripTags(t.raw(`${topic.ns}.title`) as string)}
+              <span>
+                <AxisTitle title={stripTags(t.raw(`${topic.ns}.title`) as string)} />
+              </span>
             </Link>
           </li>
         ))}

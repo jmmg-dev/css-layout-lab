@@ -5,6 +5,7 @@ import { getPageNumber, getSiblings, groups } from '@/content/pages';
 import type { DocPage } from '@/content/types';
 import { richTags, stripTags } from '@/lib/rich';
 import { absoluteUrl, AUTHOR, localePath, serializeJsonLd, SITE_NAME } from '@/lib/seo';
+import { AxisTitle } from '../AxisTitle';
 import { ArrowLeftIcon, ArrowRightIcon } from '../icons';
 import styles from './DocFrame.module.css';
 
@@ -53,13 +54,17 @@ export async function DocFrame({ page, locale, children }: Props) {
             <li>
               <Link href={localePath(locale, group.path)}>{groupLabel}</Link>
             </li>
-            <li aria-current="page">{title}</li>
+            <li aria-current="page">
+              <AxisTitle title={title} />
+            </li>
           </ol>
         </nav>
         <span className={styles.number} aria-hidden="true">
           {number}
         </span>
-        <h1>{t.rich(`${page.ns}.title`, richTags)}</h1>
+        <h1>
+          <AxisTitle title={title}>{t.rich(`${page.ns}.title`, richTags)}</AxisTitle>
+        </h1>
       </header>
 
       {children}
@@ -70,7 +75,7 @@ export async function DocFrame({ page, locale, children }: Props) {
             <span>
               <ArrowLeftIcon /> {t('ui.previous')}
             </span>
-            {titleOf(previous)}
+            <AxisTitle title={titleOf(previous)} />
           </Link>
         )}
         {next && (
@@ -78,7 +83,7 @@ export async function DocFrame({ page, locale, children }: Props) {
             <span>
               {t('ui.next')} <ArrowRightIcon />
             </span>
-            {titleOf(next)}
+            <AxisTitle title={titleOf(next)} />
           </Link>
         )}
       </nav>

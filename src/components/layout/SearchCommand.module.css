@@ -95,7 +95,7 @@
   text-decoration: none;
 }
 
-.results a span {
+.results a > span {
   flex: 1;
   min-width: 0;
   overflow-wrap: anywhere;
@@ -108,7 +108,7 @@
   font-weight: 400;
 }
 
-.results a svg {
+.results a > svg {
   color: var(--blue);
   flex: none;
   opacity: 0;
@@ -119,7 +119,7 @@
   color: var(--blue);
 }
 
-.results [aria-selected="true"] svg {
+.results [aria-selected="true"] a > svg {
   opacity: 1;
 }
 

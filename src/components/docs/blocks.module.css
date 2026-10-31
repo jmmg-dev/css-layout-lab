@@ -159,7 +159,7 @@
   transform: translateY(-2px);
 }
 
-.topics span {
+.topics a > span:first-child {
   color: var(--red-text);
   flex: none;
   font-family: var(--font-mono);

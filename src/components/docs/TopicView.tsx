@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { DocPage } from '@/content/types';
-import { richTags } from '@/lib/rich';
+import { richTags, stripTags } from '@/lib/rich';
+import { AxisTitle } from '../AxisTitle';
 import { ExampleBlock, ItemList, Prose, Tip } from './blocks';
 import styles from './blocks.module.css';
 
@@ -15,7 +16,11 @@ export async function TopicView({ page, locale }: Props) {
         <div className={styles.columns}>
           {page.sections.map((section) => (
             <section key={section.ns}>
-              <h2>{t.rich(`${section.ns}.title`, richTags)}</h2>
+              <h2>
+                <AxisTitle title={stripTags(t.raw(`${section.ns}.title`) as string)}>
+                  {t.rich(`${section.ns}.title`, richTags)}
+                </AxisTitle>
+              </h2>
               <Prose t={t} id={`${section.ns}.description`} />
               <ItemList t={t} ns={section.ns} items={section.items} />
             </section>

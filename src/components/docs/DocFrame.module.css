@@ -90,7 +90,7 @@
   transform: translateY(-2px);
 }
 
-.pagination span {
+.pagination a > span:first-child {
   align-items: center;
   color: var(--muted);
   display: flex;
@@ -107,6 +107,6 @@
   text-align: right;
 }
 
-.nextLink span {
+.nextLink > span:first-child {
   justify-content: flex-end;
 }
