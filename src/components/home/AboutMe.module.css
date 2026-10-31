@@ -5,7 +5,7 @@
   color: var(--fg);
   display: grid;
   gap: clamp(2rem, 5vw, 4rem);
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   padding: clamp(1.5rem, 5vw, 4rem);
 }
 
@@ -25,6 +25,12 @@
   font-weight: 600;
 }
 
+/* Even paragraphs start on the other colour, so the same tone never lines up down the text. */
+.description p:nth-child(odd) strong:nth-child(even),
+.description p:nth-child(even) strong:nth-child(odd) {
+  background-image: linear-gradient(transparent 62%, var(--sky-soft) 62%);
+}
+
 .profile {
   align-items: center;
   display: flex;
@@ -36,21 +42,26 @@
 .photo {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lifted);
-  height: 19.4rem;
-  margin-bottom: 1.25rem;
-  max-width: 100%;
+  height: 12.61rem;
+  margin-bottom: 1rem;
   overflow: hidden;
   position: relative;
-  width: 20rem;
+  width: 13rem;
 }
 
 .photo img {
   object-fit: cover;
 }
 
+/* The bricks are sized for a 20rem wall, so it is drawn at that size and scaled to the photo. */
 .wall {
-  inset: 0;
+  height: 19.4rem;
+  left: 0;
   position: absolute;
+  top: 0;
+  transform: scale(0.65);
+  transform-origin: 0 0;
+  width: 20rem;
 }
 
 .wall > div {
@@ -146,22 +157,77 @@
 
 .name {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.125rem;
+  font-weight: 600;
   margin: 0;
 }
 
 .role {
-  align-items: center;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin: 0 0 0.875rem;
+}
+
+.socials {
   display: flex;
   gap: 0.5rem;
+}
+
+.socials a {
+  align-items: center;
+  background: var(--rule-soft);
+  border-radius: 12px;
+  color: var(--fg);
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  transition:
+    background-color 0.15s,
+    color 0.15s,
+    transform 0.15s;
+  width: 2.5rem;
+}
+
+.socials a:hover {
+  background: var(--mist);
+  color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.support {
+  align-items: center;
+  background: linear-gradient(100deg, var(--peach-soft), var(--sky-soft));
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  grid-column: 1 / -1;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.25rem, 3vw, 2rem);
+}
+
+.support > div {
+  flex: 1 1 22rem;
+}
+
+.support h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem;
+}
+
+.support p {
+  color: var(--muted);
   margin: 0;
 }
 
-.role a {
-  color: var(--blue);
-  display: inline-flex;
-  padding: 0.5rem;
+.soon {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.soon:hover {
+  box-shadow: var(--shadow);
+  transform: none;
 }
 
 @media (max-width: 800px) {

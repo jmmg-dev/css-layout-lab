@@ -12,9 +12,15 @@
       "title": "Aprende de forma visual con ejemplos prácticos y dinámicos",
       "description": "Todos los ejemplos son <blue>interactivos</blue>: puedes <blue>modificar el código</blue> HTML y CSS directamente en los editores y ver los cambios en <blue>tiempo real</blue>. Prueba a cambiar cualquier valor de este ejemplo y comprueba el resultado. ¡Espero que disfrutes del contenido!"
     },
+    "support": {
+      "title": "Apoya el proyecto",
+      "description": "CSS Layout Lab es gratuito y quiero que siga así, con una documentación libre de publicidad invasiva. Si te resulta útil, puedes hacer una aportación para ayudar a mantenerlo.",
+      "cta": "Hacer una aportación",
+      "soon": "Aportaciones próximamente"
+    },
     "aboutMe": {
       "title": "Sobre mí",
-      "description": "<p>Después de muchos años trabajando en el desarrollo web, <b>CSS sigue sorprendiéndome por sus posibilidades y constantes novedades</b>. Uno de sus usos más importantes y frecuentes es la <b>gestión de layouts</b>, que permite organizar y distribuir los elementos de una página de manera flexible y precisa.</p><p>Por eso he creado esta documentación, donde intento explicar de forma sencilla la <b>creación de layouts con CSS</b> y cómo aplicar distintas técnicas según las necesidades de cada proyecto.</p><p>Este tutorial está pensado para todo tipo de desarrolladores, desde <b>juniors</b> hasta <b>expertos</b>. Algunos podrán descubrir conceptos básicos por primera vez, mientras que otros podrán observar de manera práctica cómo se comportan ciertas propiedades que a menudo se delegan en librerías como <b>Bootstrap</b>, explorando directamente <b>grid</b> y <b>flexbox</b>.</p><p>¡Espero que lo disfruten!</p>"
+      "description": "<p>Después de muchos años trabajando en el desarrollo web, <b>CSS sigue sorprendiéndome por sus posibilidades y constantes novedades</b>. Uno de sus usos más importantes y frecuentes es la <b>gestión de layouts</b>, que permite organizar y distribuir los elementos de una página de manera flexible y precisa.</p><p>Por eso he creado esta documentación, donde intento explicar de forma sencilla la <b>creación de layouts con CSS</b> y cómo aplicar distintas técnicas según las necesidades de cada proyecto.</p><p>Este tutorial está pensado para todo tipo de desarrolladores, desde <b>juniors</b> hasta <b>expertos</b>. Algunos podrán descubrir conceptos básicos por primera vez, mientras que otros podrán observar de manera práctica cómo se comportan ciertas propiedades que a menudo se delegan en librerías como <b>Bootstrap</b> o <b>Tailwind</b>, explorando directamente <b>grid</b> y <b>flexbox</b>.</p><p>¡Espero que lo disfruten!</p>"
     },
     "map": {
       "title": "Elige por dónde empezar a construir",
@@ -483,6 +489,7 @@
     "footerCaption": "Hecho con bloques, inline, flex y grid.",
     "linkedin": "Perfil de LinkedIn de Juan Manuel Muñoz González",
     "resume": "Currículum de Juan Manuel Muñoz González",
+    "github": "Repositorio del proyecto en GitHub",
     "notFoundTitle": "Este ladrillo no encaja",
     "notFoundText": "La página que buscas no existe o ha cambiado de lugar.",
     "backHome": "Volver al inicio"

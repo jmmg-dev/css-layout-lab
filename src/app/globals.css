@@ -100,14 +100,17 @@ code {
 /* Pastels are too light for text, so emphasis is ink over a highlighter stroke. */
 .brick,
 .moss,
-.blue {
+.blue,
+.keyword {
   background: linear-gradient(transparent 62%, var(--marker, var(--peach-soft)) 62%);
   color: var(--fg);
   font-weight: 600;
 }
 
-.moss,
-.blue {
+/* Colours alternate, so no stretch of text ends up in a single tone. */
+.moss:nth-child(even),
+.blue:nth-child(even),
+.tone-sky {
   --marker: var(--sky-soft);
 }
 

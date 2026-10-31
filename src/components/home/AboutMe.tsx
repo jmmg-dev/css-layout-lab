@@ -2,8 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import { richTags } from '@/lib/rich';
-import { AUTHOR } from '@/lib/seo';
-import { LinkedInIcon, ProfileIcon } from '../icons';
+import { AUTHOR, DONATE_URL, GITHUB_URL } from '@/lib/seo';
+import { GitHubIcon, HeartIcon, LinkedInIcon, ProfileIcon } from '../icons';
 import styles from './AboutMe.module.css';
 
 // Each row is the set of brick sizes that leaves the photo showing through the wall.
@@ -28,7 +28,7 @@ export async function AboutMe({ locale }: { locale: string }) {
       </div>
       <div className={styles.profile}>
         <div className={styles.photo}>
-          <Image src="/images/photo.jpg" alt={AUTHOR} fill sizes="20rem" />
+          <Image src="/images/photo.jpg" alt={AUTHOR} fill sizes="13rem" />
           <div className={styles.wall} aria-hidden="true">
             {WALL.map((row, index) => (
               <div key={index} style={{ justifyContent: row.align }}>
@@ -45,8 +45,8 @@ export async function AboutMe({ locale }: { locale: string }) {
           </div>
         </div>
         <p className={styles.name}>{AUTHOR}</p>
-        <p className={styles.role}>
-          Front End Architect
+        <p className={styles.role}>Front End Architect</p>
+        <div className={styles.socials}>
           <a
             aria-label={t('ui.linkedin')}
             href="https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/"
@@ -54,6 +54,9 @@ export async function AboutMe({ locale }: { locale: string }) {
             rel="noopener noreferrer"
           >
             <LinkedInIcon />
+          </a>
+          <a aria-label={t('ui.github')} href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+            <GitHubIcon />
           </a>
           <a
             aria-label={t('ui.resume')}
@@ -63,8 +66,25 @@ export async function AboutMe({ locale }: { locale: string }) {
           >
             <ProfileIcon />
           </a>
-        </p>
+        </div>
       </div>
+      <aside className={styles.support}>
+        <div>
+          <h3>{t('home.support.title')}</h3>
+          <p>{t('home.support.description')}</p>
+        </div>
+        {DONATE_URL ? (
+          <a className="button" href={DONATE_URL} target="_blank" rel="noopener noreferrer">
+            <HeartIcon />
+            {t('home.support.cta')}
+          </a>
+        ) : (
+          <span className={`button ${styles.soon}`}>
+            <HeartIcon />
+            {t('home.support.soon')}
+          </span>
+        )}
+      </aside>
     </section>
   );
 }

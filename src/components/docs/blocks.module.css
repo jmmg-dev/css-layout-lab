@@ -8,9 +8,18 @@
   margin: 0 0 0.875rem;
 }
 
-.prose strong {
+.prose strong,
+.items strong {
   color: var(--fg);
   font-weight: 600;
+}
+
+/* In the docs the stroke is kept for CSS keywords, not for words that are merely emphasised. */
+.prose :global(.moss),
+.prose :global(.blue),
+.items :global(.moss),
+.items :global(.blue) {
+  background: none;
 }
 
 .items {
@@ -26,12 +35,9 @@
   padding: 0.625rem 0;
 }
 
-.items strong {
-  color: var(--fg);
-  font-weight: 600;
-}
-
+/* The value that opens each item is already set apart by colour and font. */
 .items li > strong:first-child {
+  background: none;
   color: var(--blue);
   font-family: var(--font-mono);
   font-size: 0.9375em;
