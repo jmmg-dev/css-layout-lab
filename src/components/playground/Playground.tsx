@@ -39,7 +39,8 @@ export function Playground({ example, controlLabels, initialDoc, labels }: Props
   const id = useId();
   const [html, setHtml] = useState(example.html);
   const [css, setCss] = useState(example.css);
-  const [width, setWidth] = useState(100);
+  const initialWidth = example.initialWidth ?? 100;
+  const [width, setWidth] = useState(initialWidth);
 
   const pick = (control: Control, value: string) => {
     if (control.kind === 'property') {
@@ -56,7 +57,7 @@ export function Playground({ example, controlLabels, initialDoc, labels }: Props
   const reset = () => {
     setHtml(example.html);
     setCss(example.css);
-    setWidth(100);
+    setWidth(initialWidth);
   };
 
   return (

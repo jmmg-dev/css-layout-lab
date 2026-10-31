@@ -21,6 +21,8 @@ export type Example = {
   css: string;
   /** Initial preview height in px. Reserves space to avoid layout shift. */
   height: number;
+  /** Starting value of the width control, as a percentage. Defaults to 100. */
+  initialWidth?: number;
   controls?: Control[];
 };
 

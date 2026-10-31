@@ -157,8 +157,9 @@ export const examples: Record<string, Example> = {
   },
   'flex-wrap': {
     height: 130,
-    html: container(children(5)),
-    css: flexCss(['flex-wrap: nowrap;', 'max-width: 10rem;']),
+    initialWidth: 30,
+    html: container(children(8)),
+    css: flexCss(['flex-wrap: nowrap;']),
     controls: [
       {
         kind: 'property',
@@ -249,10 +250,11 @@ export const examples: Record<string, Example> = {
   },
   'flex-shrink': {
     height: 170,
+    initialWidth: 45,
     html: container(
       [1, 2, 3].map((n) => `  <span class="child-${n}">This is an example</span>`).join('\n'),
     ),
-    css: flexCss(['max-width: 20rem;'], flexItems((n) => `flex-shrink: ${n === 1 ? 0 : 1};`)),
+    css: flexCss([], flexItems((n) => `flex-shrink: ${n === 1 ? 0 : 1};`)),
   },
   'flex-basis': {
     height: 110,

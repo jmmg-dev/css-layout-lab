@@ -431,7 +431,7 @@
       "item6": "Combination with <b>grid-template-areas</b>: allows easy reorganization of the layout based on breakpoints by rearranging entire blocks.",
       "item7": "Relative units (<b>fr</b>, <b>%</b>, <b>auto</b>, <b>min-content</b>, <b>max-content</b>) promote flexible behavior on small screens.",
       "item8": "Modern properties like <b>clamp()</b> help set a minimum, ideal, and maximum width without the need for multiple media queries.",
-      "example": "<p>Move the preview width control and switch techniques with the selector. <b>auto-fit</b> needs no media queries, while the other two options change the structure at a breakpoint.</p>",
+      "example": "<p>Move the container width control and switch techniques with the selector. <b>auto-fit</b> needs no media queries, while the other two options change the structure at a breakpoint.</p>",
       "select": "Select <b>technique</b>:",
       "tip": "The media queries in this example respond to the preview width because the result is displayed inside its own document."
     },
@@ -473,7 +473,7 @@
     "copy": "Copy",
     "copied": "Copied",
     "custom": "custom",
-    "previewWidth": "Preview width",
+    "previewWidth": "Container width",
     "editHint": "Edit the code or use the selectors: the result updates instantly.",
     "editorLabel": "{language} code editor. Press Escape and then Tab to leave the editor.",
     "previewTitle": "Example result",
@@ -528,7 +528,7 @@
       "item2": "<b>container-name</b>: assigns a name to query a specific container.",
       "item3": "<b>@container (min-width: ...)</b>: applies rules when the container reaches that size.",
       "item4": "<b>cqw / cqh</b>: units relative to the container’s width and height, equivalent to vw and vh.",
-      "example": "<p>Reduce the preview width. The card switches from one column to two when its <b>container</b> exceeds 28rem, without any media query.</p>",
+      "example": "<p>Lower the container width control. The card switches from one column to two when its <b>container</b> exceeds 28rem, without any media query.</p>",
       "tip": "An element cannot query its own size: set <code>container-type</code> on an ancestor and apply the changes to its descendants."
     },
     "logical": {

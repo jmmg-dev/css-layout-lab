@@ -431,7 +431,7 @@
       "item6": "Combinación con <b>grid-template-areas</b>: permite reorganizar fácilmente el layout en función de breakpoints, cambiando la disposición de bloques enteros.",
       "item7": "Unidades relativas (<b>fr</b>, <b>%</b>, <b>auto</b>, <b>min-content</b>, <b>max-content</b>) favorecen el comportamiento flexible en pantallas pequeñas.",
       "item8": "Propiedades modernas como <b>clamp()</b> ayudan a fijar un ancho mínimo, ideal y máximo sin necesidad de múltiples media queries.",
-      "example": "<p>Mueve el control de ancho de la vista previa y cambia de técnica con el selector. <b>auto-fit</b> no necesita media queries, mientras que las otras dos opciones cambian la estructura en un punto de ruptura.</p>",
+      "example": "<p>Mueve el control de ancho del contenedor y cambia de técnica con el selector. <b>auto-fit</b> no necesita media queries, mientras que las otras dos opciones cambian la estructura en un punto de ruptura.</p>",
       "select": "Selecciona <b>técnica</b>:",
       "tip": "Las media queries de este ejemplo responden al ancho de la vista previa porque el resultado se muestra dentro de su propio documento."
     },
@@ -473,7 +473,7 @@
     "copy": "Copiar",
     "copied": "Copiado",
     "custom": "personalizado",
-    "previewWidth": "Ancho de la vista previa",
+    "previewWidth": "Ancho del contenedor",
     "editHint": "Edita el código o usa los selectores: el resultado cambia al instante.",
     "editorLabel": "Editor de código {language}. Pulsa Escape y después Tab para salir del editor.",
     "previewTitle": "Resultado del ejemplo",
@@ -528,7 +528,7 @@
       "item2": "<b>container-name</b>: asigna un nombre para consultar un contenedor concreto.",
       "item3": "<b>@container (min-width: ...)</b>: aplica las reglas cuando el contenedor alcanza ese tamaño.",
       "item4": "<b>cqw / cqh</b>: unidades relativas al ancho y alto del contenedor, equivalentes a vw y vh.",
-      "example": "<p>Reduce el ancho de la vista previa. La tarjeta cambia de una columna a dos cuando su <b>contenedor</b> supera los 28rem, sin ninguna media query.</p>",
+      "example": "<p>Reduce el control de ancho del contenedor. La tarjeta cambia de una columna a dos cuando su <b>contenedor</b> supera los 28rem, sin ninguna media query.</p>",
       "tip": "Un elemento no puede consultar su propio tamaño: define <code>container-type</code> en un ancestro y aplica los cambios a sus descendientes."
     },
     "logical": {
