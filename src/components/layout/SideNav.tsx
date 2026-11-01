@@ -19,9 +19,10 @@ type Props = {
   openLabel: string;
   closeLabel: string;
   support: { href: string; label: string };
+  compact?: boolean;
 };
 
-export function SideNav({ groups, label, openLabel, closeLabel, support }: Props) {
+export function SideNav({ groups, label, openLabel, closeLabel, support, compact = false }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const activeLink = useRef<HTMLAnchorElement>(null);
@@ -31,7 +32,7 @@ export function SideNav({ groups, label, openLabel, closeLabel, support }: Props
   }, [pathname]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-compact={compact}>
       <button
         type="button"
         className={styles.toggle}

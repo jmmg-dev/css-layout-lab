@@ -2,9 +2,10 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import { richTags } from '@/lib/rich';
-import { AUTHOR, DONATE_URL, GITHUB_URL, SUPPORT_ANCHOR } from '@/lib/seo';
+import { AUTHOR, DONATE_URL, GITHUB_URL } from '@/lib/seo';
 import { GitHubIcon, HeartIcon, LinkedInIcon, ProfileIcon } from '../icons';
 import styles from './AboutMe.module.css';
+import { SupportPanel } from './SupportPanel';
 
 // Each row is the set of brick sizes that leaves the photo showing through the wall.
 const WALL = [
@@ -68,7 +69,7 @@ export async function AboutMe({ locale }: { locale: string }) {
           </a>
         </div>
       </div>
-      <aside id={SUPPORT_ANCHOR} className={styles.support}>
+      <SupportPanel>
         <div>
           <h3>{t('home.support.title')}</h3>
           <p>{t('home.support.description')}</p>
@@ -84,7 +85,7 @@ export async function AboutMe({ locale }: { locale: string }) {
             {t('home.support.soon')}
           </span>
         )}
-      </aside>
+      </SupportPanel>
     </section>
   );
 }

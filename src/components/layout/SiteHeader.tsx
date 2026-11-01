@@ -44,7 +44,6 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
         className={styles.support}
         href={`${localePath(locale)}#${SUPPORT_ANCHOR}`}
         aria-label={t('home.support.title')}
-        title={t('home.support.title')}
       >
         <HeartIcon />
       </Link>

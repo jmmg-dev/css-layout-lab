@@ -88,6 +88,14 @@
   margin-top: 3rem;
 }
 
+.example .prose {
+  margin-bottom: 1.5rem;
+}
+
+.example .prose > :last-child {
+  margin-bottom: 0;
+}
+
 .example h2 {
   align-items: center;
   display: flex;

@@ -19,6 +19,7 @@
 
 .heroText {
   align-items: flex-start;
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
 }
@@ -27,7 +28,8 @@
   align-items: center;
   column-gap: 0.25em;
   display: grid;
-  font-size: clamp(2.75rem, min(5.7vw, 13dvh), 5.5rem);
+  /* Logo, gap and "Layout Lab" add up to about 6.8em, so this always fits the column on two lines. */
+  font-size: min(14.6cqi, 13dvh, 5.5rem);
   font-weight: 600;
   grid-template-columns: auto minmax(0, 1fr);
   letter-spacing: -0.045em;
@@ -56,6 +58,7 @@
 
 .lab {
   display: block;
+  white-space: nowrap;
 }
 
 /* Hyphenation keeps justified lines from opening wide gaps between words. */
@@ -456,10 +459,12 @@
   }
 
   .heroText h1 {
-    font-size: clamp(2.5rem, 13.5vw, 5rem);
+    font-size: min(14.6cqi, 5.5rem);
   }
 
+  /* Sliding in from the side would overflow a one-column layout while it runs. */
   .morphCard {
+    animation-name: hero-rise;
     height: 18rem;
   }
 }

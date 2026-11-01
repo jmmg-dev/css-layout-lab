@@ -119,9 +119,14 @@
   padding: 1.5rem var(--gutter);
 }
 
-@media (max-width: 720px) {
+/* Below this width the links no longer fit, and the collapsible site menu replaces them. */
+@media (max-width: 880px) {
   .header {
     gap: 0.5rem;
+  }
+
+  .logo {
+    margin-right: auto;
   }
 
   .links {

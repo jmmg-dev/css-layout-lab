@@ -2,6 +2,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { HomePage } from '@/components/home/HomePage';
+import { SiteMenu } from '@/components/layout/SiteMenu';
 import { routing } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo';
 
@@ -18,5 +19,10 @@ export default async function Page({ params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  return <HomePage locale={locale} />;
+  return (
+    <>
+      <SiteMenu locale={locale} compact />
+      <HomePage locale={locale} />
+    </>
+  );
 }

@@ -7,6 +7,23 @@
   top: var(--header-height);
 }
 
+/* Pages without a side column only show the menu once the header links are gone. */
+.wrapper[data-compact="true"] {
+  align-self: stretch;
+  display: none;
+}
+
+/* The open menu scrolls on its own, so the page behind it must not show a second scrollbar. */
+@media (max-width: 880px) {
+  .wrapper[data-compact="true"] {
+    display: block;
+  }
+
+  :global(html):has(.wrapper[data-compact="true"] .nav[data-open="true"]) {
+    overflow: hidden;
+  }
+}
+
 .toggle {
   display: none;
 }
@@ -87,6 +104,10 @@
 }
 
 @media (max-width: 960px) {
+  :global(html):has(.wrapper[data-compact="false"] .nav[data-open="true"]) {
+    overflow: hidden;
+  }
+
   .wrapper {
     background: var(--paper);
     border-bottom: 1px solid var(--rule);

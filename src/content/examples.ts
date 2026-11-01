@@ -44,16 +44,9 @@ const flexVsGridHtml = container(children(5));
 
 export const examples: Record<string, Example> = {
   brick: {
-    height: 210,
-    html: `<div class="box">\n  Hello world!\n</div>`,
-    css: `.box {
-  background-color: #ffc9ae;
-  border-radius: 6px;
-  color: #1b1e26;
-  font-weight: 600;
-  padding: 3rem;
-  text-align: center;
-}`,
+    height: 120,
+    html: container(`  <div class="child">Hello world!</div>`),
+    css: `.container {\n  ${BORDER}\n  padding: 0.5rem;\n}\n\n${childRule}`,
   },
 
   block: {

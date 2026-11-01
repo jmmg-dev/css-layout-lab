@@ -224,9 +224,12 @@ code {
   color: var(--faint);
 }
 
-.tok-tag,
-.tok-selector {
+.tok-tag {
   color: var(--red-text);
+}
+
+.tok-selector {
+  color: #b85410;
 }
 
 .tok-attr,
@@ -240,7 +243,7 @@ code {
 }
 
 .tok-number {
-  color: #0f7a6c;
+  color: #b52f7a;
 }
 
 .tok-keyword {
