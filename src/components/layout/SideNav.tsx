@@ -25,14 +25,22 @@ type Props = {
 export function SideNav({ groups, label, openLabel, closeLabel, support, compact = false }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const wrapper = useRef<HTMLDivElement>(null);
   const activeLink = useRef<HTMLAnchorElement>(null);
 
+  // The menu keeps its scroll between pages; it only moves to bring a hidden active link to the centre.
   useEffect(() => {
-    activeLink.current?.scrollIntoView({ block: 'nearest' });
+    const list = wrapper.current;
+    const link = activeLink.current;
+    if (!list || !link) return;
+    const view = list.getBoundingClientRect();
+    const target = link.getBoundingClientRect();
+    if (target.top >= view.top && target.bottom <= view.bottom) return;
+    list.scrollTop += target.top - view.top - (view.height - target.height) / 2;
   }, [pathname]);
 
   return (
-    <div className={styles.wrapper} data-compact={compact}>
+    <div ref={wrapper} className={styles.wrapper} data-compact={compact}>
       <button
         type="button"
         className={styles.toggle}
