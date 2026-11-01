@@ -11,6 +11,8 @@ export const AUTHOR = 'Juan Manuel Muñoz González';
 export const GITHUB_URL = 'https://github.com/CSS-Layout-Lab/css-layout-lab';
 /** Page where people can contribute. Until it is set, the home shows the button as coming soon. */
 export const DONATE_URL: string | null = null;
+/** Anchor of the contribution panel on the home page. */
+export const SUPPORT_ANCHOR = 'support';
 
 const OG_LOCALES: Record<Locale, string> = { es: 'es_ES', en: 'en_US' };
 

@@ -36,7 +36,7 @@ const explicitBase = {
 const seventhChild = `  <div style="grid-column: 4" class="child">\n    7\n  </div>`;
 
 const positioningCss = (rule: string) =>
-  gridCss(['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(3, 1fr);'], `.positioning {\n${rule}\n}\n\n${childRule}`);
+  gridCss(['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(3, 1fr);'], `.positioning {\n  background: #d9d2f5;\n${rule}\n}\n\n${childRule}`);
 
 const responsiveHtml = container(children(6));
 
@@ -88,6 +88,7 @@ export const examples: Record<string, Example> = {
 }
 
 .item {
+  background: #d9d2f5;
   box-sizing: content-box;
 }`,
     controls: [
@@ -123,7 +124,7 @@ export const examples: Record<string, Example> = {
 }
 
 .item {
-  background: #a9cdf6;
+  background: #d9d2f5;
   left: 2rem;
   position: static;
   top: 1rem;
@@ -218,7 +219,7 @@ export const examples: Record<string, Example> = {
   'align-self': {
     height: 205,
     html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
-    css: flexCss(['align-items: flex-start;', 'height: 10rem;'], `${childRule}\n\n.item {\n  align-self: auto;\n}`),
+    css: flexCss(['align-items: flex-start;', 'height: 10rem;'], `${childRule}\n\n.item {\n  align-self: auto;\n  background: #d9d2f5;\n}`),
     controls: [
       {
         kind: 'property',
@@ -264,7 +265,7 @@ export const examples: Record<string, Example> = {
   'flex-shorthand': {
     height: 110,
     html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
-    css: flexCss([], `${childRule}\n\n.item {\n  flex: initial;\n}`),
+    css: flexCss([], `${childRule}\n\n.item {\n  background: #d9d2f5;\n  flex: initial;\n}`),
     controls: [
       {
         kind: 'property',
@@ -438,7 +439,7 @@ export const examples: Record<string, Example> = {
         '  [sidebar-end main-start] 1fr',
         '  [main-end full-end];',
       ],
-      `.item {\n  background: #a9cdf6;\n  grid-column: main-start / main-end;\n}\n\n${childRule}`,
+      `.item {\n  background: #d9d2f5;\n  grid-column: main-start / main-end;\n}\n\n${childRule}`,
     ),
     controls: [
       {
@@ -496,7 +497,7 @@ export const examples: Record<string, Example> = {
     html: container(`  <div class="child item">item</div>\n  <div class="child other">other</div>`),
     css: gridCss(
       ['display: grid;', 'grid-template-columns: repeat(3, 1fr);', 'grid-template-rows: repeat(3, 4rem);'],
-      `.child {\n  padding: 1rem;\n}\n\n.item {\n  background: #a9cdf6;\n  grid-area: 1 / 1 / 3 / 3;\n  z-index: 0;\n}\n\n.other {\n  grid-area: 2 / 2 / 4 / 4;\n  z-index: 1;\n}`,
+      `.child {\n  padding: 1rem;\n}\n\n.item {\n  background: #d9d2f5;\n  grid-area: 1 / 1 / 3 / 3;\n  z-index: 0;\n}\n\n.other {\n  grid-area: 2 / 2 / 4 / 4;\n  z-index: 1;\n}`,
     ),
     controls: [
       {
@@ -617,7 +618,7 @@ export const examples: Record<string, Example> = {
     html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
     css: gridCss(
       ['display: grid;', 'gap: 1rem;', 'grid-template-columns: auto auto auto;', 'grid-template-rows: 6rem;', 'height: 6rem;'],
-      `.item {\n  align-self: stretch;\n  justify-self: stretch;\n}\n\n${childRule}`,
+      `.item {\n  align-self: stretch;\n  background: #d9d2f5;\n  justify-self: stretch;\n}\n\n${childRule}`,
     ),
     controls: [
       {

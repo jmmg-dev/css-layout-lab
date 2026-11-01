@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { AxisTitle } from '../AxisTitle';
-import { CloseIcon, MenuIcon } from '../icons';
+import { CloseIcon, HeartIcon, MenuIcon } from '../icons';
 import styles from './SideNav.module.css';
 
 export type NavGroup = {
@@ -13,9 +13,15 @@ export type NavGroup = {
   links: { href: string; number: string; label: string }[];
 };
 
-type Props = { groups: NavGroup[]; label: string; openLabel: string; closeLabel: string };
+type Props = {
+  groups: NavGroup[];
+  label: string;
+  openLabel: string;
+  closeLabel: string;
+  support: { href: string; label: string };
+};
 
-export function SideNav({ groups, label, openLabel, closeLabel }: Props) {
+export function SideNav({ groups, label, openLabel, closeLabel, support }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const activeLink = useRef<HTMLAnchorElement>(null);
@@ -61,6 +67,10 @@ export function SideNav({ groups, label, openLabel, closeLabel }: Props) {
             </ol>
           </section>
         ))}
+        <Link className={styles.support} href={support.href} onClick={() => setOpen(false)}>
+          <HeartIcon />
+          {support.label}
+        </Link>
       </nav>
     </div>
   );

@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import { richTags } from '@/lib/rich';
-import { AUTHOR, DONATE_URL, GITHUB_URL } from '@/lib/seo';
+import { AUTHOR, DONATE_URL, GITHUB_URL, SUPPORT_ANCHOR } from '@/lib/seo';
 import { GitHubIcon, HeartIcon, LinkedInIcon, ProfileIcon } from '../icons';
 import styles from './AboutMe.module.css';
 
@@ -68,7 +68,7 @@ export async function AboutMe({ locale }: { locale: string }) {
           </a>
         </div>
       </div>
-      <aside className={styles.support}>
+      <aside id={SUPPORT_ANCHOR} className={styles.support}>
         <div>
           <h3>{t('home.support.title')}</h3>
           <p>{t('home.support.description')}</p>

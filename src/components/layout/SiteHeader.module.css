@@ -83,6 +83,30 @@
   color: var(--fg);
 }
 
+.support {
+  align-items: center;
+  border-radius: 999px;
+  color: var(--muted);
+  display: flex;
+  flex: none;
+  height: 2rem;
+  justify-content: center;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  width: 2rem;
+}
+
+.support svg {
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+.support:hover {
+  background: var(--peach-soft);
+  color: var(--red-text);
+}
+
 .footer {
   border-top: 1px solid var(--rule);
   color: var(--faint);
@@ -96,7 +120,23 @@
 }
 
 @media (max-width: 720px) {
+  .header {
+    gap: 0.5rem;
+  }
+
   .links {
     display: none;
+  }
+}
+
+/* The logo mark alone leaves room for the actions; the name stays for screen readers. */
+@media (max-width: 360px) {
+  .logo > span {
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 }

@@ -30,6 +30,20 @@
   padding: 0 0.75rem;
 }
 
+.support {
+  align-items: center;
+  background: linear-gradient(100deg, var(--peach-soft), var(--sky-soft));
+  border-radius: 10px;
+  color: var(--fg);
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+}
+
 .group ol {
   list-style: none;
   margin: 0;
