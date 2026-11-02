@@ -225,8 +225,9 @@ export const examples: Record<string, Example> = {
   },
   'align-content': {
     height: 310,
+    initialWidth: 30,
     html: container(children(6)),
-    css: flexCss(['align-content: stretch;', 'flex-wrap: wrap;', 'height: 16rem;', 'max-width: 16rem;']),
+    css: flexCss(['align-content: stretch;', 'flex-wrap: wrap;', 'height: 16rem;']),
     controls: [
       {
         kind: 'property',
@@ -244,7 +245,7 @@ export const examples: Record<string, Example> = {
   },
   'flex-shrink': {
     height: 170,
-    initialWidth: 45,
+    initialWidth: 55,
     html: container(
       [1, 2, 3].map((n) => `  <span class="child-${n}">This is an example</span>`).join('\n'),
     ),
@@ -411,7 +412,7 @@ export const examples: Record<string, Example> = {
   <div class="child positioning">3</div>
   <div class="child">4</div>`),
             css: positioningCss(
-              `  grid-area: 1 / 3 / 3 / 3;\n  /* grid-area: row-start / col-start / row-end / col-end */`,
+              `  grid-area: 1 / 3 / 3 / 4;\n  /* grid-area: row-start / col-start / row-end / col-end */`,
             ),
           },
         ],

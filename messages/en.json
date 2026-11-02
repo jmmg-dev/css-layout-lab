@@ -85,13 +85,13 @@
         "item2": "<b>cm, mm, in (centimeters, millimeters, inches)</b>: More common in print.",
         "item3": "<b>pt (points)</b>: Used in typography, 1pt = 1/72 of an inch.",
         "item4": "<b>pc (picas)</b>: 1pc = 12pt, also in typography.",
-        "item5": "<b>q (quarter millimeters)</b>: 1q = 0.25mm, used in print."
+        "item5": "<b>Q (quarter millimeters)</b>: 1Q = 0.25mm, used in print."
       },
       "relatives": {
         "title": "Relative Units",
         "description": "These <b>change</b> depending on context, such as screen size or font size.",
         "item1": "<b>% (percentage)</b>: Relative to the parent element. Very useful for fluid layouts.",
-        "item2": "<b>em</b>: Relative to the parent’s font size. 2em = 2 times the parent’s font size.",
+        "item2": "<b>em</b>: Relative to the element’s own font size. 2em = 2 times that size. When used in <code>font-size</code>, it is relative to the parent’s.",
         "item3": "<b>rem</b>: Relative to the root font size (usually html). More predictable than em.",
         "item4": "<b>vw (viewport width)</b>: 1vw = 1% of the viewport width. Useful for responsive designs.",
         "item5": "<b>vh (viewport height)</b>: 1vh = 1% of the viewport height.",
@@ -149,7 +149,7 @@
       "item2": "<b>row-reverse</b>: Places elements from right to left.",
       "item3": "<b>column</b>: Places elements from top to bottom.",
       "item4": "<b>column-reverse</b>: Places elements from bottom to top.",
-      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>flex-direction</b> property in the <b>selector</b>.</p>",
+      "example": "<p>With this dynamic example you can see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>flex-direction</b> property in the <b>selector</b>.</p>",
       "select": "Select <b>flex-direction</b>:"
     },
     "wrap": {
@@ -158,12 +158,12 @@
       "item1": "<b>nowrap</b> (default): Everything on one line, even if it overflows.",
       "item2": "<b>wrap</b>: Items move to a new line if they don’t fit.",
       "item3": "<b>wrap-reverse</b>: Same as <b>wrap</b>, but wrapping occurs in reverse order.",
-      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>flex-wrap</b> property in the <b>selector</b>.</p>",
+      "example": "<p>With this dynamic example you can see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>flex-wrap</b> property in the <b>selector</b>.</p>",
       "select": "Select <b>flex-wrap</b>:",
       "tip": "Combine <code>flex-wrap: wrap</code> with <code>gap</code> so the spacing also applies between wrapped lines."
     },
     "justifyAlignRow": {
-      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>justify-content</b> and <b>align-items</b> properties in the <b>selectors</b>.</p>",
+      "example": "<p>With this dynamic example you can see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>justify-content</b> and <b>align-items</b> properties in the <b>selectors</b>.</p>",
       "justify": {
         "title": "justify-content <moss>(row)</moss>",
         "description": "<b>justify-content</b> in a container with <b>flex-direction: row</b>, <b>aligns</b> the child elements <b>horizontally</b> inside the <b>flex</b> container.",
@@ -171,7 +171,7 @@
         "item2": "<b>center</b>: Centers elements horizontally.",
         "item3": "<b>flex-end</b>: Aligns elements at the end (right).",
         "item4": "<b>space-between</b>: Places the maximum possible space between elements.",
-        "item5": "<b>space-around</b>: Places equal space around the elements.",
+        "item5": "<b>space-around</b>: Places equal space around each element, so the edges get half the space found between them.",
         "item6": "<b>space-evenly</b>: Places equal space between elements and around them.",
         "select": "Select <b>justify-content</b>:"
       },
@@ -188,7 +188,7 @@
       "title": "justify-content & align-items (row)"
     },
     "justifyAlignColumn": {
-      "example": "<p>With this dynamic example, we give the user the opportunity to see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>justify-content</b> and <b>align-items</b> properties in the <b>selectors</b>.</p>",
+      "example": "<p>With this dynamic example you can see the different <b>arrangements</b> of the <b>child</b> elements by modifying the <b>justify-content</b> and <b>align-items</b> properties in the <b>selectors</b>.</p>",
       "justify": {
         "title": "justify-content <moss>(column)</moss>",
         "description": "<b>justify-content</b> in a container with <b>flex-direction: column</b>, <b>aligns</b> the child elements <b>vertically</b> inside the <b>flex</b> container.",
@@ -196,7 +196,7 @@
         "item2": "<b>center</b>: Centers elements vertically.",
         "item3": "<b>flex-end</b>: Aligns all elements at the bottom of the container.",
         "item4": "<b>space-between</b>: First element at the top, last at the bottom, others spaced in between.",
-        "item5": "<b>space-around</b>: Equal space between elements.",
+        "item5": "<b>space-around</b>: Equal space around each element, with half of it at the edges.",
         "item6": "<b>space-evenly</b>: Equal space between elements and around them.",
         "select": "Select <b>justify-content</b>:"
       },
@@ -338,8 +338,8 @@
     "functions": {
       "title": "Useful functions",
       "description": "Functions that simplify creating dynamic and responsive grids.",
-      "item1": "<b>repeat</b> (n, value): avoids writing the same <b>value</b> <b>n</b> times manually.",
-      "item2": "<b>minmax</b> (min, max): <b>defines</b> minimum and maximum values.",
+      "item1": "<b>repeat</b>(n, value): avoids writing the same <b>value</b> <b>n</b> times manually.",
+      "item2": "<b>minmax</b>(min, max): <b>defines</b> minimum and maximum values.",
       "item3": "<b>auto-fit</b>: tries to <b>fit</b> columns to the container’s <b>width</b>; if there’s extra space, it collapses gaps.",
       "item4": "<b>auto-fill</b>: similar to <b>auto-fit</b>, but leaves <b>empty slots</b> if there aren’t enough items.",
       "example": "In this example, with <b>grid-template-columns: repeat(auto-fit, minmax(70px, 1fr))</b> we create as many columns as fit (auto-fit), each column will be at least 70px, and extra space is distributed proportionally (1fr). With <b>grid-auto-rows: minmax(50px, auto)</b>, each row has a minimum height of 50px.",
