@@ -24,10 +24,10 @@
     },
     "map": {
       "title": "Elige por dónde empezar a construir",
-      "fundamentals": "Modelo de caja, display, unidades y posicionamiento: los cimientos de cualquier layout.",
+      "fundamentals": "Modelo de caja, display, tamaños, márgenes, float y posicionamiento: los cimientos de cualquier layout.",
       "flex": "Distribuye elementos en un solo eje y deja que se adapten al espacio disponible.",
       "grid": "Controla filas y columnas a la vez para definir estructuras completas.",
-      "beyond": "Container queries, propiedades lógicas y recetas listas para tus proyectos."
+      "beyond": "Container queries, propiedades lógicas, multicolumna, anchor positioning y recetas listas para tus proyectos."
     }
   },
   "basicConcepts": {
@@ -531,6 +531,61 @@
       "example": "<p>El hijo 2 tiene la clase <b>item</b>. Cambia <b>position</b> y haz scroll dentro del contenedor para ver cómo reacciona cada valor. Fíjate en que los demás hijos ocupan su hueco cuando sale del flujo.</p>",
       "select": "Selecciona <b>position</b>:",
       "tip": "Un elemento con <code>position: absolute</code> necesita un ancestro posicionado como referencia. Lo habitual es poner <code>position: relative</code> en el contenedor. Si sticky no funciona, revisa si algún ancestro tiene overflow distinto de visible."
+    },
+    "intrinsicSizing": {
+      "title": "Tamaños intrínsecos",
+      "description": "El tamaño <b>intrínseco</b> es el que pide el propio <b>contenido</b>, frente al <b>extrínseco</b>, que impone el contenedor. Estos valores deciden cuánto ocupa cada caja dentro de cualquier layout.",
+      "item1": "<b>min-content</b>: el ancho más estrecho posible sin desbordar, partiendo el texto en cada oportunidad.",
+      "item2": "<b>max-content</b>: el ancho que necesita el contenido sin partirse en líneas, aunque desborde.",
+      "item3": "<b>fit-content</b>: usa max-content mientras quepa y se ajusta al espacio disponible cuando no.",
+      "item4": "<b>min-width</b> y <b>max-width</b>: fijan límites al tamaño. En flex y grid, el mínimo automático de los ítems es min-content, por eso a veces no se encogen.",
+      "item5": "<b>aspect-ratio</b>: mantiene la proporción de una caja, por ejemplo 16 / 9, aunque cambie su ancho.",
+      "example": "<p>Cambia el <b>width</b> del hijo con la clase <b>item</b> y reduce el ancho del contenedor: <b>max-content</b> desborda, <b>min-content</b> parte el texto todo lo posible y <b>fit-content</b> se adapta entre ambos.</p>",
+      "select": "Selecciona <b>width</b>:",
+      "tip": "Si un ítem flex con texto largo desborda, añade <code>min-width: 0</code>: anula el mínimo automático de min-content y deja que se encoja."
+    },
+    "marginCollapse": {
+      "title": "Colapso de márgenes",
+      "description": "En el flujo normal, los márgenes <b>verticales</b> de bloques contiguos no se suman: se <b>fusionan</b> y queda solo el mayor. Es uno de los comportamientos que más sorprende al maquetar.",
+      "item1": "Entre hermanos: un margin-bottom de 2rem seguido de un margin-top de 1rem deja 2rem, no 3rem.",
+      "item2": "Entre padre e hijo: el margin-top del primer hijo puede salir por fuera del padre si este no tiene borde, padding ni contenido antes.",
+      "item3": "Solo ocurre con márgenes verticales y en el flujo de bloque: en <b>flex</b> y <b>grid</b> los márgenes nunca colapsan.",
+      "item4": "<b>display: flow-root</b> crea un nuevo contexto de formato de bloque y evita que los márgenes de los hijos salgan del padre.",
+      "example": "<p>Los dos hijos tienen <b>margin: 1.5rem 0</b>. Con <b>block</b> los márgenes se fusionan y la separación entre ellos es de 1.5rem; con <b>flex</b> o <b>grid</b> se suman y la separación se duplica.</p>",
+      "select": "Selecciona <b>display</b>:",
+      "tip": "Usar <code>gap</code> en flex o grid en lugar de márgenes evita el colapso y hace la separación más predecible."
+    },
+    "float": {
+      "title": "float y clear",
+      "description": "<b>float</b> saca un elemento del flujo normal y lo coloca a un lado, de forma que el texto lo <b>rodea</b>. Antes se usaba para maquetar columnas; hoy su uso natural es que el texto envuelva una imagen.",
+      "item1": "<b>float: left</b> o <b>right</b>: el elemento se desplaza a ese lado y el contenido en línea fluye a su alrededor.",
+      "item2": "<b>clear</b>: impide que un elemento se coloque junto a un float y lo baja por debajo de él.",
+      "item3": "Un contenedor no crece para contener sus floats; <b>display: flow-root</b> soluciona ese problema.",
+      "item4": "Para colocar columnas o tarjetas usa <b>flex</b> o <b>grid</b>: float no está pensado para eso.",
+      "example": "<p>Cambia <b>float</b> en la clase <b>item</b> y observa cómo el texto pasa a rodearla por un lado u otro.</p>",
+      "select": "Selecciona <b>float</b>:",
+      "tip": "Con <code>shape-outside</code> el texto puede rodear un float siguiendo una forma, por ejemplo un círculo, en lugar de su caja rectangular."
+    },
+    "displayContents": {
+      "title": "display: contents",
+      "description": "<b>display: contents</b> hace que un elemento <b>no genere caja</b>: desaparece del layout y sus hijos pasan a comportarse como hijos directos de su padre.",
+      "item1": "Es útil cuando un envoltorio del HTML impide que sus hijos participen en el <b>flex</b> o <b>grid</b> del contenedor.",
+      "item2": "El elemento pierde su fondo, borde, padding y tamaño, porque ya no tiene caja propia.",
+      "item3": "Úsalo con cuidado en botones, enlaces o listas: algunos navegadores han llegado a perder su significado para los lectores de pantalla.",
+      "example": "<p>El contenedor es un grid de 3 columnas y los hijos 2 y 3 están dentro de un envoltorio con la clase <b>content</b>. Con <b>block</b> el envoltorio ocupa una sola celda; con <b>contents</b> desaparece y sus hijos ocupan sus propias celdas.</p>",
+      "select": "Selecciona <b>display</b>:",
+      "tip": "Si quieres que los hijos sigan las columnas del padre pero conservando el envoltorio, usa <b>subgrid</b>."
+    },
+    "flowAlignment": {
+      "title": "Alineación en flujo normal",
+      "description": "<b>align-content</b> ya funciona también en contenedores de <b>bloque</b>, sin flex ni grid. Permite centrar verticalmente el contenido de una caja con una sola declaración.",
+      "item1": "<b>normal</b> (predeterminado): el contenido empieza arriba, como siempre.",
+      "item2": "<b>center</b>: centra verticalmente todo el contenido dentro del bloque.",
+      "item3": "<b>end</b>: coloca el contenido al final del bloque.",
+      "item4": "Solo se nota cuando el bloque es más alto que su contenido, por ejemplo con height o min-height.",
+      "example": "<p>El contenedor es un bloque normal con altura fija. Cambia <b>align-content</b> para mover su contenido sin convertirlo en flex ni grid.</p>",
+      "select": "Selecciona <b>align-content</b>:",
+      "tip": "Los navegadores actuales lo soportan desde 2024. En versiones antiguas se ignora y el contenido se queda arriba, así que no rompe nada."
     }
   },
   "beyond": {
@@ -600,6 +655,29 @@
       "item5": "<b>card grid</b>: tarjetas responsivas sin media queries.",
       "example": "<p>Selecciona una receta. El HTML y el CSS se actualizan a la vez, y puedes seguir editándolos para adaptarlos.</p>",
       "select": "Selecciona <b>receta</b>:"
+    },
+    "multicolumn": {
+      "title": "Multicolumna",
+      "description": "El layout <b>multicolumna</b> reparte el contenido en <b>columnas</b>, como en un periódico. Es el tercer sistema de layout de CSS junto a flex y grid.",
+      "item1": "<b>columns</b>: atajo de column-count y column-width. Con un ancho, crea tantas columnas como quepan.",
+      "item2": "<b>column-gap</b>: separación entre columnas.",
+      "item3": "<b>column-rule</b>: línea divisoria entre columnas, con la misma sintaxis que border.",
+      "item4": "<b>column-span: all</b>: hace que un elemento, como un título, ocupe todas las columnas.",
+      "item5": "<b>break-inside: avoid</b>: evita que un elemento quede partido entre dos columnas.",
+      "example": "<p>Cambia <b>columns</b> en el contenedor. Con un número fijas cuántas columnas hay; con un ancho como <b>10rem</b>, el navegador crea las que quepan. Prueba esta última opción moviendo el control de ancho.</p>",
+      "select": "Selecciona <b>columns</b>:",
+      "tip": "El contenido llena cada columna de arriba abajo antes de pasar a la siguiente. Si quieres tarjetas ordenadas por filas, usa grid; el masonry nativo de grid todavía está en desarrollo."
+    },
+    "anchorPositioning": {
+      "title": "Anchor positioning",
+      "description": "El <b>anchor positioning</b> coloca un elemento respecto a otro, su <b>ancla</b>, sin JavaScript. Es la base de tooltips, menús desplegables y popovers.",
+      "item1": "<b>anchor-name</b>: da un nombre, que empieza por dos guiones, al elemento que hace de ancla.",
+      "item2": "<b>position-anchor</b>: indica qué ancla usa un elemento con position: absolute o fixed.",
+      "item3": "<b>position-area</b>: coloca el elemento en una zona alrededor del ancla, como top, bottom o right.",
+      "item4": "<b>position-try-fallbacks</b>: define posiciones alternativas para cuando el elemento no cabe.",
+      "example": "<p>El elemento con la clase <b>tooltip</b> está anclado al elemento con la clase <b>anchor</b>. Cambia <b>position-area</b> para moverlo a su alrededor.</p>",
+      "select": "Selecciona <b>position-area</b>:",
+      "tip": "Ya lo soportan Chrome y Edge, y está llegando al resto de navegadores. Donde no funciona, el tooltip se queda en su posición normal, así que conviene usarlo como mejora progresiva."
     }
   }
 }

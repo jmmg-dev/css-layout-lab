@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 type Chunks = ReactNode;
 
 /** Layout models and the properties that drive them: the terms worth marking in running text. */
-const CSS_KEYWORD = /^((inline-)?(block|flex|grid)|inline|flexbox|display|position|gap|order|box-sizing|content-box|border-box|(flex|grid|justify|align|place)-[a-z-]+)$/i;
+const CSS_KEYWORD = /^((inline-)?(block|flex|grid)|inline|flexbox|display|position|gap|order|box-sizing|content-box|border-box|float|clear|flow-root|columns|min-content|max-content|fit-content|aspect-ratio|(flex|grid|justify|align|place|column|anchor|position)-[a-z-]+)$/i;
 
 const plainText = (chunks: Chunks) => {
   const text = Array.isArray(chunks) ? chunks.join('') : chunks;

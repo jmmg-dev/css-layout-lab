@@ -24,10 +24,10 @@
     },
     "map": {
       "title": "Choose where to start building",
-      "fundamentals": "Box model, display, units and positioning: the foundations of any layout.",
+      "fundamentals": "Box model, display, sizing, margins, float and positioning: the foundations of any layout.",
       "flex": "Distribute elements along one axis and let them adapt to the available space.",
       "grid": "Control rows and columns at once to define complete structures.",
-      "beyond": "Container queries, logical properties and recipes ready for your projects."
+      "beyond": "Container queries, logical properties, multi-column, anchor positioning and recipes ready for your projects."
     }
   },
   "basicConcepts": {
@@ -531,6 +531,61 @@
       "example": "<p>Child 2 has the <b>item</b> class. Change <b>position</b> and scroll inside the container to see how each value reacts. Notice how the other children take its space when it leaves the flow.</p>",
       "select": "Select <b>position</b>:",
       "tip": "An element with <code>position: absolute</code> needs a positioned ancestor as a reference. The usual approach is to set <code>position: relative</code> on the container. If sticky does not work, check whether an ancestor has an overflow other than visible."
+    },
+    "intrinsicSizing": {
+      "title": "Intrinsic sizing",
+      "description": "<b>Intrinsic</b> size is the one the <b>content</b> asks for, as opposed to the <b>extrinsic</b> size imposed by the container. These values decide how much space each box takes in any layout.",
+      "item1": "<b>min-content</b>: the narrowest width possible without overflowing, breaking the text at every opportunity.",
+      "item2": "<b>max-content</b>: the width the content needs without wrapping onto new lines, even if it overflows.",
+      "item3": "<b>fit-content</b>: uses max-content while it fits and adapts to the available space when it does not.",
+      "item4": "<b>min-width</b> and <b>max-width</b>: set limits on the size. In flex and grid, the automatic minimum of items is min-content, which is why they sometimes refuse to shrink.",
+      "item5": "<b>aspect-ratio</b>: keeps the proportion of a box, for example 16 / 9, even when its width changes.",
+      "example": "<p>Change the <b>width</b> of the child with the <b>item</b> class and reduce the container width: <b>max-content</b> overflows, <b>min-content</b> breaks the text as much as possible and <b>fit-content</b> adapts between both.</p>",
+      "select": "Select <b>width</b>:",
+      "tip": "If a flex item with long text overflows, add <code>min-width: 0</code>: it removes the automatic min-content minimum and lets the item shrink."
+    },
+    "marginCollapse": {
+      "title": "Margin collapsing",
+      "description": "In normal flow, the <b>vertical</b> margins of adjacent blocks do not add up: they <b>merge</b> and only the largest one remains. It is one of the most surprising behaviours when building layouts.",
+      "item1": "Between siblings: a margin-bottom of 2rem followed by a margin-top of 1rem leaves 2rem, not 3rem.",
+      "item2": "Between parent and child: the first child’s margin-top can escape the parent if it has no border, padding or content before it.",
+      "item3": "It only happens with vertical margins in block flow: in <b>flex</b> and <b>grid</b> margins never collapse.",
+      "item4": "<b>display: flow-root</b> creates a new block formatting context and keeps the children’s margins inside the parent.",
+      "example": "<p>Both children have <b>margin: 1.5rem 0</b>. With <b>block</b> the margins merge and the gap between them is 1.5rem; with <b>flex</b> or <b>grid</b> they add up and the gap doubles.</p>",
+      "select": "Select <b>display</b>:",
+      "tip": "Using <code>gap</code> in flex or grid instead of margins avoids collapsing and makes spacing more predictable."
+    },
+    "float": {
+      "title": "float and clear",
+      "description": "<b>float</b> takes an element out of normal flow and moves it to one side, so the text <b>wraps</b> around it. It used to build column layouts; today its natural use is wrapping text around an image.",
+      "item1": "<b>float: left</b> or <b>right</b>: the element moves to that side and inline content flows around it.",
+      "item2": "<b>clear</b>: prevents an element from sitting next to a float and moves it below.",
+      "item3": "A container does not grow to contain its floats; <b>display: flow-root</b> fixes that.",
+      "item4": "To place columns or cards use <b>flex</b> or <b>grid</b>: float is not meant for that.",
+      "example": "<p>Change <b>float</b> on the <b>item</b> class and watch the text wrap around it on one side or the other.</p>",
+      "select": "Select <b>float</b>:",
+      "tip": "With <code>shape-outside</code> text can wrap around a float following a shape, such as a circle, instead of its rectangular box."
+    },
+    "displayContents": {
+      "title": "display: contents",
+      "description": "<b>display: contents</b> makes an element <b>generate no box</b>: it disappears from the layout and its children behave as direct children of its parent.",
+      "item1": "It is useful when a wrapper in the HTML stops its children from taking part in the container’s <b>flex</b> or <b>grid</b>.",
+      "item2": "The element loses its background, border, padding and size, because it no longer has a box.",
+      "item3": "Use it carefully on buttons, links or lists: some browsers have lost their meaning for screen readers.",
+      "example": "<p>The container is a 3-column grid and children 2 and 3 sit inside a wrapper with the <b>content</b> class. With <b>block</b> the wrapper takes a single cell; with <b>contents</b> it disappears and its children take their own cells.</p>",
+      "select": "Select <b>display</b>:",
+      "tip": "If you want the children to follow the parent’s columns while keeping the wrapper, use <b>subgrid</b>."
+    },
+    "flowAlignment": {
+      "title": "Alignment in normal flow",
+      "description": "<b>align-content</b> now also works on <b>block</b> containers, without flex or grid. It lets you centre a box’s content vertically with a single declaration.",
+      "item1": "<b>normal</b> (default): content starts at the top, as always.",
+      "item2": "<b>center</b>: centres all the content vertically inside the block.",
+      "item3": "<b>end</b>: places the content at the end of the block.",
+      "item4": "It only shows when the block is taller than its content, for example with height or min-height.",
+      "example": "<p>The container is a normal block with a fixed height. Change <b>align-content</b> to move its content without turning it into flex or grid.</p>",
+      "select": "Select <b>align-content</b>:",
+      "tip": "Current browsers have supported it since 2024. Older versions ignore it and the content stays at the top, so nothing breaks."
     }
   },
   "beyond": {
@@ -600,6 +655,29 @@
       "item5": "<b>card grid</b>: responsive cards without media queries.",
       "example": "<p>Select a recipe. HTML and CSS update together, and you can keep editing them to adapt it.</p>",
       "select": "Select <b>recipe</b>:"
+    },
+    "multicolumn": {
+      "title": "Multi-column",
+      "description": "<b>Multi-column</b> layout splits content into <b>columns</b>, like a newspaper. It is the third CSS layout system alongside flex and grid.",
+      "item1": "<b>columns</b>: shorthand for column-count and column-width. With a width, it creates as many columns as fit.",
+      "item2": "<b>column-gap</b>: space between columns.",
+      "item3": "<b>column-rule</b>: dividing line between columns, with the same syntax as border.",
+      "item4": "<b>column-span: all</b>: makes an element, such as a heading, span every column.",
+      "item5": "<b>break-inside: avoid</b>: stops an element from being split between two columns.",
+      "example": "<p>Change <b>columns</b> on the container. A number sets how many columns there are; a width such as <b>10rem</b> lets the browser create as many as fit. Try that last option while moving the width control.</p>",
+      "select": "Select <b>columns</b>:",
+      "tip": "Content fills each column from top to bottom before moving to the next. If you want cards ordered in rows, use grid; native masonry for grid is still being developed."
+    },
+    "anchorPositioning": {
+      "title": "Anchor positioning",
+      "description": "<b>Anchor positioning</b> places an element relative to another one, its <b>anchor</b>, without JavaScript. It is the basis for tooltips, dropdown menus and popovers.",
+      "item1": "<b>anchor-name</b>: gives a name, starting with two dashes, to the element that acts as the anchor.",
+      "item2": "<b>position-anchor</b>: sets which anchor an element with position: absolute or fixed uses.",
+      "item3": "<b>position-area</b>: places the element in an area around the anchor, such as top, bottom or right.",
+      "item4": "<b>position-try-fallbacks</b>: defines alternative positions for when the element does not fit.",
+      "example": "<p>The element with the <b>tooltip</b> class is anchored to the element with the <b>anchor</b> class. Change <b>position-area</b> to move it around.</p>",
+      "select": "Select <b>position-area</b>:",
+      "tip": "Chrome and Edge already support it, and it is reaching the other browsers. Where it does not work, the tooltip stays in its normal position, so treat it as a progressive enhancement."
     }
   }
 }

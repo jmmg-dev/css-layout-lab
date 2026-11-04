@@ -821,6 +821,118 @@ export const examples: Record<string, Example> = {
       },
     ],
   },
+  'intrinsic-sizing': {
+    height: 120,
+    html: container(`  <div class="item">A box with some longer text inside it</div>`),
+    css: `.container {\n  ${BORDER}\n  padding: 0.5rem;\n}\n\n.item {\n  background: #d9d2f5;\n  padding: 1rem;\n  width: auto;\n}`,
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'fundamentals.intrinsicSizing.select',
+        selector: '.item',
+        property: 'width',
+        options: ['auto', 'min-content', 'max-content', 'fit-content'],
+      },
+    ],
+  },
+  'margin-collapse': {
+    height: 240,
+    html: container(children(2)),
+    css: `.container {\n  ${BORDER}\n  display: block;\n  flex-direction: column;\n  padding: 0.5rem;\n}\n\n.child {\n  margin: 1.5rem 0;\n  padding: 1rem;\n}`,
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'fundamentals.marginCollapse.select',
+        selector: '.container',
+        property: 'display',
+        options: ['block', 'flex', 'grid'],
+      },
+    ],
+  },
+  float: {
+    height: 220,
+    html: container(`  <div class="item">float</div>
+  <p class="text">
+    Text flows around the floated box. When float is none, the box stays in the
+    normal flow and the text starts below it. With left or right, the box moves to
+    that side and the lines of text wrap around it until they pass its bottom edge.
+  </p>`),
+    css: `.container {\n  ${BORDER}\n  padding: 0.5rem;\n}\n\n.item {\n  background: #d9d2f5;\n  float: none;\n  margin: 0.25rem 1rem;\n  padding: 1.5rem 1rem;\n  width: 7rem;\n}\n\n.text {\n  background: none;\n  font-weight: 400;\n  line-height: 1.6;\n  margin: 0;\n  text-align: left;\n}`,
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'fundamentals.float.select',
+        selector: '.item',
+        property: 'float',
+        options: ['none', 'left', 'right'],
+      },
+    ],
+  },
+  'display-contents': {
+    height: 200,
+    html: container(`  <div class="child">1</div>
+  <div class="content">
+    <div class="child">2</div>
+    <div class="child">3</div>
+  </div>
+  <div class="child">4</div>`),
+    css: gridCss(
+      ['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(3, 1fr);'],
+      `.content {\n  border: 2px dashed #2b7de0;\n  display: block;\n  padding: 0.5rem;\n}\n\n.content > * {\n  background: #d9d2f5;\n}\n\n${childRule}`,
+    ),
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'fundamentals.displayContents.select',
+        selector: '.content',
+        property: 'display',
+        options: ['block', 'contents'],
+      },
+    ],
+  },
+  'flow-alignment': {
+    height: 240,
+    html: container(`  <div class="child">content</div>`),
+    css: gridCss(['align-content: normal;', 'display: block;', 'height: 12rem;'], childRule),
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'fundamentals.flowAlignment.select',
+        selector: '.container',
+        property: 'align-content',
+        options: ['normal', 'center', 'end'],
+      },
+    ],
+  },
+  multicolumn: {
+    height: 300,
+    html: container(children(8)),
+    css: `.container {\n  ${BORDER}\n  column-gap: 1rem;\n  column-rule: 1px solid #a9cdf6;\n  columns: 2;\n  padding: 0.5rem;\n}\n\n.child {\n  break-inside: avoid;\n  margin-bottom: 0.75rem;\n  padding: 1rem;\n}\n\n.child:nth-child(3n) {\n  padding-block: 2rem;\n}`,
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'beyond.multicolumn.select',
+        selector: '.container',
+        property: 'columns',
+        options: ['1', '2', '3', '10rem'],
+      },
+    ],
+  },
+  'anchor-positioning': {
+    height: 260,
+    html: container(`  <div class="anchor">anchor</div>
+  <div class="tooltip">tooltip</div>`),
+    css: `.container {\n  ${BORDER}\n  display: grid;\n  height: 14rem;\n  padding: 0.5rem;\n  place-items: center;\n}\n\n.anchor {\n  anchor-name: --anchor;\n  padding: 1rem 1.5rem;\n}\n\n.tooltip {\n  background: #d9d2f5;\n  margin: 0.5rem;\n  padding: 0.5rem 1rem;\n  position: absolute;\n  position-anchor: --anchor;\n  position-area: top;\n}`,
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'beyond.anchorPositioning.select',
+        selector: '.tooltip',
+        property: 'position-area',
+        options: ['top', 'right', 'bottom', 'left', 'top right'],
+      },
+    ],
+  },
   'layout-recipes': {
     height: 300,
     html: container(`  <div class="child">centered</div>`),
