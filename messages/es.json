@@ -216,14 +216,15 @@
       "description": "Define cómo un <b>ítem</b> flex <b>crece</b> para llenar el espacio extra disponible en el <b>contenedor</b>.",
       "item1": "Valor por defecto: 0 (<b>no</b> crece).",
       "item2": "Si pones un número <b>mayor</b> que 0, el ítem <b>crecerá proporcionalmente</b> según ese <b>valor</b>.",
-      "example": "<p>En este ejemplo, podemos comprobar cómo el <b>item</b> con la clase <b>child-1</b> tiene el tamaño <b>por defecto</b> al tener <b>flex-grow</b> a <b>0</b>. Por el contrario, el resto de <b>items</b> <b>crecen</b> en <b>proporción</b> al valor de <b>flex-grow</b> en su respectiva clase, creciendo el item <b>child-3</b> el <b>doble</b> que el item <b>child-2</b>.</p>"
+      "example": "<p>El <b>item</b> <b>child-1</b> mantiene su tamaño al tener <b>flex-grow</b> a <b>0</b>, y los demás <b>crecen</b> en <b>proporción</b> a su valor. Cambia el <b>flex-grow</b> de <b>child-3</b> y compara cuánto espacio libre se lleva frente a <b>child-2</b>.</p>",
+      "select": "Selecciona <b>flex-grow</b> de <b>child-3</b>:"
     },
     "shrink": {
       "title": "flex-shrink",
       "description": "Define cómo un <b>ítem</b> flex se <b>encoge</b> cuando el espacio del <b>contenedor</b> es menor que la <b>suma</b> de los <b>ítems</b>.",
       "item1": "Valor por defecto: 1 (<b>sí</b> se encoge).",
       "item2": "Si pones <b>0</b>, ese ítem <b>no</b> se <b>encogerá</b> aunque falte espacio.",
-      "example": "<p>En este ejemplo, podemos comprobar cómo el <b>item</b> con la clase <b>child-1</b> <b>no</b> se <b>encoge</b> al tener <b>flex-shrink</b> a <b>0</b>. Por el contrario, el resto de <b>items</b> se <b>encogen</b> al tener <b>flex-shrink</b> a <b>1</b>.</p>",
+      "example": "<p>Los tres <b>items</b> parten de <b>flex-basis: 12rem</b>. El <b>item</b> <b>child-1</b> <b>no</b> se encoge al tener <b>flex-shrink</b> a <b>0</b>, mientras que el resto se <b>encogen</b> al tener <b>flex-shrink</b> a <b>1</b>. Mueve el control de ancho para verlo.</p>",
       "tip": "Un ítem flex no se encoge por debajo del tamaño de su contenido porque su <code>min-width</code> es <code>auto</code>. Si un texto largo desborda el contenedor, añade <code>min-width: 0</code> al ítem."
     },
     "basis": {
@@ -239,8 +240,9 @@
       "description": "Controla el <b>orden</b> de los <b>ítems</b> flex. Por defecto, todos tienen <b>order: 0</b>. Los ítems con un valor <b>menor</b> aparecerán <b>antes</b>.",
       "item1": "Un ítem con <b>order: -1</b> aparecerá antes que uno con <b>order: 0</b>.",
       "item2": "Un ítem con <b>order: 1</b> aparecerá después de los que tienen <b>order: 0</b>.",
-      "example": "<p>En este ejemplo, podemos comprobar cómo los <b>items</b> se ordenan de <b>menor a mayor</b> en función del valor <b>order</b>.</p>",
-      "tip": "<b>order</b> solo cambia el orden visual. El teclado y los lectores de pantalla siguen el orden del HTML, así que no lo uses para reordenar contenido con significado."
+      "example": "<p>Los <b>items</b> se colocan de <b>menor a mayor</b> valor de <b>order</b> y, con el mismo valor, respetan el orden del HTML. Cambia el <b>order</b> del hijo con la clase <b>item</b> para llevarlo delante o detrás de sus hermanos.</p>",
+      "tip": "<b>order</b> solo cambia el orden visual. El teclado y los lectores de pantalla siguen el orden del HTML, así que no lo uses para reordenar contenido con significado.",
+      "select": "Selecciona <b>order</b>:"
     },
     "flexShorthand": {
       "title": "flex & flex-flow",
@@ -250,7 +252,7 @@
       "item3": "<b>flex: 1</b>: equivale a 1 1 0%. Ignora el contenido para que los ítems midan lo mismo.",
       "item4": "<b>flex: none</b>: equivale a 0 0 auto. Mantiene su tamaño y no crece ni se encoge.",
       "item5": "<b>flex-flow: row wrap</b>: define en una sola línea la dirección y el envoltorio.",
-      "example": "<p>Cambia el valor de <b>flex</b> en la clase <b>item</b> y observa cómo reparte el espacio frente a sus hermanos. El último valor fija un tamaño base de 12rem.</p>",
+      "example": "<p>Los hermanos tienen <b>flex: 1</b> y el hijo con la clase <b>item</b> tiene más texto. Con <b>auto</b> parte del tamaño de su contenido y con <b>1</b> mide lo mismo que sus hermanos. Reduce el ancho del contenedor para ver la diferencia entre <b>initial</b>, que se encoge, y <b>none</b>, que no.</p>",
       "select": "Selecciona <b>flex</b>:",
       "tip": "Usa el atajo <code>flex</code> en lugar de las tres propiedades por separado: es más corto y evita valores heredados inesperados."
     },
@@ -263,7 +265,7 @@
       "item4": "<b>flex-end</b>: coloca el ítem al final del eje cruzado.",
       "item5": "<b>stretch</b>: estira el ítem para ocupar todo el eje cruzado si no tiene un tamaño fijo.",
       "item6": "<b>baseline</b>: alinea el ítem según la línea base de su texto.",
-      "example": "<p>El contenedor alinea sus hijos al inicio, pero el hijo con la clase <b>item</b> puede escapar de esa regla con <b>align-self</b>.</p>",
+      "example": "<p>El contenedor centra sus hijos con <b>align-items: center</b>, así que <b>auto</b> también los deja centrados. El hijo con la clase <b>item</b> puede escapar de esa regla con <b>align-self</b>.</p>",
       "select": "Selecciona <b>align-self</b>:",
       "tip": "No existe justify-self en flexbox. Para separar un ítem en el eje principal usa <code>margin-left: auto</code>, un patrón muy útil para empujar un botón al final de una barra."
     },
@@ -332,8 +334,9 @@
       "description": "Permite definir layouts mediante <b>nombres semánticos</b> para distintas zonas de la cuadrícula.",
       "item1": "En el contenedor se usa <b>grid-template-areas</b>.",
       "item2": "Cada item se asigna con <b>grid-area: nombre</b>.",
-      "example": "En este ejemplo, con <b>grid-template-areas</b> definimos un layout con 3 filas y 3 columnas, donde cada <b>celda</b> tiene un <b>nombre</b> semántico. Luego, cada item se posiciona en la cuadrícula asignándole el <b>nombre correspondiente</b> mediante <b>grid-area</b>.",
-      "tip": "Escribe un punto en lugar de un nombre para dejar una celda vacía. Cada área debe formar un rectángulo: no puede tener forma de L."
+      "example": "<p>Con <b>grid-template-areas</b> definimos un layout de 3 filas y 3 columnas donde cada <b>celda</b> tiene un <b>nombre</b> semántico, y cada item se coloca con <b>grid-area</b>. Cambia la distribución: el HTML no cambia, solo la plantilla.</p>",
+      "tip": "Escribe un punto en lugar de un nombre para dejar una celda vacía. Cada área debe formar un rectángulo: no puede tener forma de L.",
+      "select": "Selecciona <b>distribución</b>:"
     },
     "functions": {
       "title": "Funciones útiles",

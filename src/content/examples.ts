@@ -40,6 +40,45 @@ const positioningCss = (rule: string) =>
 
 const responsiveHtml = container(children(6));
 
+const areasHtml = container(`  <div class="header">header</div>
+  <div class="body-left">left</div>
+  <div class="body-center">center</div>
+  <div class="body-right">right</div>
+  <div class="footer">footer</div>`);
+
+// Only the template changes between presets: the HTML and each item's grid-area stay the same.
+const areasCss = (rows: string[], [columns, rowSizes, height] = ['75px 1fr 75px', '2fr 4rem 1fr', '12rem']) => `.container {
+  ${BORDER}
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+${rows.map((row) => `    "${row}"`).join('\n')};
+  grid-template-columns: ${columns};
+  grid-template-rows: ${rowSizes};
+${height ? `  height: ${height};
+` : ""}  padding: 0.5rem;
+}
+
+.header {
+  grid-area: header;
+}
+
+.body-left {
+  grid-area: body-left;
+}
+
+.body-center {
+  grid-area: body-center;
+}
+
+.body-right {
+  grid-area: body-right;
+}
+
+.footer {
+  grid-area: footer;
+}`;
+
 const flexVsGridHtml = container(children(5));
 
 export const examples: Record<string, Example> = {
@@ -153,7 +192,7 @@ export const examples: Record<string, Example> = {
     height: 130,
     initialWidth: 30,
     html: container(children(8)),
-    css: flexCss(['flex-wrap: nowrap;']),
+    css: flexCss(['flex-wrap: wrap;']),
     controls: [
       {
         kind: 'property',
@@ -212,14 +251,14 @@ export const examples: Record<string, Example> = {
   'align-self': {
     height: 205,
     html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
-    css: flexCss(['align-items: flex-start;', 'height: 10rem;'], `${childRule}\n\n.item {\n  align-self: auto;\n  background: #d9d2f5;\n}`),
+    css: flexCss(['align-items: center;', 'height: 10rem;'], `${childRule}\n\n.item {\n  align-self: auto;\n  background: #d9d2f5;\n}`),
     controls: [
       {
         kind: 'property',
         labelKey: 'flex.alignSelf.select',
         selector: '.item',
         property: 'align-self',
-        options: ['auto', 'flex-start', 'center', 'flex-end', 'stretch', 'baseline'],
+        options: ['auto', 'flex-start', 'center', 'flex-end', 'stretch'],
       },
     ],
   },
@@ -241,15 +280,25 @@ export const examples: Record<string, Example> = {
   'flex-grow': {
     height: 110,
     html: container(numberedChildren(3, 'span')),
-    css: flexCss([], flexItems((n) => `flex-grow: ${n - 1};`)),
+    css: flexCss([], flexItems((n) => (n === 3 ? 'background: #d9d2f5;\n  flex-grow: 2;' : `flex-grow: ${n - 1};`))),
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'flex.grow.select',
+        selector: '.child-3',
+        property: 'flex-grow',
+        options: ['0', '1', '2', '3'],
+      },
+    ],
   },
   'flex-shrink': {
-    height: 170,
-    initialWidth: 55,
-    html: container(
-      [1, 2, 3].map((n) => `  <span class="child-${n}">This is an example</span>`).join('\n'),
+    height: 110,
+    initialWidth: 50,
+    html: container(numberedChildren(3, 'span')),
+    css: flexCss(
+      [],
+      flexItems((n) => `${n === 1 ? 'background: #d9d2f5;\n  ' : ''}flex-basis: 12rem;\n  flex-shrink: ${n === 1 ? 0 : 1};`),
     ),
-    css: flexCss([], flexItems((n) => `flex-shrink: ${n === 1 ? 0 : 1};`)),
   },
   'flex-basis': {
     height: 110,
@@ -258,8 +307,8 @@ export const examples: Record<string, Example> = {
   },
   'flex-shorthand': {
     height: 110,
-    html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
-    css: flexCss([], `${childRule}\n\n.item {\n  background: #d9d2f5;\n  flex: initial;\n}`),
+    html: container(`  <div class="child">1</div>\n  <div class="child item">item with more text</div>\n  <div class="child">3</div>`),
+    css: flexCss([], `.child {\n  flex: 1;\n  padding: 1rem;\n}\n\n.item {\n  background: #d9d2f5;\n  flex: initial;\n}`),
     controls: [
       {
         kind: 'property',
@@ -272,8 +321,17 @@ export const examples: Record<string, Example> = {
   },
   order: {
     height: 110,
-    html: container(numberedChildren(3)),
-    css: flexCss([], flexItems((n) => `order: ${[3, 1, 2][n - 1]};`)),
+    html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
+    css: flexCss([], `${childRule}\n\n.item {\n  background: #d9d2f5;\n  order: 0;\n}`),
+    controls: [
+      {
+        kind: 'property',
+        labelKey: 'flex.order.select',
+        selector: '.item',
+        property: 'order',
+        options: ['-1', '0', '1'],
+      },
+    ],
   },
 
   'grid-inline-grid': {
@@ -311,9 +369,9 @@ export const examples: Record<string, Example> = {
         kind: 'preset',
         labelKey: 'grid.explicit.select',
         options: [
-          { value: 'example row', ...explicitBase },
+          { value: '6 items', ...explicitBase },
           {
-            value: 'example column',
+            value: '7 items',
             html: container(`${children(6)}\n${seventhChild}`),
             css: explicitBase.css,
           },
@@ -337,7 +395,7 @@ export const examples: Record<string, Example> = {
         labelKey: 'grid.implicit.select',
         options: [
           {
-            value: 'rows',
+            value: 'grid-auto-rows',
             html: container(children(6)),
             css: gridCss([
               'display: grid;',
@@ -348,7 +406,7 @@ export const examples: Record<string, Example> = {
             ]),
           },
           {
-            value: 'columns',
+            value: 'grid-auto-columns',
             html: container(`${children(6)}\n${seventhChild}`),
             css: gridCss([
               'display: grid;',
@@ -447,44 +505,31 @@ export const examples: Record<string, Example> = {
   },
   'grid-template-areas': {
     height: 240,
-    html: container(`  <div class="header">header</div>
-  <div class="body-left">left</div>
-  <div class="body-center">center</div>
-  <div class="body-right">right</div>
-  <div class="footer">footer</div>`),
-    css: `.container {
-  ${BORDER}
-  display: grid;
-  gap: 1rem;
-  grid-template-areas:
-    "header header header"
-    "body-left body-center body-right"
-    "footer footer footer";
-  grid-template-columns: 75px 1fr 75px;
-  grid-template-rows: 2fr 4rem 1fr;
-  height: 12rem;
-  padding: 0.5rem;
-}
-
-.header {
-  grid-area: header;
-}
-
-.body-left {
-  grid-area: body-left;
-}
-
-.body-center {
-  grid-area: body-center;
-}
-
-.body-right {
-  grid-area: body-right;
-}
-
-.footer {
-  grid-area: footer;
-}`,
+    html: areasHtml,
+    css: areasCss(['header header header', 'body-left body-center body-right', 'footer footer footer']),
+    controls: [
+      {
+        kind: 'preset',
+        labelKey: 'grid.areas.select',
+        options: [
+          {
+            value: 'left | center | right',
+            html: areasHtml,
+            css: areasCss(['header header header', 'body-left body-center body-right', 'footer footer footer']),
+          },
+          {
+            value: 'right | center | left',
+            html: areasHtml,
+            css: areasCss(['header header header', 'body-right body-center body-left', 'footer footer footer']),
+          },
+          {
+            value: 'stacked',
+            html: areasHtml,
+            css: areasCss(['header', 'body-center', 'body-left', 'body-right', 'footer'], ['1fr', 'auto', '']),
+          },
+        ],
+      },
+    ],
   },
   'overlapping-items': {
     height: 240,

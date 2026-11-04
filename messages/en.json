@@ -216,14 +216,15 @@
       "description": "Defines how a flex <b>item</b> <b>grows</b> to fill the available extra space in the <b>container</b>.",
       "item1": "Default value: 0 (<b>does not</b> grow).",
       "item2": "If you set a number <b>greater</b> than 0, the item will <b>grow proportionally</b> according to that <b>value</b>.",
-      "example": "<p>In this example, we can see how the <b>item</b> with the class <b>child-1</b> has the <b>default</b> size since its <b>flex-grow</b> is set to <b>0</b>. On the other hand, the rest of the <b>items</b> <b>grow</b> in <b>proportion</b> to the <b>flex-grow</b> value in their respective class, with the <b>child-3</b> item growing <b>twice</b> as much as the <b>child-2</b> item.</p>"
+      "example": "<p>The <b>child-1</b> <b>item</b> keeps its size because its <b>flex-grow</b> is <b>0</b>, and the others <b>grow</b> in <b>proportion</b> to their value. Change the <b>flex-grow</b> of <b>child-3</b> and compare how much free space it takes against <b>child-2</b>.</p>",
+      "select": "Select the <b>flex-grow</b> of <b>child-3</b>:"
     },
     "shrink": {
       "title": "flex-shrink",
       "description": "Defines how a flex <b>item</b> <b>shrinks</b> when the <b>container</b> has less space than the <b>sum</b> of its <b>items</b>.",
       "item1": "Default value: 1 (<b>does</b> shrink).",
       "item2": "If you set <b>0</b>, that item will <b>not</b> <b>shrink</b> even if space is lacking.",
-      "example": "<p>In this example, we can see how the <b>item</b> with the class <b>child-1</b> does <b>not</b> <b>shrink</b> because its <b>flex-shrink</b> is set to <b>0</b>. In contrast, the other <b>items</b> <b>shrink</b> since their <b>flex-shrink</b> is <b>1</b>.</p>",
+      "example": "<p>All three <b>items</b> start from <b>flex-basis: 12rem</b>. The <b>child-1</b> <b>item</b> does <b>not</b> shrink because its <b>flex-shrink</b> is <b>0</b>, while the others <b>shrink</b> since theirs is <b>1</b>. Move the width control to see it.</p>",
       "tip": "A flex item does not shrink below its content size because its <code>min-width</code> is <code>auto</code>. If long text overflows the container, add <code>min-width: 0</code> to the item."
     },
     "basis": {
@@ -239,8 +240,9 @@
       "description": "Controls the <b>order</b> of the flex <b>items</b>. By default, all have <b>order: 0</b>. Items with a <b>smaller</b> value will appear <b>first</b>.",
       "item1": "An item with <b>order: -1</b> will appear before one with <b>order: 0</b>.",
       "item2": "An item with <b>order: 1</b> will appear after those with <b>order: 0</b>.",
-      "example": "<p>In this example, we can see how the <b>items</b> are ordered from <b>lowest to highest</b> according to their <b>order</b> value.</p>",
-      "tip": "<b>order</b> only changes the visual order. Keyboards and screen readers still follow the HTML order, so do not use it to reorder meaningful content."
+      "example": "<p><b>Items</b> are placed from <b>lowest to highest</b> <b>order</b> value and, with the same value, they follow the HTML order. Change the <b>order</b> of the child with the <b>item</b> class to move it before or after its siblings.</p>",
+      "tip": "<b>order</b> only changes the visual order. Keyboards and screen readers still follow the HTML order, so do not use it to reorder meaningful content.",
+      "select": "Select <b>order</b>:"
     },
     "flexShorthand": {
       "title": "flex & flex-flow",
@@ -250,7 +252,7 @@
       "item3": "<b>flex: 1</b>: same as 1 1 0%. It ignores the content so items end up the same size.",
       "item4": "<b>flex: none</b>: same as 0 0 auto. It keeps its size and neither grows nor shrinks.",
       "item5": "<b>flex-flow: row wrap</b>: sets direction and wrapping on a single line.",
-      "example": "<p>Change the value of <b>flex</b> on the <b>item</b> class and watch how it shares space with its siblings. The last value sets a base size of 12rem.</p>",
+      "example": "<p>The siblings have <b>flex: 1</b> and the child with the <b>item</b> class has more text. With <b>auto</b> it starts from the size of its content, and with <b>1</b> it matches its siblings. Reduce the container width to see the difference between <b>initial</b>, which shrinks, and <b>none</b>, which does not.</p>",
       "select": "Select <b>flex</b>:",
       "tip": "Use the <code>flex</code> shorthand instead of the three separate properties: it is shorter and avoids unexpected leftover values."
     },
@@ -263,7 +265,7 @@
       "item4": "<b>flex-end</b>: places the item at the end of the cross axis.",
       "item5": "<b>stretch</b>: stretches the item along the cross axis if it has no fixed size.",
       "item6": "<b>baseline</b>: aligns the item along its text baseline.",
-      "example": "<p>The container aligns its children to the start, but the child with the <b>item</b> class can escape that rule with <b>align-self</b>.</p>",
+      "example": "<p>The container centres its children with <b>align-items: center</b>, so <b>auto</b> also leaves them centred. The child with the <b>item</b> class can escape that rule with <b>align-self</b>.</p>",
       "select": "Select <b>align-self</b>:",
       "tip": "There is no justify-self in flexbox. To separate an item on the main axis use <code>margin-left: auto</code>, a handy pattern to push a button to the end of a bar."
     },
@@ -332,8 +334,9 @@
       "description": "Allows defining layouts using <b>semantic names</b> for different grid zones.",
       "item1": "The container uses <b>grid-template-areas</b>.",
       "item2": "Each item is assigned with <b>grid-area: name</b>.",
-      "example": "In this example, with <b>grid-template-areas</b> we define a layout with 3 rows and 3 columns, where each <b>cell</b> has a <b>semantic name</b>. Then, each item is positioned in the grid by assigning the corresponding <b>name</b> via <b>grid-area</b>.",
-      "tip": "Write a dot instead of a name to leave a cell empty. Each area must form a rectangle: it cannot be L-shaped."
+      "example": "<p>With <b>grid-template-areas</b> we define a layout of 3 rows and 3 columns where each <b>cell</b> has a <b>semantic name</b>, and each item is placed with <b>grid-area</b>. Change the arrangement: the HTML stays the same, only the template changes.</p>",
+      "tip": "Write a dot instead of a name to leave a cell empty. Each area must form a rectangle: it cannot be L-shaped.",
+      "select": "Select <b>arrangement</b>:"
     },
     "functions": {
       "title": "Useful functions",
