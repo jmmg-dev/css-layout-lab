@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
+import { themeScript } from '@/components/layout/ThemeToggle';
 import { routing } from '@/i18n/routing';
 import { SITE_NAME, SITE_URL } from '@/lib/seo';
 import '../globals.css';
@@ -16,7 +17,13 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-code', displ
 
 export const metadata: Metadata = { metadataBase: new URL(SITE_URL), title: SITE_NAME };
 
-export const viewport: Viewport = { themeColor: '#fbfaf7', colorScheme: 'light' };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbfaf7' },
+    { media: '(prefers-color-scheme: dark)', color: '#12141a' },
+  ],
+  colorScheme: 'light dark',
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,7 +38,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   const t = await getTranslations({ locale, namespace: 'ui' });
 
   return (
-    <html lang={locale} className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    // The theme script sets data-theme before React hydrates, so that attribute is expected to differ.
+    <html lang={locale} className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a className="skip-link" href="#content">
           {t('skipToContent')}

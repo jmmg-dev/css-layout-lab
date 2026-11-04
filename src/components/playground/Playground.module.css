@@ -61,9 +61,9 @@
 }
 
 .chip input:checked + span {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  color: var(--on-button);
 }
 
 .chip input:focus-visible + span {
@@ -100,6 +100,18 @@
   --screen: #f3f0fb;
 
   color: var(--fg);
+}
+
+:global(:root[data-theme="dark"]) .editor {
+  --faint: #8a8ea3;
+  --rule: #34304a;
+  --red-text: #f0a37c;
+  --blue: #8fbaf3;
+  --gold: #c7aaf3;
+  --screen: #1d1b2b;
+  --tok-selector: #f2a46b;
+  --tok-number: #f08cc0;
+  --tok-keyword: #e78fc8;
 }
 
 .stageBar {
@@ -163,8 +175,12 @@
 
 /* Must match the preview document, or the browser paints the iframe an opaque white. */
 .canvas {
-  background-color: var(--paper);
+  background-color: var(--preview-bg);
   color-scheme: light;
+}
+
+:global(:root[data-theme="dark"]) .canvas {
+  color-scheme: dark;
 }
 
 .canvasInner {

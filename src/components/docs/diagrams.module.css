@@ -22,17 +22,17 @@
 }
 
 .border {
-  background: var(--rule);
+  background: var(--diagram-border);
   border-radius: 10px;
 }
 
 .padding {
-  background: var(--sky-soft);
+  background: var(--diagram-padding);
   border-radius: 8px;
 }
 
 .content {
-  background: var(--card);
+  background: var(--diagram-content);
   border-radius: 6px;
   padding: 1.25rem 1rem;
   text-align: center;

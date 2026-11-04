@@ -857,7 +857,7 @@ export const examples: Record<string, Example> = {
     normal flow and the text starts below it. With left or right, the box moves to
     that side and the lines of text wrap around it until they pass its bottom edge.
   </p>`),
-    css: `.container {\n  ${BORDER}\n  padding: 0.5rem;\n}\n\n.item {\n  background: #d9d2f5;\n  float: none;\n  margin: 0.25rem 1rem;\n  padding: 1.5rem 1rem;\n  width: 7rem;\n}\n\n.text {\n  background: none;\n  font-weight: 400;\n  line-height: 1.6;\n  margin: 0;\n  text-align: left;\n}`,
+    css: `.container {\n  ${BORDER}\n  padding: 0.5rem;\n}\n\n.item {\n  background: #d9d2f5;\n  float: none;\n  margin: 0.25rem 1rem;\n  padding: 1.5rem 1rem;\n  width: 7rem;\n}\n\n.text {\n  background: none;\n  color: inherit;\n  font-weight: 400;\n  line-height: 1.6;\n  margin: 0;\n  text-align: left;\n}`,
     controls: [
       {
         kind: 'property',

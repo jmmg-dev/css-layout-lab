@@ -7,6 +7,9 @@
   --sky: #a9cdf6;
   --sky-soft: #d9e8fb;
   --lilac: #d9d2f5;
+  /* Pale fills for shapes: unlike the soft tones, they stay light in the dark theme. */
+  --peach-pale: #ffe3d6;
+  --sky-pale: #d9e8fb;
   --azure: #2b7de0;
   --mist: #e6f0fb;
   --brand-gradient: linear-gradient(100deg, #f08f63, #d274b4 55%, #4f94e8);
@@ -22,6 +25,19 @@
   --blue: #1f6bc7;
   --gold: #7c5a00;
   --screen: #171a21;
+  --button-bg: var(--ink);
+  --on-button: #fff;
+  --header-bg: rgb(251 250 247 / 72%);
+  --glow-peach: rgb(255 201 174 / 28%);
+  --glow-sky: rgb(169 205 246 / 28%);
+  --selection: #ffd9c4;
+  --tok-selector: #b85410;
+  --tok-number: #b52f7a;
+  --tok-keyword: #a8327e;
+  --preview-bg: #fbfaf7;
+  --diagram-border: var(--rule);
+  --diagram-padding: var(--sky-soft);
+  --diagram-content: var(--card);
 
   --font-sans: var(--font-body), system-ui, sans-serif;
   --font-heading: var(--font-display), var(--font-sans);
@@ -37,6 +53,38 @@
   color-scheme: light;
 }
 
+/* Dark theme: same roles, inverted surfaces. Pastel fills keep ink text, so they stay light. */
+:root[data-theme="dark"] {
+  --paper: #12141a;
+  --mist: #1f2a3d;
+  --peach-soft: #4d3328;
+  --sky-soft: #233954;
+
+  --fg: #e8eaef;
+  --muted: #a6abb8;
+  --faint: #8a90a0;
+  --card: #1b1e27;
+  --rule: #2c303b;
+  --rule-soft: #242833;
+  --red-text: #e3ab8f;
+  --blue: #8db8f2;
+  --gold: #e3c27a;
+  --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 10px 30px -14px rgb(0 0 0 / 60%);
+  --shadow-lifted: 0 2px 4px rgb(0 0 0 / 35%), 0 22px 44px -16px rgb(0 0 0 / 70%);
+  --button-bg: #e8eaef;
+  --on-button: var(--ink);
+  --header-bg: rgb(18 20 26 / 72%);
+  --glow-peach: rgb(255 201 174 / 9%);
+  --glow-sky: rgb(169 205 246 / 9%);
+  --selection: #6b4636;
+  --diagram-border: #c9cdd6;
+  --diagram-padding: var(--sky);
+  --diagram-content: #f4f5f8;
+  --preview-bg: #15171e;
+
+  color-scheme: dark;
+}
+
 *,
 *::before,
 *::after {
@@ -50,8 +98,8 @@ html {
 
 body {
   background:
-    radial-gradient(60rem 34rem at 8% -8rem, rgb(255 201 174 / 28%), transparent 70%),
-    radial-gradient(60rem 34rem at 95% 2rem, rgb(169 205 246 / 28%), transparent 70%),
+    radial-gradient(60rem 34rem at 8% -8rem, var(--glow-peach), transparent 70%),
+    radial-gradient(60rem 34rem at 95% 2rem, var(--glow-sky), transparent 70%),
     var(--paper);
   background-repeat: no-repeat;
   color: var(--fg);
@@ -93,8 +141,8 @@ code {
 }
 
 ::selection {
-  background: #ffd9c4;
-  color: var(--ink);
+  background: var(--selection);
+  color: var(--fg);
 }
 
 /* Pastels are too light for text, so emphasis is ink over a highlighter stroke. */
@@ -129,10 +177,10 @@ code {
 
 .button {
   align-items: center;
-  background: var(--ink);
+  background: var(--button-bg);
   border-radius: 999px;
   box-shadow: var(--shadow);
-  color: #fff;
+  color: var(--on-button);
   display: inline-flex;
   font-size: 1rem;
   font-weight: 600;
@@ -170,9 +218,9 @@ code {
 }
 
 .skip-link {
-  background: var(--ink);
+  background: var(--button-bg);
   border-radius: 8px;
-  color: #fff;
+  color: var(--on-button);
   left: 1rem;
   padding: 0.5rem 1rem;
   position: absolute;
@@ -229,7 +277,7 @@ code {
 }
 
 .tok-selector {
-  color: #b85410;
+  color: var(--tok-selector);
 }
 
 .tok-attr,
@@ -243,11 +291,11 @@ code {
 }
 
 .tok-number {
-  color: #b52f7a;
+  color: var(--tok-number);
 }
 
 .tok-keyword {
-  color: #a8327e;
+  color: var(--tok-keyword);
 }
 
 ::-webkit-scrollbar {

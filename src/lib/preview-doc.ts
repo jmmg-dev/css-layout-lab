@@ -1,6 +1,8 @@
 // Bricks use :where() so any rule written in the playground wins over them.
 const BASE_STYLES = `
 html { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="dark"] body { color: #e8eaef; }
 body {
   background: transparent;
   color: #1b1e26;

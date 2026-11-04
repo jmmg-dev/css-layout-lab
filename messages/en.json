@@ -470,6 +470,7 @@
     "closeMenu": "Close menu",
     "mainNav": "Main navigation",
     "search": "Search",
+    "toggleTheme": "Switch between light and dark mode",
     "searchPlaceholder": "Search topics…",
     "searchEmpty": "No results",
     "breadcrumb": "Breadcrumb",

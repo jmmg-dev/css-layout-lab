@@ -40,6 +40,27 @@ export function Preview({ html, css, initialDoc, minHeight, title }: Props) {
     return () => iframe.removeEventListener('load', patch);
   }, [html, css, minHeight]);
 
+  // The preview is its own document, so it mirrors the page theme and follows every switch.
+  useEffect(() => {
+    const iframe = frame.current;
+    if (!iframe) return;
+    const root = document.documentElement;
+    // While the frame is still loading its document has no root yet; the load listener covers it.
+    const sync = () => {
+      const target = iframe.contentDocument?.documentElement;
+      if (target) target.dataset.theme = root.dataset.theme ?? 'light';
+    };
+
+    sync();
+    iframe.addEventListener('load', sync);
+    const observer = new MutationObserver(sync);
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => {
+      iframe.removeEventListener('load', sync);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <iframe
       ref={frame}

@@ -1,7 +1,7 @@
 .header {
   align-items: center;
   backdrop-filter: blur(16px) saturate(160%);
-  background: rgb(251 250 247 / 72%);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--rule);
   display: flex;
   gap: 1.5rem;
@@ -105,6 +105,40 @@
 .support:hover {
   background: var(--peach-soft);
   color: var(--red-text);
+}
+
+.theme {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  height: 2rem;
+  justify-content: center;
+  padding: 0;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  width: 2rem;
+}
+
+.theme:hover {
+  background: var(--rule-soft);
+  color: var(--fg);
+}
+
+.theme svg {
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+/* Shows the theme you would switch to. */
+:global(:root[data-theme="dark"]) .theme svg:last-child,
+:global(:root:not([data-theme="dark"])) .theme svg:first-child {
+  display: none;
 }
 
 .footer {

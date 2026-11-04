@@ -7,6 +7,7 @@ import { localePath, SUPPORT_ANCHOR } from '@/lib/seo';
 import { HeartIcon, LogoMark } from '../icons';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { SearchCommand, type SearchItem } from './SearchCommand';
+import { ThemeToggle } from './ThemeToggle';
 import styles from './SiteHeader.module.css';
 
 export async function SiteHeader({ locale }: { locale: Locale }) {
@@ -40,6 +41,7 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
         empty={t('ui.searchEmpty')}
       />
       <LocaleSwitcher locale={locale} />
+      <ThemeToggle label={t('ui.toggleTheme')} />
       <Link
         className={styles.support}
         href={`${localePath(locale)}#${SUPPORT_ANCHOR}`}
