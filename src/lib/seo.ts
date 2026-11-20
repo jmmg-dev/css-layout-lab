@@ -12,8 +12,12 @@ export const AUTHOR = 'Juan Manuel Muñoz González';
 export const AUTHOR_URL = 'https://jmmg.dev';
 export const GITHUB_URL = 'https://github.com/jmmg-dev/css-layout-lab';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/';
-/** Page where people can contribute. Until it is set, the home shows the button as coming soon. */
-export const DONATE_URL: string | null = null;
+/**
+ * Ways to support the projects, shown as buttons in the support panel, the first one filled.
+ * Adding a method is one entry here, its label in messages (home.support.methods.<id>)
+ * and its icon in SupportMethodIcon (components/home/SupportSection.tsx).
+ */
+export const SUPPORT_METHODS = [{ id: 'kofi', name: 'Ko-fi', url: 'https://ko-fi.com/jmmgdev' }] as const;
 /** Anchor of the contribution panel on the home page. */
 export const SUPPORT_ANCHOR = 'support';
 

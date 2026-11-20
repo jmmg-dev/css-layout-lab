@@ -29,7 +29,7 @@ export async function SiteMenu({ locale, compact = false }: Props) {
       label={t('ui.mainNav')}
       openLabel={t('ui.openMenu')}
       closeLabel={t('ui.closeMenu')}
-      support={{ href: `${localePath(locale)}#${SUPPORT_ANCHOR}`, label: t('home.support.title') }}
+      support={{ href: `${localePath(locale)}#${SUPPORT_ANCHOR}`, label: t('home.support.menu') }}
       compact={compact}
     />
   );

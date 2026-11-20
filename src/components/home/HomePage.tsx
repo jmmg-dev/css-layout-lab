@@ -15,6 +15,7 @@ import {
 } from '@/lib/seo';
 import { ArrowRightIcon, LogoMark } from '../icons';
 import { AboutMe } from './AboutMe';
+import { SupportSection } from './SupportSection';
 import styles from './HomePage.module.css';
 import { PauseOffscreen } from './PauseOffscreen';
 
@@ -115,6 +116,7 @@ export async function HomePage({ locale }: { locale: string }) {
       </section>
 
       <AboutMe locale={locale} />
+      <SupportSection locale={locale} />
     </main>
   );
 }

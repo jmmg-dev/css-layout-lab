@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from 'react';
 import { SUPPORT_ANCHOR } from '@/lib/seo';
-import styles from './AboutMe.module.css';
+import styles from './SupportSection.module.css';
 
 /** Flags when the panel is on screen, so CSS can replay its entrance every time it arrives. */
 export function SupportPanel({ children }: { children: ReactNode }) {

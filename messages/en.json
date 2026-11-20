@@ -13,10 +13,13 @@
       "description": "Every example is <blue>interactive</blue>: you can <blue>edit the HTML and CSS code</blue> right in the editors and see the changes in <blue>real time</blue>. Try changing any value in this example and check the result. I hope you enjoy the content!"
     },
     "support": {
-      "title": "Support the project",
-      "description": "CSS Layout Lab is free and I want to keep it that way, with documentation free of invasive advertising. If you find it useful, you can make a contribution to help maintain it.",
-      "cta": "Make a contribution",
-      "soon": "Contributions coming soon"
+      "title": "Support my projects",
+      "description": "If you like my work, you can make a small contribution towards its upkeep and the creation of new projects. It helps me keep them ad-free and give you the best possible experience.",
+      "thanks": "Thank you so much! :)",
+      "menu": "Support",
+      "methods": {
+        "kofi": "Buy me a coffee on Ko-fi"
+      }
     },
     "aboutMe": {
       "title": "About the project",
