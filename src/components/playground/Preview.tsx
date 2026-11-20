@@ -33,9 +33,14 @@ export function Preview({ html, css, initialDoc, minHeight, title }: Props) {
       iframe.style.height = '0px';
       // The frame only lays out again once the page has.
       iframe.getBoundingClientRect();
-      const needed = doc.documentElement.scrollHeight;
+      const content = doc.documentElement.scrollHeight;
+      // Content wider than the frame adds a horizontal scrollbar, which takes height
+      // from the frame: measured at the fitted height and added, so no vertical scroll appears.
+      iframe.style.height = `${content}px`;
+      iframe.getBoundingClientRect();
+      const scrollbar = (iframe.contentWindow?.innerHeight ?? content) - doc.documentElement.clientHeight;
       iframe.style.height = previous;
-      setHeight(Math.min(needed, MAX_HEIGHT));
+      setHeight(Math.min(content + Math.max(scrollbar, 0), MAX_HEIGHT));
     };
 
     // allow-same-origin without allow-scripts: the page can patch the document,

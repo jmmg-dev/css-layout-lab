@@ -117,9 +117,22 @@
   --step: 5;
 }
 
+/* The paragraphs are the largest paint of the page: they rise without fading,
+   so the browser counts them as shown from the first frame. */
+.lead,
+.note {
+  animation-name: hero-rise-text;
+}
+
 @keyframes hero-rise {
   from {
     opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+@keyframes hero-rise-text {
+  from {
     transform: translateY(1.25rem);
   }
 }
@@ -191,6 +204,13 @@
 
 .morph {
   position: relative;
+}
+
+/* The blocks animate inset, which lays out every frame: stop it while the card is out of view.
+   Labels and blocks pause together, so they stay in step. */
+.morphCard[data-offscreen] i,
+.morphCard[data-offscreen] b {
+  animation-play-state: paused;
 }
 
 .morph i {

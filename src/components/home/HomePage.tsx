@@ -16,6 +16,7 @@ import {
 import { ArrowRightIcon, LogoMark } from '../icons';
 import { AboutMe } from './AboutMe';
 import styles from './HomePage.module.css';
+import { PauseOffscreen } from './PauseOffscreen';
 
 export async function HomePage({ locale }: { locale: string }) {
   const t = await getTranslations({ locale });
@@ -61,7 +62,7 @@ export async function HomePage({ locale }: { locale: string }) {
             <ArrowRightIcon />
           </Link>
         </div>
-        <div className={styles.morphCard} aria-hidden="true">
+        <PauseOffscreen className={styles.morphCard}>
           <span className={styles.morphLabel}>
             display:
             <span className={styles.morphValues}>
@@ -76,7 +77,7 @@ export async function HomePage({ locale }: { locale: string }) {
             <i />
             <i />
           </div>
-        </div>
+        </PauseOffscreen>
       </section>
 
       <section className={styles.map}>

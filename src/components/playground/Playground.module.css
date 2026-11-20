@@ -141,11 +141,16 @@
   width: 0.5rem;
 }
 
+/* A shade darker than --blue in the light theme, to reach 4.5:1 on the pale bar. */
 .liveLabel {
-  color: var(--blue);
+  color: #1a5fb4;
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+:global(:root[data-theme="dark"]) .liveLabel {
+  color: var(--blue);
 }
 
 @keyframes pulse {
@@ -353,8 +358,14 @@
     max-height: none;
   }
 
+  /* Hidden from view only: the slider still needs its name for screen readers. */
   .widthControl span {
-    display: none;
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 }
 
