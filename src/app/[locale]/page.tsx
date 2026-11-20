@@ -12,7 +12,13 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return buildMetadata({ locale, title: t('title'), description: t('description'), keywords: t('keywords') });
+  return buildMetadata({
+    locale,
+    title: t('title'),
+    description: t('description'),
+    keywords: t('keywords'),
+    imageAlt: t('imageAlt'),
+  });
 }
 
 export default async function Page({ params }: Props) {

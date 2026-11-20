@@ -141,18 +141,6 @@
   display: none;
 }
 
-.footer {
-  border-top: 1px solid var(--rule);
-  color: var(--faint);
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 0.8125rem;
-  gap: 0.25rem 2rem;
-  justify-content: space-between;
-  margin-top: auto;
-  padding: 1.5rem var(--gutter);
-}
-
 /* Below this width the links no longer fit, and the collapsible site menu replaces them. */
 @media (max-width: 880px) {
   .header {

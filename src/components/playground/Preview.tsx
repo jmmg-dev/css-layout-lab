@@ -11,6 +11,7 @@ type Props = {
   css: string;
   /** Built once on the server, so the example is complete before any JavaScript runs. */
   initialDoc: string;
+  /** Used until the content has been measured, so the server render already has a sensible size. */
   minHeight: number;
   title: string;
 };
@@ -23,6 +24,20 @@ export function Preview({ html, css, initialDoc, minHeight, title }: Props) {
     const iframe = frame.current;
     if (!iframe) return;
 
+    // The frame is collapsed for a moment so the document reports its content height,
+    // not the frame's. Nothing is painted in between, so it never flickers.
+    const fit = () => {
+      const doc = iframe.contentDocument;
+      if (!doc?.body) return;
+      const previous = iframe.style.height;
+      iframe.style.height = '0px';
+      // The frame only lays out again once the page has.
+      iframe.getBoundingClientRect();
+      const needed = doc.documentElement.scrollHeight;
+      iframe.style.height = previous;
+      setHeight(Math.min(needed, MAX_HEIGHT));
+    };
+
     // allow-same-origin without allow-scripts: the page can patch the document,
     // but nothing typed in the playground is able to execute.
     const patch = () => {
@@ -31,14 +46,24 @@ export function Preview({ html, css, initialDoc, minHeight, title }: Props) {
       if (!doc || !style) return;
       style.textContent = css;
       if (doc.body.innerHTML !== html) doc.body.innerHTML = html;
-      const needed = Math.min(doc.documentElement.scrollHeight, MAX_HEIGHT);
-      setHeight((current) => Math.max(current, needed, minHeight));
+      fit();
     };
 
     patch();
     iframe.addEventListener('load', patch);
-    return () => iframe.removeEventListener('load', patch);
-  }, [html, css, minHeight]);
+    // A narrower frame wraps the content onto more lines, so its height is fitted again.
+    let lastWidth = iframe.clientWidth;
+    const resize = new ResizeObserver(() => {
+      if (iframe.clientWidth === lastWidth) return;
+      lastWidth = iframe.clientWidth;
+      fit();
+    });
+    resize.observe(iframe);
+    return () => {
+      iframe.removeEventListener('load', patch);
+      resize.disconnect();
+    };
+  }, [html, css]);
 
   // The preview is its own document, so it mirrors the page theme and follows every switch.
   useEffect(() => {

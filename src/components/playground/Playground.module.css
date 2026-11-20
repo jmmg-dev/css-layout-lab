@@ -348,8 +348,29 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* A scroll box inside the page scroll is awkward on touch, so the code shows in full. */
+  .editorBody {
+    max-height: none;
+  }
+
   .widthControl span {
     display: none;
+  }
+}
+
+/* On a narrow stage the width control drops to its own row, so the slider takes the whole row. */
+.stage {
+  container-type: inline-size;
+}
+
+@container (max-width: 32rem) {
+  .widthControl {
+    flex-basis: 100%;
+  }
+
+  .widthControl input {
+    flex: 1;
+    min-width: 0;
   }
 }
 

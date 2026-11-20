@@ -19,7 +19,7 @@
       "soon": "Aportaciones próximamente"
     },
     "aboutMe": {
-      "title": "Sobre mí",
+      "title": "Sobre el proyecto",
       "description": "<p>Después de muchos años trabajando en el desarrollo web, <b>CSS sigue sorprendiéndome por sus posibilidades y constantes novedades</b>. Uno de sus usos más importantes y frecuentes es la <b>gestión de layouts</b>, que permite organizar y distribuir los elementos de una página de manera flexible y precisa.</p><p>Por eso he creado esta documentación, donde intento explicar de forma sencilla la <b>creación de layouts con CSS</b> y cómo aplicar distintas técnicas según las necesidades de cada proyecto.</p><p>Este tutorial está pensado para todo tipo de desarrolladores, desde <b>juniors</b> hasta <b>expertos</b>. Algunos podrán descubrir conceptos básicos por primera vez, mientras que otros podrán observar de manera práctica cómo se comportan ciertas propiedades que a menudo se delegan en librerías como <b>Bootstrap</b> o <b>Tailwind</b>, explorando directamente <b>grid</b> y <b>flexbox</b>.</p><p>¡Espero que lo disfruten!</p>"
     },
     "map": {
@@ -150,7 +150,8 @@
       "item3": "<b>column</b>: Dispone los elementos de arriba hacia abajo.",
       "item4": "<b>column-reverse</b>: Dispone los elementos de abajo hacia arriba.",
       "example": "<p>Con este ejemplo dinámico puedes ver las distintas <b>disposiciones</b> de los elementos <b>hijos</b> al modificar la propiedad <b>flex-direction</b> en el <b>selector</b>.</p>",
-      "select": "Selecciona <b>flex-direction</b>:"
+      "select": "Selecciona <b>flex-direction</b>:",
+      "metaDescription": "Controla con flex-direction la dirección del eje principal en flexbox: row, row-reverse, column y column-reverse, con ejemplos interactivos."
     },
     "wrap": {
       "title": "flex-wrap",
@@ -160,7 +161,8 @@
       "item3": "<b>wrap-reverse</b>: igual que <b>wrap</b>, pero envuelven en sentido inverso.",
       "example": "<p>Con este ejemplo dinámico puedes ver las distintas <b>disposiciones</b> de los elementos <b>hijos</b> al modificar la propiedad <b>flex-wrap</b> en el <b>selector</b>.</p>",
       "select": "Selecciona <b>flex-wrap</b>:",
-      "tip": "Combina <code>flex-wrap: wrap</code> con <code>gap</code> para que la separación se mantenga también entre las líneas envueltas."
+      "tip": "Combina <code>flex-wrap: wrap</code> con <code>gap</code> para que la separación se mantenga también entre las líneas envueltas.",
+      "metaDescription": "Decide con flex-wrap si los ítems de flexbox se quedan en una sola línea o saltan a varias: nowrap, wrap y wrap-reverse, con ejemplos interactivos."
     },
     "justifyAlignRow": {
       "example": "<p>Con este ejemplo dinámico puedes ver las distintas <b>disposiciones</b> de los elementos <b>hijos</b> al modificar las propiedades <b>justify-content</b> y <b>align-items</b> en los <b>selectores</b>.</p>",
@@ -185,7 +187,8 @@
         "item5": "<b>baseline</b>: Alinea los elementos según la línea base del texto.",
         "select": "Selecciona <b>align-items</b>:"
       },
-      "title": "justify-content & align-items (row)"
+      "title": "justify-content & align-items (row)",
+      "metaDescription": "Combina justify-content y align-items en un contenedor flex en fila (row) y mira cómo se reparten y alinean los ítems, con un ejemplo interactivo."
     },
     "justifyAlignColumn": {
       "example": "<p>Con este ejemplo dinámico puedes ver las distintas <b>disposiciones</b> de los elementos <b>hijos</b> al modificar las propiedades <b>justify-content</b> y <b>align-items</b> en los <b>selectores</b>.</p>",
@@ -209,7 +212,8 @@
         "item4": "<b>flex-end</b>: Alinea todos los elementos a la derecha.",
         "select": "Selecciona <b>align-items</b>:"
       },
-      "title": "justify-content & align-items (column)"
+      "title": "justify-content & align-items (column)",
+      "metaDescription": "Combina justify-content y align-items en un contenedor flex en columna (column): los ejes se intercambian. Pruébalo con un ejemplo interactivo."
     },
     "grow": {
       "title": "flex-grow",
@@ -233,7 +237,8 @@
       "item1": "Por defecto es <b>auto</b>, que toma el tamaño natural del contenido o el definido con ancho / alto.",
       "item2": "Puede ser un valor en px, %, auto, rem, em, etc.",
       "example": "<p>En este ejemplo, podemos comprobar cómo cada <b>item</b> coge el <b>ancho</b> en función del valor que se le atribuye mediante la propiedad <b>flex-basis</b>.</p>",
-      "tip": "En un contenedor en fila, <b>flex-basis</b> tiene prioridad sobre <b>width</b>. En una columna actúa sobre la altura, porque siempre sigue el eje principal."
+      "tip": "En un contenedor en fila, <b>flex-basis</b> tiene prioridad sobre <b>width</b>. En una columna actúa sobre la altura, porque siempre sigue el eje principal.",
+      "metaDescription": "flex-basis fija el tamaño inicial de un ítem de flexbox antes de que crezca o se encoja. Prueba auto, px, % y rem con ejemplos interactivos."
     },
     "order": {
       "title": "order",
@@ -346,7 +351,9 @@
       "item3": "<b>auto-fit</b>: intenta <b>ajustar</b> las columnas al <b>ancho</b> del contenedor; si sobra espacio, colapsa huecos.",
       "item4": "<b>auto-fill</b>: similar a <b>auto-fit</b>, pero deja huecos <b>vacíos</b> si no hay suficientes ítems.",
       "example": "En este ejemplo, con <b>grid-template-columns: repeat(auto-fit, minmax(70px, 1fr))</b> creamos tantas columnas como quepan (auto-fit), cada columna tendrá al menos 70px y, si sobra espacio, se reparte proporcionalmente (1fr). Con <b>grid-auto-rows: minmax(50px, auto)</b>, cada fila mide mínimo 50px de alto.",
-      "tip": "La diferencia entre auto-fit y auto-fill solo se ve cuando sobra espacio. Sustituye auto-fit por auto-fill en el editor con pocos elementos y compara el resultado."
+      "tip": "La diferencia entre auto-fit y auto-fill solo se ve cuando sobra espacio. Sustituye auto-fit por auto-fill en el editor con pocos elementos y compara el resultado.",
+      "metaDescription": "repeat(), minmax(), auto-fit y auto-fill en CSS grid: crea cuadrículas dinámicas y responsivas sin media queries, con ejemplos interactivos.",
+      "metaTitle": "Funciones de grid"
     },
     "alignment-container": {
       "title": "Alineación de contenedor",
@@ -361,7 +368,8 @@
       "item8": "<b>end</b>: Alinea al <b>final</b> de la celda (derecha para horizontal, abajo para vertical).",
       "selectJustify": "Selecciona <b>justify-items</b>:",
       "selectAlign": "Selecciona <b>align-items</b>:",
-      "example": "<p>En este ejemplo dinámico, podemos comprobar las diferentes alineaciones de las celdas con las distintas propiedades de <b>justify-items</b> y <b>align-items</b>.</p>"
+      "example": "<p>En este ejemplo dinámico, podemos comprobar las diferentes alineaciones de las celdas con las distintas propiedades de <b>justify-items</b> y <b>align-items</b>.</p>",
+      "metaDescription": "Alinea los ítems dentro de cada celda de CSS grid con justify-items, align-items y place-items: stretch, start, center y end, con ejemplos."
     },
     "alignment-content": {
       "title": "Alineación del contenido",
@@ -394,7 +402,8 @@
       "item8": "<b>end</b>: Alinea al <b>final</b> del eje (derecha en horizontal, abajo en vertical).",
       "selectJustify": "Selecciona <b>justify-self</b>:",
       "selectAlign": "Selecciona <b>align-self</b>:",
-      "example": "<p>En este ejemplo dinámico, podemos comprobar las diferentes alineaciones de un item dentro de su propia celda mediante <b>justify-self</b> y <b>align-self</b>.</p>"
+      "example": "<p>En este ejemplo dinámico, podemos comprobar las diferentes alineaciones de un item dentro de su propia celda mediante <b>justify-self</b> y <b>align-self</b>.</p>",
+      "metaDescription": "Alinea un solo ítem dentro de su celda de CSS grid con justify-self, align-self y place-self: stretch, start, center y end, con ejemplos."
     },
     "fixed": {
       "title": "Fixed grid",
@@ -490,9 +499,9 @@
     "editHint": "Edita el código o usa los selectores: el resultado cambia al instante.",
     "editorLabel": "Editor de código {language}. Pulsa Escape y después Tab para salir del editor.",
     "previewTitle": "Resultado del ejemplo",
-    "footerCaption": "Hecho con bloques, inline, flex y grid.",
+    "footerLinks": "Redes del autor y del proyecto",
     "linkedin": "Perfil de LinkedIn de Juan Manuel Muñoz González",
-    "resume": "Currículum de Juan Manuel Muñoz González",
+    "website": "Web de Juan Manuel Muñoz González, jmmg.dev",
     "github": "Repositorio del proyecto en GitHub",
     "notFoundTitle": "Este ladrillo no encaja",
     "notFoundText": "La página que buscas no existe o ha cambiado de lugar.",
@@ -506,9 +515,14 @@
   },
   "meta": {
     "title": "CSS Layout Lab: aprende flexbox, grid y layouts en CSS",
-    "description": "Domina las técnicas de layout en CSS: block, inline, inline-block, flexbox y grid. Guía completa con ejemplos interactivos y buenas prácticas para el diseño web moderno.",
+    "description": "Aprende a crear layouts en CSS con block, inline, flexbox y grid. Guía práctica con ejemplos interactivos que puedes editar y ver en tiempo real.",
     "pageTitle": "{title} en CSS: guía y ejemplos",
-    "keywords": "layout CSS, diseño web con CSS, CSS block, CSS inline, CSS inline-block, CSS flexbox, CSS grid, creación de layouts, tutorial de CSS, posicionamiento CSS"
+    "keywords": "layout CSS, diseño web con CSS, CSS block, CSS inline, CSS inline-block, CSS flexbox, CSS grid, creación de layouts, tutorial de CSS, posicionamiento CSS",
+    "pageTitleShort": "{title} en CSS",
+    "pageTitleLong": "{title} en CSS: guía completa con ejemplos",
+    "imageAlt": "CSS Layout Lab: aprende layouts en CSS con ejemplos interactivos",
+    "imageTagline": "Aprende layouts en CSS con ejemplos interactivos",
+    "imageTopics": "block · inline · flexbox · grid"
   },
   "fundamentals": {
     "boxSizing": {

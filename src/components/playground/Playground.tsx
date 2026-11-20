@@ -1,6 +1,8 @@
 'use client';
 
 import { useId, useState, type ReactNode } from 'react';
+
+const MIN_WIDTH = 20;
 import type { Control, Example } from '@/content/types';
 import { readDeclaration, writeDeclaration } from '@/lib/css-edit';
 import { ResetIcon } from '../icons';
@@ -99,11 +101,13 @@ export function Playground({ example, controlLabels, initialDoc, labels }: Props
             <span>{labels.previewWidth}</span>
             <input
               type="range"
-              min={30}
+              // The track runs from 0 so the filled part matches the percentage;
+              // the thumb stops at a minimum width that still shows the example.
+              min={0}
               max={100}
               step={1}
               value={width}
-              onChange={(event) => setWidth(Number(event.target.value))}
+              onChange={(event) => setWidth(Math.max(MIN_WIDTH, Number(event.target.value)))}
             />
             <output>{width}%</output>
           </label>

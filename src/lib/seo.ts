@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import { routing, type Locale } from '@/i18n/routing';
 
-const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+/** Canonical domain. www.css-layout-lab.com redirects here, configured in Vercel. */
+const PRODUCTION_URL = 'https://css-layout-lab.com';
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? (vercelHost ? `https://${vercelHost}` : 'http://localhost:3000');
+  process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === 'production' ? PRODUCTION_URL : 'http://localhost:3000');
 
 export const SITE_NAME = 'CSS Layout Lab';
 export const AUTHOR = 'Juan Manuel Muñoz González';
-export const GITHUB_URL = 'https://github.com/CSS-Layout-Lab/css-layout-lab';
+export const AUTHOR_URL = 'https://jmmg.dev';
+export const GITHUB_URL = 'https://github.com/jmmg-dev/css-layout-lab';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/';
 /** Page where people can contribute. Until it is set, the home shows the button as coming soon. */
 export const DONATE_URL: string | null = null;
 /** Anchor of the contribution panel on the home page. */
@@ -21,13 +24,26 @@ export const localePath = (locale: string, path = '') => `/${locale}${path ? `/$
 
 export const absoluteUrl = (locale: string, path = '') => `${SITE_URL}${localePath(locale, path)}`;
 
-type MetadataInput = { locale: Locale; path?: string; title: string; description: string; keywords?: string };
+/** Social card for each language, served by app/[locale]/og-image.png. */
+export const OG_IMAGE_SIZE = { width: 1200, height: 630 };
+const ogImage = (locale: string) => `/${locale}/og-image.png`;
 
-export function buildMetadata({ locale, path = '', title, description, keywords }: MetadataInput): Metadata {
+type MetadataInput = {
+  locale: Locale;
+  path?: string;
+  title: string;
+  description: string;
+  keywords?: string;
+  /** Alt text of the social card, in the page language. */
+  imageAlt: string;
+};
+
+export function buildMetadata({ locale, path = '', title, description, keywords, imageAlt }: MetadataInput): Metadata {
   const languages: Record<string, string> = Object.fromEntries(
     routing.locales.map((alternate) => [alternate, absoluteUrl(alternate, path)]),
   );
   languages['x-default'] = absoluteUrl(routing.defaultLocale, path);
+  const image = { url: ogImage(locale), ...OG_IMAGE_SIZE, alt: imageAlt };
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -43,10 +59,10 @@ export function buildMetadata({ locale, path = '', title, description, keywords 
       siteName: SITE_NAME,
       url: absoluteUrl(locale, path),
       locale: OG_LOCALES[locale],
-      images: [{ url: '/images/social_media.jpg' }],
+      alternateLocale: routing.locales.filter((other) => other !== locale).map((other) => OG_LOCALES[other]),
+      images: [image],
     },
-    twitter: { card: 'summary_large_image', title, description, images: ['/images/social_media.jpg'] },
-    verification: { google: 'WG9TTQ9SrU8UnFkQdWFqDpCfCVQ6iBr85tEyEc2RK4A' },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
   };
 }
 

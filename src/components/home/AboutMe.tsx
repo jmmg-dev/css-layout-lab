@@ -2,8 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import { richTags } from '@/lib/rich';
-import { AUTHOR, DONATE_URL, GITHUB_URL } from '@/lib/seo';
-import { GitHubIcon, HeartIcon, LinkedInIcon, ProfileIcon } from '../icons';
+import { AUTHOR, DONATE_URL, GITHUB_URL, LINKEDIN_URL } from '@/lib/seo';
+import { GitHubIcon, GlobeIcon, HeartIcon, LinkedInIcon } from '../icons';
 import styles from './AboutMe.module.css';
 import { SupportPanel } from './SupportPanel';
 
@@ -50,7 +50,7 @@ export async function AboutMe({ locale }: { locale: string }) {
         <div className={styles.socials}>
           <a
             aria-label={t('ui.linkedin')}
-            href="https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -59,13 +59,8 @@ export async function AboutMe({ locale }: { locale: string }) {
           <a aria-label={t('ui.github')} href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
             <GitHubIcon />
           </a>
-          <a
-            aria-label={t('ui.resume')}
-            href={`https://jmmg-portfolio.vercel.app/${locale}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ProfileIcon />
+          <a aria-label={t('ui.website')} href="https://jmmg.dev" target="_blank" rel="noopener">
+            <GlobeIcon />
           </a>
         </div>
       </div>

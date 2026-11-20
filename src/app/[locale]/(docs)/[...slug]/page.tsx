@@ -25,15 +25,28 @@ export async function generateMetadata({ params }: Props) {
   if (!page || !hasLocale(routing.locales, locale)) return {};
 
   const t = await getTranslations({ locale });
-  const title = stripTags(t.raw(`${page.ns}.title`) as string);
-  const descriptionKey = t.has(`${page.ns}.description`) ? `${page.ns}.description` : `${page.ns}.example`;
+  // A page can set its own SEO title and description when the visible ones are too short or vague.
+  const title = stripTags(t.raw(t.has(`${page.ns}.metaTitle`) ? `${page.ns}.metaTitle` : `${page.ns}.title`) as string);
+  const descriptionKey = [`${page.ns}.metaDescription`, `${page.ns}.description`, `${page.ns}.example`].find((key) =>
+    t.has(key),
+  )!;
   return buildMetadata({
     locale,
     path: page.path,
-    // Titles that already name CSS would read twice in the template.
-    title: /css/i.test(title) ? `${title} | ${SITE_NAME}` : t('meta.pageTitle', { title }),
+    title: pageTitle(title, t),
     description: truncate(stripTags(t.raw(descriptionKey) as string)),
+    imageAlt: t('meta.imageAlt'),
   });
+}
+
+/** Keeps titles within the 30–60 characters that search results show in full. */
+function pageTitle(title: string, t: Awaited<ReturnType<typeof getTranslations>>) {
+  // Titles that already name CSS would read twice in the template.
+  if (/css/i.test(title)) return `${title} | ${SITE_NAME}`;
+  const full = t('meta.pageTitle', { title });
+  if (full.length > 60) return t('meta.pageTitleShort', { title });
+  if (full.length < 30) return t('meta.pageTitleLong', { title });
+  return full;
 }
 
 function renderView(page: DocPage, locale: string) {

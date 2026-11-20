@@ -3,7 +3,16 @@ import Link from 'next/link';
 import { ExampleBlock } from '@/components/docs/blocks';
 import { groups, pages } from '@/content/pages';
 import { richTags } from '@/lib/rich';
-import { absoluteUrl, AUTHOR, localePath, serializeJsonLd, SITE_NAME } from '@/lib/seo';
+import {
+  absoluteUrl,
+  AUTHOR,
+  AUTHOR_URL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  localePath,
+  serializeJsonLd,
+  SITE_NAME,
+} from '@/lib/seo';
 import { ArrowRightIcon, LogoMark } from '../icons';
 import { AboutMe } from './AboutMe';
 import styles from './HomePage.module.css';
@@ -11,14 +20,27 @@ import styles from './HomePage.module.css';
 export async function HomePage({ locale }: { locale: string }) {
   const t = await getTranslations({ locale });
 
+  const author = { '@type': 'Person', name: AUTHOR, url: AUTHOR_URL, sameAs: [LINKEDIN_URL] };
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: absoluteUrl(locale),
-    inLanguage: locale,
-    description: t('meta.description'),
-    author: { '@type': 'Person', name: AUTHOR },
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: SITE_NAME,
+        url: absoluteUrl(locale),
+        inLanguage: locale,
+        description: t('meta.description'),
+        author,
+      },
+      // The site is open source; this links it to its repository.
+      {
+        '@type': 'SoftwareSourceCode',
+        name: SITE_NAME,
+        codeRepository: GITHUB_URL,
+        url: absoluteUrl(locale),
+        author,
+      },
+    ],
   };
 
   return (
