@@ -156,14 +156,20 @@
   }
 }
 
-/* The logo mark alone leaves room for the actions; the name stays for screen readers. */
+/* The small logo mark closes the toolbar and also leads home. */
+.mark {
+  display: flex;
+  flex: none;
+  transition: transform 0.15s;
+}
+
+.mark:hover {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+/* On the narrowest phones the name shrinks so every action still fits. */
 @media (max-width: 360px) {
-  .logo > span {
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+  .logo {
+    font-size: 0.9375rem;
   }
 }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { groups, pages } from '@/content/pages';
 import type { Locale } from '@/i18n/routing';
 import { stripTags } from '@/lib/rich';
-import { localePath, SUPPORT_ANCHOR } from '@/lib/seo';
+import { localePath, SITE_NAME, SUPPORT_ANCHOR } from '@/lib/seo';
 import { HeartIcon, LogoMark } from '../icons';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { SearchCommand, type SearchItem } from './SearchCommand';
@@ -22,7 +22,6 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header className={styles.header}>
       <Link className={styles.logo} href={localePath(locale)}>
-        <LogoMark />
         <span>
           <span className={styles.logoCss}>CSS</span> Layout Lab
         </span>
@@ -48,6 +47,9 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
         aria-label={t('home.support.title')}
       >
         <HeartIcon />
+      </Link>
+      <Link className={styles.mark} href={localePath(locale)} aria-label={SITE_NAME}>
+        <LogoMark size={32} />
       </Link>
     </header>
   );

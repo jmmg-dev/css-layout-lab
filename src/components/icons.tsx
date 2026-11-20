@@ -19,11 +19,11 @@ function Icon({ children }: { children: ReactNode }) {
 }
 
 /** Inline so the text can use the site's heading font, which an <img> SVG cannot reach. */
-export const LogoMark = () => (
+export const LogoMark = ({ size = 44 }: { size?: number }) => (
   <svg
     aria-hidden="true"
-    width="44"
-    height="44"
+    width={size}
+    height={size}
     viewBox="0 0 64 64"
     style={{ flex: 'none', fontFamily: 'var(--font-heading)' }}
   >

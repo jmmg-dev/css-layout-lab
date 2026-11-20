@@ -12,7 +12,6 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     <footer className={styles.footer}>
       <div className={styles.start}>
         <Link className={styles.brand} href={localePath(locale)}>
-          <LogoMark />
           <span>
             <span className={styles.brandCss}>CSS</span> Layout Lab
           </span>
@@ -34,14 +33,17 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
             </a>
           </li>
         </ul>
-        <a className={styles.poweredby} href="https://jmmg.dev" target="_blank" rel="noopener" aria-label="Powered by JMMG.dev">
+        <div className={styles.signature}>
+          <LogoMark size={28} />
+          <a className={styles.poweredby} href="https://jmmg.dev" target="_blank" rel="noopener" aria-label="Powered by JMMG.dev">
           <span aria-hidden="true">Powered by</span>
           {/* Both logos are in the page; the theme decides which one is shown. */}
           {/* eslint-disable-next-line @next/next/no-img-element -- small static SVG, nothing to optimise */}
           <img className={styles.poweredbyLight} src="/brand/jmmg-dev-light-bg.svg" alt="" width={80} height={15} />
           {/* eslint-disable-next-line @next/next/no-img-element -- small static SVG, nothing to optimise */}
           <img className={styles.poweredbyDark} src="/brand/jmmg-dev-dark-bg.svg" alt="" width={80} height={15} />
-        </a>
+          </a>
+        </div>
       </div>
     </footer>
   );
