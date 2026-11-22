@@ -4,17 +4,16 @@
   background: linear-gradient(100deg, var(--peach-soft), var(--sky-soft));
   border-radius: var(--radius-lg);
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  justify-content: space-between;
+  flex-direction: column;
   padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
 }
 
 .support[data-in-view="true"] {
   animation: support-pop 1.3s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.support[data-in-view="true"] .supportHeart svg {
+.support[data-in-view="true"] .supportHeart {
   animation: heart-beat 0.9s ease-in-out 0.25s 2;
 }
 
@@ -46,48 +45,25 @@
   }
 }
 
-/* The heart sits to the left of the text and is exactly as tall as it,
-   from the top of the title to the last line, in the coral of the brand gradient. */
-.supportText {
-  align-items: stretch;
-  display: flex;
-  flex: 1 1 22rem;
-  gap: clamp(1rem, 2.5vw, 1.5rem);
-}
-
-/* Stretched to the text height; FitHeart sets the matching width and then reveals it,
-   so the heart never shows at its provisional size. Centred against the text; on phones,
-   where the text is much taller, at its top. In the sky blue of the bricks. */
+/* A small heart above the title, in the sky blue of the bricks. */
 .supportHeart {
-  align-items: center;
   color: var(--sky);
-  display: flex;
-  flex: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  width: 5rem;
-}
-
-.supportHeart[data-ready] {
-  opacity: 1;
-}
-
-/* The drawing is exactly the heart, so the beat scales from its centre. */
-.supportHeart svg {
-  aspect-ratio: 20.8 / 18.1;
   display: block;
   height: auto;
-  width: 100%;
+  margin-bottom: 0.75rem;
+  width: 2.75rem;
 }
 
 .support h2 {
-  font-size: 1.25rem;
-  margin: 0 0 0.25rem;
+  font-size: 1.375rem;
+  margin: 0 0 0.5rem;
 }
 
+/* About 60 characters per line, comfortable to read. */
 .support p {
   color: var(--muted);
   margin: 0;
+  max-width: 36rem;
 }
 
 .support .supportThanks {
@@ -100,6 +76,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 /* Methods after the first one are outlined, so the main one leads. */
@@ -111,10 +89,6 @@
 
 /* On phones the button text would wrap: a little less padding keeps it on one line. */
 @media (max-width: 480px) {
-  .supportHeart {
-    align-items: flex-start;
-  }
-
   .supportMethods :global(.button) {
     font-size: 0.9375rem;
     padding-inline: 1rem;
@@ -123,7 +97,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .support[data-in-view="true"],
-  .support[data-in-view="true"] .supportHeart svg {
+  .support[data-in-view="true"] .supportHeart {
     animation: none;
   }
 }
