@@ -1,8 +1,9 @@
 import type { getTranslations } from 'next-intl/server';
 import { Playground } from '@/components/playground/Playground';
 import { examples } from '@/content/examples';
+import { pages } from '@/content/pages';
 import { buildPreviewDoc } from '@/lib/preview-doc';
-import { richTags } from '@/lib/rich';
+import { richTags, stripTags } from '@/lib/rich';
 import styles from './blocks.module.css';
 
 type Translator = Awaited<ReturnType<typeof getTranslations>>;
@@ -40,6 +41,12 @@ type ExampleBlockProps = {
 
 export function ExampleBlock({ t, id, ns, heading = true }: ExampleBlockProps) {
   const example = examples[id];
+  // Shown at the top of full screen: the site section and the title the example belongs to,
+  // for instance "Fundamentos - position". Pages split into parts use the part's own title.
+  const page = ns ? pages.find((candidate) => ns === candidate.ns || ns.startsWith(`${candidate.ns}.`)) : undefined;
+  const sectionGroup = page ? t(`nav.${page.group}`) : undefined;
+  const sectionTitle =
+    ns && t.has(`${ns}.title`) ? stripTags(t.raw(`${ns}.title`) as string) : t('example');
 
   return (
     <section className={styles.example}>
@@ -61,6 +68,11 @@ export function ExampleBlock({ t, id, ns, heading = true }: ExampleBlockProps) {
           previewTitle: t('ui.previewTitle'),
           htmlEditor: t('ui.editorLabel', { language: 'HTML' }),
           cssEditor: t('ui.editorLabel', { language: 'CSS' }),
+          fullscreen: t('ui.fullscreen'),
+          exitFullscreen: t('ui.exitFullscreen'),
+          fullscreenTitle: t('ui.fullscreenTitle'),
+          sectionGroup,
+          sectionTitle,
         }}
       />
     </section>
