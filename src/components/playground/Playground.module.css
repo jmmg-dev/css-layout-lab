@@ -64,6 +64,14 @@
   justify-content: space-between;
 }
 
+/* The site mark, then the section and title. */
+.modalHeading {
+  align-items: center;
+  display: flex;
+  gap: 0.875rem;
+  min-width: 0;
+}
+
 .modalGroup {
   color: var(--muted);
   font-weight: 500;

@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import type { Control, Example } from '@/content/types';
 import { readDeclaration, writeDeclaration } from '@/lib/css-edit';
-import { CloseIcon, ExpandIcon, ResetIcon } from '../icons';
+import { CloseIcon, ExpandIcon, LogoMark, ResetIcon } from '../icons';
 import { CodeEditor } from './CodeEditor';
 import { Preview } from './Preview';
 import styles from './Playground.module.css';
@@ -147,10 +147,13 @@ export function Playground({ example, controlLabels, initialDoc, labels }: Props
     >
       {expanded && (
         <div className={styles.modalBar}>
-          <p className={styles.modalTitle}>
-            {labels.sectionGroup && <span className={styles.modalGroup}>{labels.sectionGroup} - </span>}
-            {labels.sectionTitle}
-          </p>
+          <div className={styles.modalHeading}>
+            <LogoMark size={36} />
+            <p className={styles.modalTitle}>
+              {labels.sectionGroup && <span className={styles.modalGroup}>{labels.sectionGroup} - </span>}
+              {labels.sectionTitle}
+            </p>
+          </div>
           <button type="button" className={styles.closeButton} onClick={collapse} autoFocus>
             <CloseIcon />
             {labels.exitFullscreen}
