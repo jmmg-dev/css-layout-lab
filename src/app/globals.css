@@ -232,8 +232,12 @@ code {
   top: 0.5rem;
 }
 
+/* Centred in the space between header and footer. */
 .not-found {
+  align-content: center;
+  display: grid;
   flex: 1;
+  justify-items: center;
   margin: 0 auto;
   max-width: 40rem;
   padding: 4rem var(--gutter);
@@ -248,6 +252,7 @@ code {
 .not-found p {
   color: var(--muted);
   margin: 0 0 2rem;
+  text-wrap: balance;
 }
 
 .not-found .not-found-code {

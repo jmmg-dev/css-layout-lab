@@ -22,7 +22,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
   const page = getPage(slug.join('/'));
-  if (!page || !hasLocale(routing.locales, locale)) return {};
+  if (!hasLocale(routing.locales, locale)) return {};
+  // Only the root not-found can set its own title, so the 404 of each language gets it here.
+  if (!page) {
+    const t = await getTranslations({ locale, namespace: 'ui' });
+    return { title: { absolute: `${t('notFoundMeta')} | ${SITE_NAME}` } };
+  }
 
   const t = await getTranslations({ locale });
   // A page can set its own SEO title and description when the visible ones are too short or vague.

@@ -512,8 +512,9 @@
     "linkedin": "Perfil de LinkedIn de Juan Manuel Muñoz González",
     "website": "Web de Juan Manuel Muñoz González, jmmg.dev",
     "github": "Repositorio del proyecto en GitHub",
-    "notFoundTitle": "Este ladrillo no encaja",
-    "notFoundText": "La página que buscas no existe o ha cambiado de lugar.",
+    "notFoundTitle": "Página no encontrada",
+    "notFoundText": "Este ladrillo no encaja: la página que buscas no existe o ha cambiado de lugar.",
+    "notFoundMeta": "404 · Página no encontrada",
     "backHome": "Volver al inicio"
   },
   "nav": {

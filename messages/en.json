@@ -512,8 +512,9 @@
     "linkedin": "LinkedIn profile of Juan Manuel Muñoz González",
     "website": "Juan Manuel Muñoz González's website, jmmg.dev",
     "github": "Project repository on GitHub",
-    "notFoundTitle": "This brick does not fit",
-    "notFoundText": "The page you are looking for does not exist or has moved.",
+    "notFoundTitle": "Page not found",
+    "notFoundText": "This brick does not fit: the page you are looking for does not exist or has moved.",
+    "notFoundMeta": "404 · Page not found",
     "backHome": "Back to home"
   },
   "nav": {
