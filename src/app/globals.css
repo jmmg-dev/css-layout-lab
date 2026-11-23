@@ -99,8 +99,7 @@ html {
 body {
   background:
     radial-gradient(60rem 34rem at 8% -8rem, var(--glow-peach), transparent 70%),
-    radial-gradient(60rem 34rem at 95% 2rem, var(--glow-sky), transparent 70%),
-    var(--paper);
+    radial-gradient(60rem 34rem at 95% 2rem, var(--glow-sky), transparent 70%), var(--paper);
   background-repeat: no-repeat;
   color: var(--fg);
   display: flex;

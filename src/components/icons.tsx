@@ -35,7 +35,15 @@ export const LogoMark = ({ size = 44 }: { size?: number }) => (
       </linearGradient>
     </defs>
     <rect x="1" y="1" width="62" height="62" rx="14" fill="var(--card)" stroke="var(--rule)" strokeWidth="2" />
-    <text x="31" y="35" textAnchor="middle" fontSize="34" fontWeight="700" letterSpacing="-2" fill="url(#logo-gradient)">
+    <text
+      x="31"
+      y="35"
+      textAnchor="middle"
+      fontSize="34"
+      fontWeight="700"
+      letterSpacing="-2"
+      fill="url(#logo-gradient)"
+    >
       CL
     </text>
     <text x="32" y="54" textAnchor="middle" fontSize="18" fontWeight="600" letterSpacing="-0.5" fill="var(--fg)">

@@ -183,7 +183,10 @@
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   padding: 0.4375rem 0.75rem;
-  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s;
 }
 
 .chip:hover span {
@@ -362,11 +365,11 @@
   text-transform: uppercase;
 }
 
-.language[data-language='html'] {
+.language[data-language="html"] {
   color: var(--red-text);
 }
 
-.language[data-language='css'] {
+.language[data-language="css"] {
   color: var(--blue);
 }
 

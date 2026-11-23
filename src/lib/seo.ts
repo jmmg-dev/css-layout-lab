@@ -5,7 +5,8 @@ import { routing, type Locale } from '@/i18n/routing';
 const PRODUCTION_URL = 'https://css-layout-lab.com';
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === 'production' ? PRODUCTION_URL : 'http://localhost:3000');
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.NODE_ENV === 'production' ? PRODUCTION_URL : 'http://localhost:3000');
 
 export const SITE_NAME = 'CSS Layout Lab';
 export const AUTHOR = 'Juan Manuel Muñoz González';

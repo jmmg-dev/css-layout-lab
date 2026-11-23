@@ -41,12 +41,7 @@ export function SideNav({ groups, label, openLabel, closeLabel, support, compact
 
   return (
     <div ref={wrapper} className={styles.wrapper} data-compact={compact}>
-      <button
-        type="button"
-        className={styles.toggle}
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
+      <button type="button" className={styles.toggle} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
         {open ? <CloseIcon /> : <MenuIcon />}
         {open ? closeLabel : openLabel}
       </button>

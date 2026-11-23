@@ -8,8 +8,7 @@ function findRuleBody(css: string, selector: string) {
   return end === -1 ? null : { start, end };
 }
 
-const declarationPattern = (property: string) =>
-  new RegExp(`(^|[\\s;])(${escapeRegExp(property)}\\s*:\\s*)([^;}]*)`);
+const declarationPattern = (property: string) => new RegExp(`(^|[\\s;])(${escapeRegExp(property)}\\s*:\\s*)([^;}]*)`);
 
 /** Reads a declaration value from a top-level rule, or null when it is not present. */
 export function readDeclaration(css: string, selector: string, property: string) {

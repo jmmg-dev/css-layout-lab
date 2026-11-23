@@ -1,7 +1,6 @@
 export type CodeLanguage = 'html' | 'css';
 
-const escapeHtml = (value: string) =>
-  value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const escapeHtml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const token = (type: string, value: string) => `<span class="tok-${type}">${escapeHtml(value)}</span>`;
 

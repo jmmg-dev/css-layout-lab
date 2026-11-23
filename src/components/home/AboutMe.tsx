@@ -47,12 +47,7 @@ export async function AboutMe({ locale }: { locale: string }) {
         <p className={styles.name}>{AUTHOR}</p>
         <p className={styles.role}>Front End Architect</p>
         <div className={styles.socials}>
-          <a
-            aria-label={t('ui.linkedin')}
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a aria-label={t('ui.linkedin')} href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
             <LinkedInIcon />
           </a>
           <a aria-label={t('ui.github')} href={GITHUB_URL} target="_blank" rel="noopener noreferrer">

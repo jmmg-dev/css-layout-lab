@@ -60,7 +60,13 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
         </ul>
         <div className={styles.signature}>
           <LogoMark size={28} />
-          <a className={styles.poweredby} href="https://jmmg.dev" target="_blank" rel="noopener" aria-label="Powered by JMMG.dev">
+          <a
+            className={styles.poweredby}
+            href="https://jmmg.dev"
+            target="_blank"
+            rel="noopener"
+            aria-label="Powered by JMMG.dev"
+          >
             <span aria-hidden="true">Powered by</span>
             {/* Both logos are in the page; the theme decides which one is shown. */}
             {/* eslint-disable-next-line @next/next/no-img-element -- small static SVG, nothing to optimise */}

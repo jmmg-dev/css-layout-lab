@@ -36,7 +36,10 @@ const explicitBase = {
 const seventhChild = `  <div style="grid-column: 4" class="child">\n    7\n  </div>`;
 
 const positioningCss = (rule: string) =>
-  gridCss(['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(3, 1fr);'], `.positioning {\n  background: #d9d2f5;\n${rule}\n}\n\n${childRule}`);
+  gridCss(
+    ['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(3, 1fr);'],
+    `.positioning {\n  background: #d9d2f5;\n${rule}\n}\n\n${childRule}`,
+  );
 
 const responsiveHtml = container(children(6));
 
@@ -47,7 +50,10 @@ const areasHtml = container(`  <div class="header">header</div>
   <div class="footer">footer</div>`);
 
 // Only the template changes between presets: the HTML and each item's grid-area stay the same.
-const areasCss = (rows: string[], [columns, rowSizes, height] = ['75px 1fr 75px', '2fr 4rem 1fr', '12rem']) => `.container {
+const areasCss = (
+  rows: string[],
+  [columns, rowSizes, height] = ['75px 1fr 75px', '2fr 4rem 1fr', '12rem'],
+) => `.container {
   ${BORDER}
   display: grid;
   gap: 1rem;
@@ -55,8 +61,12 @@ const areasCss = (rows: string[], [columns, rowSizes, height] = ['75px 1fr 75px'
 ${rows.map((row) => `    "${row}"`).join('\n')};
   grid-template-columns: ${columns};
   grid-template-rows: ${rowSizes};
-${height ? `  height: ${height};
-` : ""}  padding: 0.5rem;
+${
+  height
+    ? `  height: ${height};
+`
+    : ''
+}  padding: 0.5rem;
 }
 
 .header {
@@ -251,7 +261,10 @@ export const examples: Record<string, Example> = {
   'align-self': {
     height: 205,
     html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
-    css: flexCss(['align-items: center;', 'height: 10rem;'], `${childRule}\n\n.item {\n  align-self: auto;\n  background: #d9d2f5;\n}`),
+    css: flexCss(
+      ['align-items: center;', 'height: 10rem;'],
+      `${childRule}\n\n.item {\n  align-self: auto;\n  background: #d9d2f5;\n}`,
+    ),
     controls: [
       {
         kind: 'property',
@@ -280,7 +293,10 @@ export const examples: Record<string, Example> = {
   'flex-grow': {
     height: 110,
     html: container(numberedChildren(3, 'span')),
-    css: flexCss([], flexItems((n) => (n === 3 ? 'background: #d9d2f5;\n  flex-grow: 2;' : `flex-grow: ${n - 1};`))),
+    css: flexCss(
+      [],
+      flexItems((n) => (n === 3 ? 'background: #d9d2f5;\n  flex-grow: 2;' : `flex-grow: ${n - 1};`)),
+    ),
     controls: [
       {
         kind: 'property',
@@ -297,18 +313,28 @@ export const examples: Record<string, Example> = {
     html: container(numberedChildren(3, 'span')),
     css: flexCss(
       [],
-      flexItems((n) => `${n === 1 ? 'background: #d9d2f5;\n  ' : ''}flex-basis: 12rem;\n  flex-shrink: ${n === 1 ? 0 : 1};`),
+      flexItems(
+        (n) => `${n === 1 ? 'background: #d9d2f5;\n  ' : ''}flex-basis: 12rem;\n  flex-shrink: ${n === 1 ? 0 : 1};`,
+      ),
     ),
   },
   'flex-basis': {
     height: 110,
     html: container(numberedChildren(3, 'span')),
-    css: flexCss([], flexItems((n) => `flex-basis: ${['auto', '90px', '12rem'][n - 1]};`)),
+    css: flexCss(
+      [],
+      flexItems((n) => `flex-basis: ${['auto', '90px', '12rem'][n - 1]};`),
+    ),
   },
   'flex-shorthand': {
     height: 110,
-    html: container(`  <div class="child">1</div>\n  <div class="child item">item with more text</div>\n  <div class="child">3</div>`),
-    css: flexCss([], `.child {\n  flex: 1;\n  padding: 1rem;\n}\n\n.item {\n  background: #d9d2f5;\n  flex: initial;\n}`),
+    html: container(
+      `  <div class="child">1</div>\n  <div class="child item">item with more text</div>\n  <div class="child">3</div>`,
+    ),
+    css: flexCss(
+      [],
+      `.child {\n  flex: 1;\n  padding: 1rem;\n}\n\n.item {\n  background: #d9d2f5;\n  flex: initial;\n}`,
+    ),
     controls: [
       {
         kind: 'property',
@@ -656,7 +682,13 @@ export const examples: Record<string, Example> = {
     height: 150,
     html: container(`  <div class="child">1</div>\n  <div class="child item">2</div>\n  <div class="child">3</div>`),
     css: gridCss(
-      ['display: grid;', 'gap: 1rem;', 'grid-template-columns: auto auto auto;', 'grid-template-rows: 6rem;', 'height: 6rem;'],
+      [
+        'display: grid;',
+        'gap: 1rem;',
+        'grid-template-columns: auto auto auto;',
+        'grid-template-rows: 6rem;',
+        'height: 6rem;',
+      ],
       `.item {\n  align-self: stretch;\n  background: #d9d2f5;\n  justify-self: stretch;\n}\n\n${childRule}`,
     ),
     controls: [
@@ -688,7 +720,11 @@ export const examples: Record<string, Example> = {
           {
             value: 'auto-fit',
             html: responsiveHtml,
-            css: gridCss(['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));']),
+            css: gridCss([
+              'display: grid;',
+              'gap: 1rem;',
+              'grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));',
+            ]),
           },
           {
             value: 'media queries',
@@ -815,7 +851,11 @@ export const examples: Record<string, Example> = {
           {
             value: 'grid',
             html: flexVsGridHtml,
-            css: gridCss(['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));']),
+            css: gridCss([
+              'display: grid;',
+              'gap: 1rem;',
+              'grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));',
+            ]),
           },
         ],
       },
@@ -1019,7 +1059,11 @@ footer {
             value: 'card grid',
             html: container(children(5)),
             css: gridCss(
-              ['display: grid;', 'gap: 1rem;', 'grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));'],
+              [
+                'display: grid;',
+                'gap: 1rem;',
+                'grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));',
+              ],
               `.child {\n  min-height: 4rem;\n  padding: 1rem;\n}`,
             ),
           },

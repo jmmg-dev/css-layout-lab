@@ -126,32 +126,32 @@
   }
 }
 
-.wall [data-size='1'] {
+.wall [data-size="1"] {
   height: 2rem;
   width: 4rem;
 }
 
-.wall [data-size='2'] {
+.wall [data-size="2"] {
   height: 3rem;
   width: 5rem;
 }
 
-.wall [data-size='3'] {
+.wall [data-size="3"] {
   height: 2rem;
   width: 6rem;
 }
 
-.wall [data-size='4'] {
+.wall [data-size="4"] {
   height: 3rem;
   width: 7rem;
 }
 
-.wall [data-size='5'] {
+.wall [data-size="5"] {
   height: 5.4rem;
   width: 5rem;
 }
 
-.wall [data-size='6'] {
+.wall [data-size="6"] {
   height: 5.4rem;
   width: 7rem;
 }

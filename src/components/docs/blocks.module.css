@@ -107,7 +107,7 @@
 .example h2::before {
   background: var(--brand-gradient);
   border-radius: 4px;
-  content: '';
+  content: "";
   flex: none;
   height: 0.875rem;
   width: 0.875rem;
@@ -165,7 +165,9 @@
   overflow-wrap: anywhere;
   padding: 0.875rem 1rem;
   text-decoration: none;
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition:
+    box-shadow 0.15s,
+    transform 0.15s;
 }
 
 .topics a:hover {

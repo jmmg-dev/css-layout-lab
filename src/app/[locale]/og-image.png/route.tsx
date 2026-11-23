@@ -37,58 +37,56 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
   const fonts = (await Promise.all([loadFont(400), loadFont(700)])).filter((font) => font !== null);
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        background: 'linear-gradient(135deg, #ffe3d6 0%, #fbfaf7 45%, #d9e8fb 100%)',
+        color: INK,
+        display: 'flex',
+        fontFamily: fonts.length ? FONT : undefined,
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'center',
+        padding: '0 96px',
+        width: '100%',
+      }}
+    >
+      {/* Same mark as the header logo: CL in the brand gradient over "Lab". */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #ffe3d6 0%, #fbfaf7 45%, #d9e8fb 100%)',
-          color: INK,
+          alignItems: 'center',
+          background: '#ffffff',
+          border: '3px solid #e4e1da',
+          borderRadius: 40,
           display: 'flex',
-          fontFamily: fonts.length ? FONT : undefined,
           flexDirection: 'column',
-          height: '100%',
+          height: 168,
           justifyContent: 'center',
-          padding: '0 96px',
-          width: '100%',
+          width: 168,
         }}
       >
-        {/* Same mark as the header logo: CL in the brand gradient over "Lab". */}
         <div
           style={{
-            alignItems: 'center',
-            background: '#ffffff',
-            border: '3px solid #e4e1da',
-            borderRadius: 40,
-            display: 'flex',
-            flexDirection: 'column',
-            height: 168,
-            justifyContent: 'center',
-            width: 168,
+            backgroundClip: 'text',
+            backgroundImage: GRADIENT,
+            color: 'transparent',
+            fontSize: 92,
+            fontWeight: 700,
+            letterSpacing: -6,
+            lineHeight: 1,
           }}
         >
-          <div
-            style={{
-              backgroundClip: 'text',
-              backgroundImage: GRADIENT,
-              color: 'transparent',
-              fontSize: 92,
-              fontWeight: 700,
-              letterSpacing: -6,
-              lineHeight: 1,
-            }}
-          >
-            CL
-          </div>
-          <div style={{ fontSize: 46, fontWeight: 600, lineHeight: 1 }}>Lab</div>
+          CL
         </div>
-
-        <div style={{ display: 'flex', fontSize: 96, fontWeight: 700, letterSpacing: -3, marginTop: 56 }}>
-          <span style={{ backgroundClip: 'text', backgroundImage: GRADIENT, color: 'transparent' }}>CSS</span>
-          <span style={{ marginLeft: 24 }}>{SITE_NAME.replace(/^CSS /, '')}</span>
-        </div>
-        <div style={{ color: '#4a4f5c', fontSize: 44, marginTop: 16 }}>{t('imageTagline')}</div>
-        <div style={{ color: '#2b7de0', fontSize: 34, marginTop: 40 }}>{t('imageTopics')}</div>
+        <div style={{ fontSize: 46, fontWeight: 600, lineHeight: 1 }}>Lab</div>
       </div>
-    ),
+
+      <div style={{ display: 'flex', fontSize: 96, fontWeight: 700, letterSpacing: -3, marginTop: 56 }}>
+        <span style={{ backgroundClip: 'text', backgroundImage: GRADIENT, color: 'transparent' }}>CSS</span>
+        <span style={{ marginLeft: 24 }}>{SITE_NAME.replace(/^CSS /, '')}</span>
+      </div>
+      <div style={{ color: '#4a4f5c', fontSize: 44, marginTop: 16 }}>{t('imageTagline')}</div>
+      <div style={{ color: '#2b7de0', fontSize: 34, marginTop: 40 }}>{t('imageTopics')}</div>
+    </div>,
     { ...OG_IMAGE_SIZE, fonts },
   );
 }

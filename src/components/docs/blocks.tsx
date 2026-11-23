@@ -45,8 +45,7 @@ export function ExampleBlock({ t, id, ns, heading = true }: ExampleBlockProps) {
   // for instance "Fundamentos - position". Pages split into parts use the part's own title.
   const page = ns ? pages.find((candidate) => ns === candidate.ns || ns.startsWith(`${candidate.ns}.`)) : undefined;
   const sectionGroup = page ? t(`nav.${page.group}`) : undefined;
-  const sectionTitle =
-    ns && t.has(`${ns}.title`) ? stripTags(t.raw(`${ns}.title`) as string) : t('example');
+  const sectionTitle = ns && t.has(`${ns}.title`) ? stripTags(t.raw(`${ns}.title`) as string) : t('example');
 
   return (
     <section className={styles.example}>
