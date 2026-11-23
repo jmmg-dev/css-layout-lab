@@ -45,13 +45,18 @@
   }
 }
 
-/* A small heart above the title, in the sky blue of the bricks. */
+/* A small heart above the title: the site's azure on the pale light card, where the
+   brick sky blue faded into the background; the sky blue in the dark theme. */
 .supportHeart {
-  color: var(--sky);
+  color: var(--azure);
   display: block;
   height: auto;
   margin-bottom: 0.75rem;
   width: 2.75rem;
+}
+
+:global(:root[data-theme="dark"]) .supportHeart {
+  color: var(--sky);
 }
 
 .support h2 {

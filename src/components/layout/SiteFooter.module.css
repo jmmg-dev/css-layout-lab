@@ -19,6 +19,70 @@
   gap: 0.75rem 1.5rem;
 }
 
+/* Links to the four sections, in the middle, under a small title. Same pills as the header links. */
+.sections {
+  display: grid;
+  gap: 0.375rem;
+  justify-items: start;
+}
+
+.heading {
+  color: var(--fg);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0;
+  /* Lines up with the text of the first link, inside its pill padding. */
+  padding-inline: 0.75rem;
+  text-transform: uppercase;
+}
+
+.sectionLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.sections a {
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  text-decoration: none;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.sections a:hover {
+  background: var(--rule-soft);
+  color: var(--fg);
+}
+
+/* Three columns where they fit, so the links sit exactly in the centre of the footer. */
+@media (min-width: 1100px) {
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .end {
+    justify-self: end;
+  }
+}
+
+/* In between, the links take a row of their own under the two sides. */
+@media (max-width: 1099px) {
+  .sections {
+    flex-basis: 100%;
+    /* The block stays centred in its row, the title and links left-aligned inside it. */
+    justify-content: center;
+    order: 1;
+  }
+}
+
 .brand {
   align-items: center;
   color: var(--fg);
@@ -36,6 +100,13 @@
   background-clip: text;
   background-image: var(--brand-gradient);
   color: transparent;
+}
+
+/* The right side in two rows, left-aligned: LinkedIn and GitHub side by side, then the credit. */
+.end {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.875rem;
 }
 
 .socials {
@@ -76,6 +147,25 @@
   margin: 0;
 }
 
+/* The name, its tagline and the copyright, one under another. */
+.identity {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.tagline {
+  margin: 0;
+}
+
+/* The same azure as the heart of the support card. */
+.heart {
+  color: var(--azure);
+}
+
+:global(:root[data-theme="dark"]) .heart {
+  color: var(--sky);
+}
+
 /* The site mark sits just before the credit, closer than the other groups. */
 .signature {
   align-items: center;
@@ -112,5 +202,34 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+  }
+
+  /* More air between the stacked groups on phones. */
+  .footer {
+    gap: 1.75rem;
+    padding-block: 1.75rem;
+  }
+
+  .identity {
+    justify-items: center;
+  }
+
+  .end {
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+
+  /* On phones the sections come right after the tagline, title and links centred. */
+  .sections {
+    justify-items: center;
+    order: 0;
+  }
+
+  .sectionLinks {
+    justify-content: center;
   }
 }
