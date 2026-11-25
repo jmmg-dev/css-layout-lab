@@ -9,7 +9,7 @@ Interactive documentation to learn CSS layouts: block, inline, flexbox, grid and
 - TypeScript and CSS Modules
 - Vitest, Testing Library and jsdom (unit tests)
 - ESLint and Prettier (lint and formatting)
-- GitHub Actions (tests and coverage on `main` and `master`)
+- GitHub Actions (lint, format, tests and coverage on `main` and `master`), required by Vercel before production
 
 ## Getting started
 
@@ -47,9 +47,9 @@ Coverage must stay at **90 % or more** in lines, statements, functions and branc
 
 Route files (`page`, `layout`, `route`, sitemap, proxy) and async Server Components are left out of coverage: they cannot be rendered in unit tests and are better covered end to end. `vitest.setup.ts` provides the browser APIs jsdom lacks (`matchMedia`, `ResizeObserver`, `IntersectionObserver`, `scrollIntoView` and modal dialogs).
 
-## Continuous integration
+## CI/CD
 
-`.github/workflows/tests.yml` runs `npm ci` and `npm run test:coverage` on every push and pull request to `main` and `master`. The workflow fails if a test fails or coverage drops below 90 %, and keeps the coverage report as an artifact.
+`.github/workflows/ci-cd.yml` runs a `checks` job on every push and pull request to `main` and `master`: `npm ci`, then `npm run lint` and `npm run format:check`, then `npm run test:coverage`. The workflow fails on any lint or formatting error, a failing test, or coverage below 90 %, and keeps the coverage report as an artifact. Vercel waits for that check (Deployment Checks) before promoting a deployment to production, so code that fails it never goes live.
 
 ## Configuration
 

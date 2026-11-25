@@ -1,4 +1,6 @@
-name: Tests
+# Checks every push and pull request to main/master. Vercel waits for the `checks` job
+# (Deployment Checks) before promoting a deployment to production.
+name: CI/CD
 
 on:
   push:
@@ -7,7 +9,7 @@ on:
     branches: [main, master]
 
 jobs:
-  test:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +18,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Lint and formatting first: cheap, and a failure here stops the run before the tests.
+      - run: npm run lint
+      - run: npm run format:check
       # Fails if a test fails or coverage drops below 90 % (thresholds live in vitest.config.mts).
       - run: npm run test:coverage
       - if: always()
