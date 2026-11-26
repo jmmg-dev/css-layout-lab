@@ -48,7 +48,8 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
       >
         <HeartIcon />
       </Link>
-      <Link className={styles.mark} href={localePath(locale)} aria-label={SITE_NAME}>
+      {/* The name starts with the visible "CL Lab", so voice control users can say what they see. */}
+      <Link className={styles.mark} href={localePath(locale)} aria-label={`CL Lab, ${SITE_NAME}`}>
         <LogoMark size={32} />
       </Link>
     </header>

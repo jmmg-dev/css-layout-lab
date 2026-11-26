@@ -1,5 +1,5 @@
-# Checks every push and pull request to main/master. Vercel waits for the `checks` job
-# (Deployment Checks) before promoting a deployment to production.
+# Checks every push and pull request to main/master. Vercel waits for the `checks` and `e2e`
+# jobs (Deployment Checks) before promoting a deployment to production.
 name: CI/CD
 
 on:
@@ -28,3 +28,25 @@ jobs:
         with:
           name: coverage
           path: coverage/
+
+  # Browser tests against the production build, after checks so no browser time is spent
+  # when lint or unit tests already fail.
+  e2e:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      # Builds and serves the site (webServer in playwright.config.ts), then runs every spec.
+      - run: npm run test:e2e
+      - if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14

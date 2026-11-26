@@ -24,9 +24,16 @@ describe('SearchCommand', () => {
 
   it('opens from its button with every page listed', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     expect(dialog()).toHaveAttribute('open');
     expect(options()).toHaveLength(3);
+  });
+
+  it('names its button with the visible text, shortcut included, and announces the shortcut', () => {
+    renderSearch();
+    const button = screen.getByRole('button', { name: 'Buscar Ctrl K' });
+    expect(button).toHaveTextContent('Buscar Ctrl K');
+    expect(button).toHaveAttribute('aria-keyshortcuts', 'Control+K Meta+K');
   });
 
   it('opens and closes with Ctrl+K or Cmd+K', () => {
@@ -45,7 +52,7 @@ describe('SearchCommand', () => {
 
   it('filters by every word, ignoring accents and case', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     await userEvent.type(input(), 'INTRODUCCION fundamentos');
     expect(options()).toHaveLength(1);
     expect(options()[0]).toHaveTextContent('Introducción a los layouts');
@@ -53,7 +60,7 @@ describe('SearchCommand', () => {
 
   it('says so when nothing matches', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     await userEvent.type(input(), 'zzz');
     expect(options()).toHaveLength(0);
     expect(screen.getByText('Sin resultados')).toBeInTheDocument();
@@ -64,7 +71,7 @@ describe('SearchCommand', () => {
 
   it('moves the selection with the arrows, wrapping around', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     expect(options()[0]).toHaveAttribute('aria-selected', 'true');
     fireEvent.keyDown(input(), { key: 'ArrowUp' });
     expect(options()[2]).toHaveAttribute('aria-selected', 'true');
@@ -75,7 +82,7 @@ describe('SearchCommand', () => {
 
   it('opens the selected page with Enter and closes', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     fireEvent.keyDown(input(), { key: 'ArrowDown' });
     fireEvent.keyDown(input(), { key: 'Enter' });
     expect(push).toHaveBeenCalledWith('/es/flex/flex-wrap');
@@ -84,7 +91,7 @@ describe('SearchCommand', () => {
 
   it('does nothing on Enter without results', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     await userEvent.type(input(), 'zzz');
     fireEvent.keyDown(input(), { key: 'Enter' });
     expect(push).not.toHaveBeenCalled();
@@ -92,7 +99,7 @@ describe('SearchCommand', () => {
 
   it('selects the option under the mouse and closes when a link is clicked', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     const link = screen.getAllByRole('link', { hidden: true })[2];
     fireEvent.mouseMove(link);
     expect(options()[2]).toHaveAttribute('aria-selected', 'true');
@@ -102,7 +109,7 @@ describe('SearchCommand', () => {
 
   it('closes when clicking the backdrop, not the panel', async () => {
     renderSearch();
-    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar Ctrl K' }));
     fireEvent.click(input());
     expect(dialog()).toHaveAttribute('open');
     fireEvent.click(dialog());

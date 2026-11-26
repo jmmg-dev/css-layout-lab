@@ -72,9 +72,17 @@ export function SearchCommand({ items, label, placeholder, empty }: Props) {
 
   return (
     <>
-      <button type="button" className={styles.trigger} aria-label={label} onClick={open}>
+      {/* The name includes the visible "Ctrl K", so voice control users can say what they see. */}
+      <button
+        type="button"
+        className={styles.trigger}
+        aria-label={`${label} Ctrl K`}
+        aria-keyshortcuts="Control+K Meta+K"
+        onClick={open}
+      >
         <SearchIcon />
         <span className={styles.triggerLabel}>{label}</span>
+        {/* A real space, so assistive tech reads "Search Ctrl K" and not "SearchCtrl K". */}{' '}
         <kbd className={styles.shortcut}>Ctrl K</kbd>
       </button>
 

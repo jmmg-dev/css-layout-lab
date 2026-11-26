@@ -46,6 +46,7 @@ export const LogoMark = ({ size = 44 }: { size?: number }) => (
     >
       CL
     </text>
+    {/* Not drawn (SVG only paints text inside <text>), but it makes the logo read "CL Lab". */}{' '}
     <text x="32" y="54" textAnchor="middle" fontSize="18" fontWeight="600" letterSpacing="-0.5" fill="var(--fg)">
       Lab
     </text>

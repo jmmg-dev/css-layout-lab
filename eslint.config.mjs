@@ -23,6 +23,10 @@ const eslintConfig = defineConfig([
     'build/**',
     'next-env.d.ts',
     'coverage/**',
+    // Playwright output.
+    'test-results/**',
+    'playwright-report/**',
+    'blob-report/**',
   ]),
   // Last, so formatting is left to Prettier.
   prettier,
