@@ -5,6 +5,9 @@ const ui = messages.en.ui;
 test.describe('playground', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/en/flex/flex-wrap');
+    // The preview gets its theme from a client effect: once it has one, React has hydrated
+    // and typing reaches the playground state instead of a page that is not interactive yet.
+    await expect(page.frameLocator(`iframe[title="${ui.previewTitle}"]`).locator('html[data-theme]')).toHaveCount(1);
   });
 
   const cssEditor = (page: import('@playwright/test').Page) =>
